@@ -1010,18 +1010,22 @@
         .role-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         #othersRoleModal .modal-title {
             color: #ffffff !important;
         }
+
         #othersRoleModal .role-card {
             background: rgba(255, 255, 255, 0.18) !important;
             border: 1px solid rgba(255, 255, 255, 0.45) !important;
         }
+
         #othersRoleModal .role-card h6 {
             color: #ffffff !important;
             font-size: 1.15rem;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
         }
+
         #othersRoleModal .role-card:hover {
             transform: translateY(-2px);
             background: rgba(255, 255, 255, 0.28) !important;
@@ -1929,7 +1933,8 @@
                                         <div class="d-flex flex-column align-items-center gap-3">
                                             <div class="icon-circle d-flex align-items-center justify-content-center rounded-circle mb-2"
                                                 style="width: 60px; height: 60px; background: rgba(255,255,255,0.2);">
-                                                <span class="material-icons" style="font-size: 30px;">admin_panel_settings</span>
+                                                <span class="material-icons"
+                                                    style="font-size: 30px;">admin_panel_settings</span>
                                             </div>
                                             <h6 class="fw-bold m-0">Root Admin</h6>
                                         </div>
@@ -2600,19 +2605,15 @@
                 <div class="card-body py-3">
                     <div class="d-flex gap-3 align-items-center font-weight-bold">
                         <button class="btn btn-sm btn-outline-primary active rounded-pill px-3"
-                            data-resource-category="All"
-                            onclick="filterResources('All', this)">All</button>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3"
-                            data-resource-category="Policy"
+                            data-resource-category="All" onclick="filterResources('All', this)">All</button>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-resource-category="Policy"
                             onclick="filterResources('Policy', this)">Policies</button>
                         <button class="btn btn-sm btn-outline-primary rounded-pill px-3"
-                            data-resource-category="Schedule"
-                            onclick="filterResources('Schedule', this)">Exam Schedules</button>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3"
-                            data-resource-category="Form"
+                            data-resource-category="Schedule" onclick="filterResources('Schedule', this)">Exam
+                            Schedules</button>
+                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-resource-category="Form"
                             onclick="filterResources('Form', this)">Forms</button>
-                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3"
-                            data-resource-category="Other"
+                        <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-resource-category="Other"
                             onclick="filterResources('Other', this)">Other</button>
                     </div>
                 </div>
@@ -2666,12 +2667,14 @@
                                 onchange="handleResourceTemplateChange()">
                                 <option value="">Custom Form (Upload your own file)</option>
                             </select>
-                            <div class="form-text text-muted small">Choose a template to auto-publish a standard school form.</div>
+                            <div class="form-text text-muted small">Choose a template to auto-publish a standard school
+                                form.</div>
                         </div>
                         <div class="mb-4 d-none" id="resource-school-wrap">
                             <label class="form-label small fw-bold text-muted text-uppercase">School</label>
                             <select class="form-select bg-light border-0 p-3" id="res-school-view"></select>
-                            <div class="form-text text-muted small">Admin can choose target school for this resource.</div>
+                            <div class="form-text text-muted small">Admin can choose target school for this resource.
+                            </div>
                         </div>
                         <div class="mb-4">
                             <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
@@ -3608,25 +3611,27 @@
                                     <span class="text-muted small" data-i18n="login_not_a">Not a</span>
                                     <span class="text-muted small"><span id="login-role-label">Student</span>?</span>
                                     <a href="#" onclick="switchView('landing-view')"
-                                        class="text-primary-custom fw-bold small text-decoration-none bg-light px-3 py-1 rounded-pill border" data-i18n="login_switch_role">Switch
+                                        class="text-primary-custom fw-bold small text-decoration-none bg-light px-3 py-1 rounded-pill border"
+                                        data-i18n="login_switch_role">Switch
                                         Role</a>
                                 </div>
                             </div>
 
-                            <h2 class="fw-bold text-dark mb-2" id="login-title" data-i18n="login_student_login">Student Login</h2>
+                            <h2 class="fw-bold text-dark mb-2" id="login-title" data-i18n="login_student_login">Student
+                                Login</h2>
                             <p class="text-muted" data-i18n="login_subtitle">Sign in to your account</p>
                         </div>
 
                         <form id="login-form">
                             <input type="hidden" id="selected-role" value="Student">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control bg-light border-0" id="username" autocomplete="off"
-                                    placeholder="Email" required aria-label="Email">
+                                <input type="text" class="form-control bg-light border-0" id="username"
+                                    autocomplete="off" placeholder="Email" required aria-label="Email">
                                 <label for="username" data-i18n="label_username">Email</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control bg-light border-0" id="password" autocomplete="new-password"
-                                    placeholder="Password" required aria-label="Password">
+                                <input type="password" class="form-control bg-light border-0" id="password"
+                                    autocomplete="new-password" placeholder="Password" required aria-label="Password">
                                 <label for="password" data-i18n="label_password">Password</label>
                             </div>
                             <div class="text-end mb-4">
@@ -8393,7 +8398,7 @@
         <script src="./static/shader_background_webgl.js"></script>
         <script src="./static/glowing_cards.js"></script>
         <script src="./static/testimonial_cards.js"></script>
-        <script src="./script.js?v=2.6"></script>
+        <script src="./app.js?v=final"></script>
         <!-- Create Assignment Modal -->
         <div class="modal fade" id="createAssignmentModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
