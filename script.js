@@ -41,7 +41,8 @@ const API_BASE_URL = isLocal
     : (window.__API_BASE_URL__ || PROD_API_DEFAULT);
 
 console.log("------------------------------------------");
-console.log(" FRONTEND VERSION 2.5 - CONNECTING TO CLASSBRIDGE BACKEND");
+console.log(" FRONTEND VERSION 2.5.1 - CONNECTING TO CLASSBRIDGE BACKEND");
+console.log(" Updated at: 2026-02-19 21:24");
 console.log("------------------------------------------");
 
 console.log("ClassBridge API Base URL:", API_BASE_URL);

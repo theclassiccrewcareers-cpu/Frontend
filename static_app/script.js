@@ -40,6 +40,11 @@ const API_BASE_URL = isLocal
     ? LOCAL_API_BASE
     : (window.__API_BASE_URL__ || PROD_API_DEFAULT);
 
+console.log("------------------------------------------");
+console.log(" FRONTEND VERSION 2.5.1 - CONNECTING TO CLASSBRIDGE BACKEND");
+console.log(" Updated at: 2026-02-19 21:24");
+console.log("------------------------------------------");
+
 console.log("ClassBridge API Base URL:", API_BASE_URL);
 // Check if running from file:// which breaks OAuth
 if (window.location.protocol === 'file:') {
@@ -145,7 +150,7 @@ function restoreAuthState() {
 const translations = {
     en: {
         login_welcome: "Welcome to Noble Nexus",
-        login_subtitle: "Sign in to the Noble Nexus Portal",
+        login_subtitle: "Sign in to Class Bridge",
         label_username: "Email",
         label_password: "Password",
         link_forgot_password: "Forgot Password?",
@@ -451,6 +456,8 @@ const translations = {
         footer_terms: "Terms",
         text_scan_visit: "Scan to visit",
         text_product_by: "a product by Noble Nexus",
+        text_a_product_by: "A Product By",
+        footer_noble_nexus_plus: "Noble Nexus Plus",
         // Landing Page Mock Data
         feat_why_title: "Why Noble Nexus?",
         feat_main_title: "Everything you need to excel",
@@ -491,8 +498,12 @@ const translations = {
         role_student: "Student",
         role_teacher: "Teacher",
         role_parent: "Parent",
+        role_others: "Others",
         role_admin: "Admin",
         role_root_admin: "Root Admin",
+        hero_heading: "Where classrooms\nbecome communities",
+        hero_subtitle: "Empowering educational institutions through innovative solutions",
+        hero_get_started_as: "Get started as a...",
         feat_modern_title: "Built for the Modern Classroom",
         feat_quiz_gen: "Quiz Generator",
         feat_quiz_desc: "Upload a PDF chapter, and our AI generates 20 distinct questions with answer keys in seconds.",
@@ -802,8 +813,12 @@ const translations = {
         role_student: "Estudiante",
         role_teacher: "Profesor",
         role_parent: "Padre/Madre",
+        role_others: "Otros",
         role_admin: "Administrador",
         role_root_admin: "Administrador raíz",
+        hero_heading: "Donde las aulas\nse convierten en comunidades",
+        hero_subtitle: "Impulsando instituciones educativas mediante soluciones innovadoras",
+        hero_get_started_as: "Comenzar como...",
         feat_why_title: "¿Por qué Noble Nexus?",
         feat_main_title: "Todo lo que necesitas para destacar",
         feat_analytics_title: "Analítica inteligente",
@@ -822,6 +837,29 @@ const translations = {
         about_parents: "Para familias",
         about_parents_desc: "Mantente al día con asistencia, rendimiento académico y eventos escolares.",
         btn_discover_more: "Descubrir más",
+        stat_engagement: "Tasa de participación",
+        stat_ai_support: "Soporte de IA",
+        footer_company: "Empresa",
+        footer_about: "Sobre nosotros",
+        footer_press: "Prensa",
+        footer_careers: "Carreras",
+        footer_engineering: "Ingeniería",
+        footer_accessibility: "Accesibilidad",
+        footer_resources: "Recursos",
+        footer_big_ideas: "Grandes ideas",
+        footer_training: "Capacitación",
+        footer_remote_learning: "Aprendizaje remoto",
+        footer_support: "Soporte",
+        footer_help_center: "Centro de ayuda",
+        footer_contact: "Contacto",
+        footer_privacy: "Centro de privacidad",
+        footer_cookies: "Configuración de cookies",
+        footer_get_app: "Obtén la app",
+        footer_terms: "Términos",
+        text_scan_visit: "Escanea para visitar",
+        text_product_by: "un producto de Noble Nexus",
+        text_a_product_by: "Un producto de",
+        footer_noble_nexus_plus: "Noble Nexus Plus",
         feat_modern_title: "Creado para el aula moderna",
         feat_quiz_gen: "Generador de cuestionarios",
         feat_quiz_desc: "Sube un PDF y la IA crea preguntas con respuestas en segundos.",
@@ -1131,8 +1169,12 @@ const translations = {
         role_student: "طالب",
         role_teacher: "معلم",
         role_parent: "ولي أمر",
+        role_others: "أخرى",
         role_admin: "مسؤول",
         role_root_admin: "مسؤول جذر",
+        hero_heading: "حيث تتحول الفصول\nإلى مجتمعات",
+        hero_subtitle: "تمكين المؤسسات التعليمية من خلال حلول مبتكرة",
+        hero_get_started_as: "ابدأ كـ...",
         feat_why_title: "لماذا Noble Nexus؟",
         feat_main_title: "كل ما تحتاجه للتميّز",
         feat_analytics_title: "تحليلات ذكية",
@@ -1151,6 +1193,29 @@ const translations = {
         about_parents: "لأولياء الأمور",
         about_parents_desc: "ابقَ على اطلاع بالحضور والأداء الأكاديمي وفعاليات المدرسة.",
         btn_discover_more: "اكتشف المزيد",
+        stat_engagement: "معدل التفاعل",
+        stat_ai_support: "دعم الذكاء الاصطناعي",
+        footer_company: "الشركة",
+        footer_about: "من نحن",
+        footer_press: "الصحافة",
+        footer_careers: "الوظائف",
+        footer_engineering: "الهندسة",
+        footer_accessibility: "إمكانية الوصول",
+        footer_resources: "الموارد",
+        footer_big_ideas: "أفكار كبيرة",
+        footer_training: "التدريب",
+        footer_remote_learning: "التعلم عن بُعد",
+        footer_support: "الدعم",
+        footer_help_center: "مركز المساعدة",
+        footer_contact: "اتصل بنا",
+        footer_privacy: "مركز الخصوصية",
+        footer_cookies: "إعدادات ملفات تعريف الارتباط",
+        footer_get_app: "احصل على التطبيق",
+        footer_terms: "الشروط",
+        text_scan_visit: "امسح للزيارة",
+        text_product_by: "منتج من Noble Nexus",
+        text_a_product_by: "منتج من",
+        footer_noble_nexus_plus: "نوبل نيكسس بلس",
         feat_modern_title: "مصمم للفصل الحديث",
         feat_quiz_gen: "مولد الاختبارات",
         feat_quiz_desc: "ارفع PDF وسيقوم الذكاء الاصطناعي بإنشاء أسئلة وإجابات خلال ثوانٍ.",
@@ -1472,6 +1537,8 @@ const translations = {
         footer_terms: "शर्तें",
         text_scan_visit: "विजिट करने के लिए स्कैन करें",
         text_product_by: "Noble Nexus का एक उत्पाद",
+        text_a_product_by: "एक उत्पाद",
+        footer_noble_nexus_plus: "नोबल नेक्सस प्लस",
         // Landing Page Mock Data (Hindi)
         feat_why_title: "नोबल नेक्सस क्यों?",
         feat_main_title: "उत्कृष्टता के लिए आपको जो कुछ भी चाहिए",
@@ -1512,8 +1579,12 @@ const translations = {
         role_student: "छात्र",
         role_teacher: "शिक्षक",
         role_parent: "अभिभावक",
+        role_others: "अन्य",
         role_admin: "एडमिन",
         role_root_admin: "रूट एडमिन",
+        hero_heading: "जहां कक्षाएं\nसमुदाय बनती हैं",
+        hero_subtitle: "नवाचारी समाधानों के माध्यम से शैक्षणिक संस्थानों को सशक्त बनाना",
+        hero_get_started_as: "इस रूप में शुरू करें...",
         feat_modern_title: "आधुनिक कक्षा के लिए निर्मित",
         feat_quiz_gen: "क्विज़ जेनरेटर",
         feat_quiz_desc: "एक पीडीएफ अध्याय अपलोड करें, और हमारा एआई सेकंड में उत्तर कुंजी के साथ 20 अलग-अलग प्रश्न तैयार करता है।",
@@ -1823,8 +1894,12 @@ const translations = {
         role_student: "生徒",
         role_teacher: "教師",
         role_parent: "保護者",
+        role_others: "その他",
         role_admin: "管理者",
         role_root_admin: "ルート管理者",
+        hero_heading: "教室が\nコミュニティになる場所",
+        hero_subtitle: "革新的なソリューションで教育機関を支援します",
+        hero_get_started_as: "として始める...",
         feat_why_title: "なぜNoble Nexusなのか？",
         feat_main_title: "成長に必要なすべてをひとつに",
         feat_analytics_title: "スマート分析",
@@ -1843,6 +1918,29 @@ const translations = {
         about_parents: "保護者向け",
         about_parents_desc: "出欠・成績・学校連絡をすばやく確認できます。",
         btn_discover_more: "詳しく見る",
+        stat_engagement: "エンゲージメント率",
+        stat_ai_support: "AIサポート",
+        footer_company: "会社",
+        footer_about: "会社概要",
+        footer_press: "プレス",
+        footer_careers: "採用情報",
+        footer_engineering: "エンジニアリング",
+        footer_accessibility: "アクセシビリティ",
+        footer_resources: "リソース",
+        footer_big_ideas: "ビッグアイデア",
+        footer_training: "トレーニング",
+        footer_remote_learning: "遠隔学習",
+        footer_support: "サポート",
+        footer_help_center: "ヘルプセンター",
+        footer_contact: "お問い合わせ",
+        footer_privacy: "プライバシーセンター",
+        footer_cookies: "Cookie設定",
+        footer_get_app: "アプリを入手",
+        footer_terms: "利用規約",
+        text_scan_visit: "スキャンしてアクセス",
+        text_product_by: "Noble Nexus の製品",
+        text_a_product_by: "製品提供",
+        footer_noble_nexus_plus: "ノーブルネクサス プラス",
         feat_modern_title: "現代の教室のために設計",
         feat_quiz_gen: "クイズ生成",
         feat_quiz_desc: "PDFをアップロードするだけで、AIが問題と解答を即作成します。",
@@ -2034,6 +2132,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 // --- DOM ELEMENTS & MODALS ---
+const viewStack = [];
+function getActiveViewId() {
+    const active = document.querySelector('.view.active');
+    return active ? active.id : null;
+}
+function openView(viewId) {
+    const current = getActiveViewId();
+    if (current && current !== viewId) {
+        viewStack.push(current);
+    }
+    switchView(viewId);
+}
+function closeView() {
+    const previous = viewStack.pop();
+    if (previous) {
+        switchView(previous);
+    }
+}
+function createViewModal(viewId) {
+    return {
+        show: () => openView(viewId),
+        hide: () => closeView()
+    };
+}
+document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const modalTrigger = target.closest('[data-bs-toggle="modal"]');
+    if (modalTrigger) {
+        const targetId = modalTrigger.getAttribute('data-bs-target');
+        if (targetId) {
+            event.preventDefault();
+            openView(targetId.replace('#', ''));
+        }
+    }
+    const dismissTrigger = target.closest('[data-bs-dismiss="modal"]');
+    if (dismissTrigger) {
+        event.preventDefault();
+        closeView();
+    }
+});
 const elements = {
     loginView: document.getElementById('login-view'),
     teacherView: document.getElementById('teacher-view'),
@@ -2054,17 +2193,17 @@ const elements = {
     chatInput: document.getElementById('chat-input'),
     recommendationBox: document.getElementById('recommendation-box'),
     loginMessage: document.getElementById('login-message'),
-    // Modals (Bootstrap Instances)
-    addStudentModal: new bootstrap.Modal(document.getElementById('addStudentModal')),
-    editStudentModal: new bootstrap.Modal(document.getElementById('editStudentModal')),
-    addActivityModal: new bootstrap.Modal(document.getElementById('addActivityModal')),
-    scheduleClassModal: new bootstrap.Modal(document.getElementById('scheduleClassModal')),
-    createGroupModal: new bootstrap.Modal(document.getElementById('createGroupModal')),
-    manageMembersModal: new bootstrap.Modal(document.getElementById('manageMembersModal')),
-    aboutPortalModal: new bootstrap.Modal(document.getElementById('aboutPortalModal')),
-    deleteConfirmationModal: new bootstrap.Modal(document.getElementById('deleteConfirmationModal')),
-    forgotPasswordModal: new bootstrap.Modal(document.getElementById('forgotPasswordModal')),
-    resetPasswordModal: new bootstrap.Modal(document.getElementById('resetPasswordModal')),
+    // Views (Former Modals)
+    addStudentModal: createViewModal('addStudentModal'),
+    editStudentModal: createViewModal('editStudentModal'),
+    addActivityModal: createViewModal('addActivityModal'),
+    scheduleClassModal: createViewModal('scheduleClassModal'),
+    createGroupModal: createViewModal('createGroupModal'),
+    manageMembersModal: createViewModal('manageMembersModal'),
+    aboutPortalModal: createViewModal('aboutPortalModal'),
+    deleteConfirmationModal: createViewModal('deleteConfirmationModal'),
+    forgotPasswordModal: createViewModal('forgotPasswordModal'),
+    resetPasswordModal: createViewModal('resetPasswordModal'),
     // Modal DOM Elements (for values)
     addStudentForm: document.getElementById('add-student-form'),
     addStudentMessage: document.getElementById('add-student-message'),
@@ -2085,7 +2224,7 @@ const elements = {
     liveClassesList: document.getElementById('live-classes-list'),
     // Add missing elements
     addMaterialMessage: document.getElementById('add-material-message'),
-    addMaterialModal: new bootstrap.Modal(document.getElementById('lmsAddModuleModal')), // Mapping similar modal or create new if needed
+    addMaterialModal: createViewModal('lmsAddModuleModal'), // Mapping similar modal or create new if needed
     materialsList: document.getElementById('group-materials-list'),
 };
 // --- HELPER FUNCTIONS ---
@@ -2362,10 +2501,7 @@ function submitEditStudentForm() {
                 msgEl.className = 'text-success fw-bold d-block p-2';
                 alert("Success: Student Updated!");
                 setTimeout(() => {
-                    const modalEl = document.getElementById('editStudentModal');
-                    const modal = bootstrap.Modal.getInstance(modalEl);
-                    if (modal)
-                        modal.hide();
+                    closeView();
                     msgEl.textContent = '';
                 }, 1000);
                 yield initializeDashboard();
@@ -2670,7 +2806,7 @@ function openPermissionEditModal(id, code, desc) {
     document.getElementById('perm-edit-code').value = `P-${String(id).padStart(4, '0')}`;
     document.getElementById('perm-edit-title').value = code;
     document.getElementById('perm-edit-desc').value = desc;
-    new bootstrap.Modal(document.getElementById('permEditModal')).show();
+    openView('permEditModal');
 }
 function handleUpdatePermission() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -2682,7 +2818,7 @@ function handleUpdatePermission() {
                 body: JSON.stringify({ description: desc })
             });
             if (response.ok) {
-                bootstrap.Modal.getInstance(document.getElementById('permEditModal')).hide();
+                closeView();
                 loadPermissionsList();
             }
             else {
@@ -2785,6 +2921,12 @@ function switchView(viewId, updateHistory = true) {
     if (viewId === 'parent-email-compose-view') {
         if (typeof initParentEmailCompose === 'function') initParentEmailCompose();
     }
+    if (viewId === 'student-notifications-view') {
+        if (typeof loadStudentNotifications === 'function') loadStudentNotifications();
+    }
+    if (viewId === 'parent-notifications-view') {
+        if (typeof loadParentNotifications === 'function') loadParentNotifications();
+    }
     if (viewId === 'progress-report-view') {
         if (typeof loadProgressReportView === 'function') loadProgressReportView();
     }
@@ -2796,6 +2938,9 @@ function switchView(viewId, updateHistory = true) {
             loadParentProgressCardView();
         }
     }
+    if (viewId === 'parent-exam-schedule-view') {
+        if (typeof loadParentExamScheduleView === 'function') loadParentExamScheduleView();
+    }
     if (viewId === 'assignment-view-view') {
         if (typeof loadAssignments === 'function') loadAssignments();
     }
@@ -2804,6 +2949,10 @@ function switchView(viewId, updateHistory = true) {
     }
     if (viewId === 'assignment-marks-view') {
         if (typeof loadAssignmentMarksView === 'function') loadAssignmentMarksView();
+    }
+    if (viewId === 'resources-view') {
+        if (typeof initResourcesView === 'function')
+            initResourcesView();
     }
 
     // Update Browser History
@@ -3114,7 +3263,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const resetToken = urlParams.get('reset_token');
     if (resetToken) {
         document.getElementById('reset-token').value = resetToken;
-        new bootstrap.Modal(document.getElementById('resetPasswordModal')).show();
+        openView('resetPasswordModal');
         // Clean URL visual
         window.history.replaceState({}, document.title, window.location.pathname);
     }
@@ -3146,7 +3295,7 @@ function handleResetPasswordSubmit(e) {
                 msg.textContent = "Success! Redirecting to login...";
                 msg.className = "text-success fw-bold text-center mb-3";
                 setTimeout(() => {
-                    bootstrap.Modal.getInstance(document.getElementById('resetPasswordModal')).hide();
+                    closeView();
                     showLogin(null);
                 }, 2000);
             }
@@ -3180,8 +3329,8 @@ function selectLoginRole(role) {
         labelEl.textContent = t(roleLabelMap[role] || 'role_student');
     const iconEl = document.getElementById('login-role-icon');
     const iconMap = {
-        'Student': 'school',
-        'Teacher': 'favorite',
+        'Student': 'backpack',
+        'Teacher': 'school',
         'Parent': 'home',
         'Admin': 'badge',
         'Principal': 'account_balance',
@@ -4137,7 +4286,7 @@ function showCreateSchoolModal() {
     // Append to body if not exists
     if (!document.getElementById('createSchoolModal')) {
         const modalHtml = `
-          <div class="modal fade" id="createSchoolModal" tabindex="-1">
+          <div class="view full-page-view" id="createSchoolModal" tabindex="-1">
             <div class="modal-dialog">
               <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header border-0 pb-0">
@@ -4168,8 +4317,7 @@ function showCreateSchoolModal() {
         document.body.insertAdjacentHTML('beforeend', modalHtml);
         document.getElementById('create-school-form').addEventListener('submit', handleCreateSchool);
     }
-    const modal = new bootstrap.Modal(document.getElementById('createSchoolModal'));
-    modal.show();
+    openView('createSchoolModal');
 }
 function handleCreateSchool(e) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -4185,10 +4333,7 @@ function handleCreateSchool(e) {
             });
             if (res.ok) {
                 alert("Institution Created Successfully!");
-                const modalEl = document.getElementById('createSchoolModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal)
-                    modal.hide();
+                closeView();
                 // Clear form
                 document.getElementById('create-school-form').reset();
                 loadSuperAdminDashboard();
@@ -4363,15 +4508,28 @@ function getSidebarConfig(role) {
             },
             { label: 'sidebar_apply_leave', icon: 'timer_off', view: 'student-leave-view', onClick: () => { switchView('student-leave-view'); loadStudentLeaveView(); } },
             { label: 'sidebar_communication', icon: 'forum', view: 'student-communication-view' },
-            { label: 'sidebar_question_bank', icon: 'collections_bookmark', view: 'test-question-bank-view', route: '/student/question-bank' },
-            { label: 'sidebar_lms', icon: 'school', view: 'lms-catalog-view', onClick: () => loadLMSCatalog() },
-            { label: 'sidebar_ai_assistant', icon: 'smart_toy', onClick: () => toggleSidebarChat() }
+            { label: 'header_notifications', icon: 'notifications', view: 'student-notifications-view', route: '/student/notifications' },
+            {
+                label: 'Finance', icon: 'account_balance_wallet', id: 'cat-finance-student',
+                permission: () => hasAnyPermission(['finance.fees.self.read']) || appState.role === 'Student',
+                children: [
+                    {
+                        label: 'Fee Invoices & Receipts',
+                        view: 'parent-fees-view',
+                        route: '/student/finance/fees',
+                        permission: () => hasPermission('finance.fees.self.read') || appState.role === 'Student'
+                    }
+                ]
+            },
+            { label: 'sidebar_question_bank', icon: 'collections_bookmark', view: 'test-question-bank-view', route: '/student/question-bank' }
         ];
     }
     if (role === 'Teacher') {
         return [
             // 0. Dashboard
             { label: 'sidebar_dashboard', icon: 'dashboard', view: 'teacher-view', onClick: () => handleTeacherViewToggle('teacher-view') },
+            // Academic Management (Exam schedules live here)
+            { label: 'sidebar_academic_progress', icon: 'auto_stories', view: 'academics-view', onClick: () => { switchView('academics-view'); renderAcademicsDashboard(); } },
             // 1. Timetable
             {
                 label: 'sidebar_timetable', icon: 'schedule', id: 'cat-timetable',
@@ -4419,25 +4577,26 @@ function getSidebarConfig(role) {
                     { label: 'sidebar_view_progress', view: 'progress-report-view', route: '/teacher/progress/view' }
                 ]
             },
-            // 6. Pay Slips & Pay Advance
+            // 6. Finance (self payroll only)
             {
-                label: 'sidebar_pay_slips', icon: 'payments', id: 'cat-payroll',
+                label: 'Finance', icon: 'account_balance_wallet', id: 'cat-finance-teacher',
+                permission: () => hasAnyPermission(['finance.payroll.self.read', 'finance.payroll']) || appState.role === 'Teacher',
                 children: [
-                    { label: 'sidebar_view_payslips', view: 'payroll-view-view', route: '/teacher/payroll/view' },
-                    { label: 'Print Payslips', view: 'payroll-print-view', route: '/teacher/payroll/print' },
-                    { label: 'Apply Pay Advance', view: 'payroll-advance-view', route: '/teacher/payroll/advance' }
+                    {
+                        label: 'Salary Slips',
+                        view: 'payroll-view-view',
+                        route: '/teacher/finance/payroll-self',
+                        permission: () => hasAnyPermission(['finance.payroll.self.read', 'finance.payroll']) || appState.role === 'Teacher'
+                    },
+                    {
+                        label: 'Tax Statements',
+                        view: 'payroll-print-view',
+                        route: '/teacher/finance/tax-statements',
+                        permission: () => hasAnyPermission(['finance.payroll.self.read', 'finance.payroll']) || appState.role === 'Teacher'
+                    }
                 ]
             },
-            // 7. Email
-            {
-                label: 'Email', icon: 'email', id: 'cat-email',
-                children: [
-                    { label: 'Inbox', view: 'email-inbox-view', route: '/teacher/email/inbox' },
-                    { label: 'Compose New', view: 'email-compose-view', route: '/teacher/email/compose' },
-                    { label: 'Sent Mail', view: 'email-sent-view', route: '/teacher/email/sent' }
-                ]
-            },
-            // 8. Messages & Notifications
+            // 7. Messages & Notifications
             {
                 label: 'header_messages', icon: 'notifications', id: 'cat-messages',
                 children: [
@@ -4445,7 +4604,7 @@ function getSidebarConfig(role) {
                     { label: 'View Notifications', view: 'notifications-view', route: '/teacher/notifications' }
                 ]
             },
-            // 9. Profile
+            // 8. Profile
             {
                 label: 'sidebar_profile', icon: 'account_circle', id: 'cat-profile-teacher',
                 children: [
@@ -4504,7 +4663,21 @@ function getSidebarConfig(role) {
                     { label: 'sidebar_view_progress', view: 'parent-progress-card-view', route: '/parent/progress' }
                 ]
             },
-            // 8. Leave Request
+            { label: 'header_notifications', icon: 'notifications', view: 'parent-notifications-view', route: '/parent/notifications' },
+            // 8. Finance (child fees only)
+            {
+                label: 'Finance', icon: 'account_balance_wallet', id: 'p-cat-finance',
+                permission: () => hasAnyPermission(['finance.fees.child.read', 'finance.invoices']) || appState.role === 'Parent' || appState.role === 'Parent_Guardian',
+                children: [
+                    {
+                        label: 'Child Fees & Payments',
+                        view: 'parent-fees-view',
+                        route: '/parent/finance/fees',
+                        permission: () => hasAnyPermission(['finance.fees.child.read', 'finance.invoices']) || appState.role === 'Parent' || appState.role === 'Parent_Guardian'
+                    }
+                ]
+            },
+            // 9. Leave Request
             {
                 label: 'sidebar_apply_leave', icon: 'sick', id: 'p-cat-leave',
                 children: [
@@ -4512,7 +4685,7 @@ function getSidebarConfig(role) {
                     { label: 'View Status', view: 'parent-leave-status-view', route: '/parent/leave/status' }
                 ]
             },
-            // 9. Email
+            // 10. Email
             {
                 label: 'Email', icon: 'email', id: 'p-cat-email',
                 children: [
@@ -4521,14 +4694,14 @@ function getSidebarConfig(role) {
                     { label: 'Sent', view: 'parent-email-sent-view', route: '/parent/email/sent' }
                 ]
             },
-            // 10. Feedback
+            // 11. Feedback
             {
                 label: 'Feedback', icon: 'rate_review', id: 'p-cat-feedback',
                 children: [
                     { label: 'Submit Feedback', view: 'parent-feedback-view', route: '/parent/feedback' }
                 ]
             },
-            // 11. Profile
+            // 12. Profile
             {
                 label: 'sidebar_profile', icon: 'account_circle', id: 'p-cat-profile',
                 children: [
@@ -4641,11 +4814,98 @@ function getSidebarConfig(role) {
                 { label: 'sidebar_attendance_report', view: 'attendance-report-view', route: '/teacher/reports/attendance' },
                 { label: 'sidebar_performance_report', view: 'performance-report-view', route: '/teacher/reports/performance' }
             ]
+        },
+        {
+            label: 'sidebar_approve_leave', icon: 'fact_check', id: 'cat-approvals',
+            view: 'attendance-leave-approval-view', route: '/admin/approvals',
+            onClick: () => {
+                switchView('attendance-leave-approval-view');
+                if (typeof loadTeacherLeaveApprovals === 'function') loadTeacherLeaveApprovals();
+            }
         }
     ];
+    const isFinanceAdmin = ['Finance_Officer', 'Root_Super_Admin', 'finance_admin', 'accountant', 'payroll_officer'].includes(appState.role);
+    const isFinancePrincipal = appState.role === 'Principal';
+    if (isFinanceAdmin || isFinancePrincipal) {
+        items.push({
+            label: 'Finance',
+            icon: 'account_balance',
+            id: 'cat-finance-admin',
+            permission: () => isFinanceAdmin || isFinancePrincipal || hasAnyPermission([
+                'finance.view',
+                'finance.dashboard.read',
+                'finance.reports.read'
+            ]),
+            children: [
+                {
+                    label: 'Dashboard',
+                    route: '/admin/finance/dashboard',
+                    onClick: () => openFinanceModuleDetails('dashboard'),
+                    permission: () => isFinanceAdmin || isFinancePrincipal || hasAnyPermission(['finance.dashboard.read', 'finance.view'])
+                },
+                {
+                    label: 'Master Data',
+                    route: '/admin/finance/master-data',
+                    onClick: () => openFinanceModuleDetails('master-data'),
+                    permission: () => isFinanceAdmin || isFinancePrincipal || hasAnyPermission(['finance.masterdata.read', 'finance.masterdata.manage'])
+                },
+                {
+                    label: 'General Ledger',
+                    route: '/admin/finance/gl',
+                    onClick: () => openFinanceModuleDetails('gl'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.gl.manage', 'finance.manage'])
+                },
+                {
+                    label: 'Receivables',
+                    route: '/admin/finance/receivables',
+                    onClick: () => openFinanceModuleDetails('receivables'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.receivables.manage', 'finance.invoices'])
+                },
+                {
+                    label: 'Payables',
+                    route: '/admin/finance/payables',
+                    onClick: () => openFinanceModuleDetails('payables'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.payables.manage', 'finance.payables.approve'])
+                },
+                {
+                    label: 'Inventory',
+                    route: '/admin/finance/inventory',
+                    onClick: () => openFinanceModuleDetails('inventory'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.inventory.manage'])
+                },
+                {
+                    label: 'Assets',
+                    route: '/admin/finance/assets',
+                    onClick: () => openFinanceModuleDetails('assets'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.assets.manage'])
+                },
+                {
+                    label: 'Payroll',
+                    route: '/admin/finance/payroll',
+                    onClick: () => openFinanceModuleDetails('payroll'),
+                    permission: () => isFinanceAdmin || hasAnyPermission(['finance.payroll'])
+                },
+                {
+                    label: 'Reports',
+                    route: '/admin/finance/reports',
+                    onClick: () => openFinanceModuleDetails('reports'),
+                    permission: () => isFinanceAdmin || isFinancePrincipal || hasAnyPermission(['finance.reports.read', 'finance.view'])
+                }
+            ]
+        });
+    }
     // Append standard items for Admin
+    items.push({
+        label: 'Email',
+        icon: 'email',
+        id: 'cat-email-admin',
+        children: [
+            { label: 'Inbox', view: 'email-inbox-view', route: '/admin/email/inbox' },
+            { label: 'Compose New', view: 'email-compose-view', route: '/admin/email/compose' },
+            { label: 'Sent Mail', view: 'email-sent-view', route: '/admin/email/sent' }
+        ]
+    });
     items.push({ label: 'sidebar_resource_library', icon: 'library_books', view: 'resources-view', onClick: () => handleTeacherViewToggle('resources-view') });
-    items.push({ label: 'sidebar_ai_copilot', icon: 'auto_awesome', view: 'teacher-view', onClick: () => openTeacherAICoPilot() });
     if (hasPermission('role_management')) {
         items.push({
             label: 'sidebar_roles_perms',
@@ -4669,6 +4929,13 @@ function renderSidebarFromConfig(config) {
     elements.userControls.innerHTML = '';
     const navMenu = document.createElement('div');
     navMenu.className = 'nav-menu';
+    const updatePageTitle = (labelKey) => {
+        const titleEl = document.getElementById('page-title');
+        if (!titleEl)
+            return;
+        titleEl.setAttribute('data-i18n', labelKey);
+        titleEl.textContent = t(labelKey);
+    };
     config.forEach(item => {
         // Check permission if specific item has one (simplified)
         if (item.permission) {
@@ -4736,13 +5003,8 @@ function renderSidebarFromConfig(config) {
                     }
                     else if (child.view) {
                         switchView(child.view);
-                        // Update Title
-                        const titleEl = document.getElementById('page-title');
-                        if (titleEl) {
-                            titleEl.setAttribute('data-i18n', child.label);
-                            titleEl.textContent = t(child.label);
-                        }
                     }
+                    updatePageTitle(child.label);
                 };
                 subMenu.appendChild(subLink);
             });
@@ -4769,17 +5031,47 @@ function renderSidebarFromConfig(config) {
                     else {
                         switchView(item.view);
                     }
-                    const titleEl = document.getElementById('page-title');
-                    if (titleEl) {
-                        titleEl.setAttribute('data-i18n', item.label);
-                        titleEl.textContent = t(item.label);
-                    }
                 }
+                updatePageTitle(item.label);
             };
             itemWrapper.appendChild(a);
         }
         navMenu.appendChild(itemWrapper);
     });
+
+    // --- MOBILE SPECIFIC: ADD PROFILE & LOGOUT (Step 11) ---
+    // Since the top header is hidden on mobile, we need these links in the sidebar
+    const mobileControls = document.createElement('div');
+    mobileControls.className = 'd-md-none mt-4 pt-4 border-top border-secondary';
+
+    // Profile Link
+    const profileLink = document.createElement('a');
+    profileLink.href = '#';
+    profileLink.className = 'nav-item d-flex align-items-center gap-2 text-decoration-none text-white-50 mb-3';
+    // Use t() if available, else fallback
+    const profileText = (typeof t === 'function') ? t('header_my_profile') : 'My Profile';
+    profileLink.innerHTML = `<span class="material-icons">person</span> <span>${profileText}</span>`;
+    profileLink.onclick = (e) => {
+        e.preventDefault();
+        if (typeof openProfileView === 'function') openProfileView();
+        if (typeof toggleSidebar === 'function') toggleSidebar();
+    };
+    mobileControls.appendChild(profileLink);
+
+    // Logout Link
+    const logoutLink = document.createElement('a');
+    logoutLink.href = '#';
+    logoutLink.className = 'nav-item d-flex align-items-center gap-2 text-decoration-none text-danger';
+    const logoutText = (typeof t === 'function') ? t('header_logout') : 'Logout';
+    logoutLink.innerHTML = `<span class="material-icons">logout</span> <span>${logoutText}</span>`;
+    logoutLink.onclick = (e) => {
+        e.preventDefault();
+        if (typeof handleLogout === 'function') handleLogout();
+    };
+    mobileControls.appendChild(logoutLink);
+
+    navMenu.appendChild(mobileControls);
+
     elements.userControls.appendChild(navMenu);
     // Check initial hash routing if we are just rendering
     handleHashRouting();
@@ -4810,6 +5102,11 @@ function handleHashRouting() {
             switchView(item.view);
         if (item.onClick)
             item.onClick();
+        const titleEl = document.getElementById('page-title');
+        if (titleEl && item.label) {
+            titleEl.setAttribute('data-i18n', item.label);
+            titleEl.textContent = t(item.label);
+        }
         // Highlight Sidebar
         setTimeout(() => {
             document.querySelectorAll('.nav-submenu-item, .nav-item').forEach(el => el.classList.remove('active'));
@@ -4852,73 +5149,8 @@ function renderParentControls() {
     const inviteSection = document.getElementById('invite-section');
     if (inviteSection)
         inviteSection.classList.add('d-none');
-    const navList = document.createElement('div');
-    navList.className = 'nav-menu';
-    const createNavItem = (key, icon, onClick, active = false) => {
-        const a = document.createElement('a');
-        a.href = '#';
-        a.className = `nav-item ${active ? 'active' : ''}`;
-        // USE t() and data-i18n
-        a.innerHTML = `<span class="material-icons">${icon}</span> <span data-i18n="${key}">${t(key)}</span>`;
-        a.onclick = (e) => {
-            e.preventDefault();
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            a.classList.add('active');
-            onClick();
-        };
-        return a;
-    };
-    // 1. Dashboard
-    navList.appendChild(createNavItem('sidebar_dashboard', 'dashboard', () => {
-        switchView('parent-dashboard-view');
-        const title = document.getElementById('page-title');
-        if (title) {
-            title.setAttribute('data-i18n', 'sidebar_dashboard');
-            title.textContent = t('sidebar_dashboard');
-        }
-    }, true));
-    // 2. Academic Progress
-    navList.appendChild(createNavItem('sidebar_academic_progress', 'auto_stories', () => {
-        switchView('parent-academic-view');
-        const title = document.getElementById('page-title');
-        if (title) {
-            title.setAttribute('data-i18n', 'sidebar_academic_progress');
-            title.textContent = t('sidebar_academic_progress');
-        }
-    }));
-    // 3. Attendance
-    navList.appendChild(createNavItem('sidebar_attendance', 'calendar_today', () => {
-        switchView('parent-attendance-view');
-        const title = document.getElementById('page-title');
-        if (title) {
-            title.setAttribute('data-i18n', 'sidebar_attendance');
-            title.textContent = t('sidebar_attendance');
-        }
-    }));
-    // 4. Fees & Payments
-    navList.appendChild(createNavItem('sidebar_fees_payments', 'payments', () => {
-        switchView('parent-fees-view');
-        const title = document.getElementById('page-title');
-        if (title) {
-            title.setAttribute('data-i18n', 'sidebar_fees_payments');
-            title.textContent = t('sidebar_fees_payments');
-        }
-    }));
-    // 5. Communication
-    navList.appendChild(createNavItem('sidebar_communication', 'forum', () => {
-        switchView('parent-communication-view');
-        loadParentMessages();
-        const title = document.getElementById('page-title');
-        if (title) {
-            title.setAttribute('data-i18n', 'sidebar_communication');
-            title.textContent = t('sidebar_communication');
-        }
-    }));
-    // Assistant
-    navList.appendChild(createNavItem('sidebar_education_assistant', 'smart_toy', () => {
-        toggleSidebarChat();
-    }));
-    elements.userControls.appendChild(navList);
+    const config = getSidebarConfig(appState.role || 'Parent');
+    renderSidebarFromConfig(config);
 }
 
 function loadParentMessages() {
@@ -5038,6 +5270,9 @@ function handleTeacherViewToggle(view) {
     }
     else if (view === 'grade-helper-view') {
         switchView('grade-helper-view');
+    }
+    else if (view === 'engagement-helper-view') {
+        switchView('engagement-helper-view');
     }
     else {
         switchView('student-view');
@@ -5764,14 +5999,13 @@ function renderTeacherDashboard() {
 // --- ACCESS CARD LOGIC ---
 function openAccessCardModal(studentId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const modal = new bootstrap.Modal(document.getElementById('accessCardModal'));
+        openView('accessCardModal');
         const nameEl = document.getElementById('card-student-name');
         const idEl = document.getElementById('card-student-id');
         const listEl = document.getElementById('card-codes-list');
         nameEl.textContent = "Loading...";
         idEl.textContent = studentId;
         listEl.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div>';
-        modal.show();
         try {
             const response = yield fetchAPI(`/teacher/students/${studentId}/codes`);
             if (response.ok) {
@@ -6604,7 +6838,7 @@ function openStudentGroup(groupId, name, desc) {
         document.getElementById('sg-desc').textContent = desc;
         const container = document.getElementById('student-materials-list');
         container.innerHTML = 'Loading resources...';
-        new bootstrap.Modal(document.getElementById('studentGroupModal')).show();
+        openView('studentGroupModal');
         try {
             const res = yield fetchAPI(`/groups/${groupId}/materials`);
             const data = yield res.json();
@@ -7068,7 +7302,6 @@ window.saveGeneratedQuiz = function () {
             });
             if (res.ok) {
                 alert("Quiz Assigned Successfully!");
-                bootstrap.Modal.getInstance(document.getElementById('generateQuizModal')).hide();
                 // Reset
                 document.getElementById('quiz-result-container').classList.add('d-none');
 
@@ -7269,14 +7502,11 @@ let whiteboardManager = {
 };
 function openWhiteboard() {
     // Show Modal
-    const modal = new bootstrap.Modal(document.getElementById('whiteboardModal'));
-    modal.show();
-    // Initialize after modal is shown to get correct dimensions
-    const modalParams = document.getElementById('whiteboardModal');
-    modalParams.addEventListener('shown.bs.modal', () => {
+    openView('whiteboardModal');
+    setTimeout(() => {
         whiteboardManager.init();
         whiteboardManager.connect();
-    }, { once: true });
+    }, 50);
 }
 function clearWhiteboard() {
     whiteboardManager.clearCanvas(true);
@@ -7421,7 +7651,7 @@ function openCourseDetail(groupId) {
 // VIDEO LOGIC
 function openAddVideoModal() {
     document.getElementById('add-video-form').reset();
-    new bootstrap.Modal(document.getElementById('addVideoModal')).show();
+    openView('addVideoModal');
 }
 // GENERIC FILE UPLOAD
 function handleMaterialUpload(input) {
@@ -7492,7 +7722,7 @@ function handleAddVideo() {
             });
             if (res.ok) {
                 alert("Video added successfully!");
-                bootstrap.Modal.getInstance(document.getElementById('addVideoModal')).hide();
+                closeView();
                 loadCourseMaterials(appState.currentCourseId);
             }
             else {
@@ -7669,43 +7899,103 @@ async function loadTeacherQuizzes() {
 
 function viewQuizResults(quizId, title) {
     if (!quizId) return;
-
-    // Create Modal on the fly or reuse one if exists?
-    // Let's reuse 'quizResultModal' but change content? No, that's for taking quiz results.
-    // Let's create a temporary modal structure or use a generic one if available.
-    // For simplicity, we'll assume we can use a new modal ID 'teacherQuizResultsModal' added to HTML or create it dynamically.
-
     let modalEl = document.getElementById('teacherQuizResultsModal');
     if (!modalEl) {
-        // Create it dynamically if missing
         modalEl = document.createElement('div');
         modalEl.id = 'teacherQuizResultsModal';
-        modalEl.className = 'modal fade';
+        modalEl.className = 'view full-page-view';
         modalEl.tabIndex = -1;
         modalEl.innerHTML = `
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content border-0 shadow-lg rounded-4">
-                <div class="modal-header border-bottom-0 bg-info bg-opacity-10">
-                    <h5 class="modal-title fw-bold text-dark"><span class="material-icons align-middle me-2">analytics</span> Quiz Results: <span id="tqr-title"></span></h5>
+        <style>
+            #teacherQuizResultsModal .tqr-shell { background: #f4f6fb; }
+            #teacherQuizResultsModal .tqr-header { background: linear-gradient(135deg, #f9fbff 0%, #eef3ff 100%); }
+            #teacherQuizResultsModal .tqr-dialog {
+                max-width: 1240px;
+                margin: 1.25rem auto;
+                width: calc(100% - 1.5rem);
+            }
+            #teacherQuizResultsModal .tqr-body {
+                max-height: calc(100vh - 180px);
+                overflow: auto;
+            }
+            #teacherQuizResultsModal .tqr-stats-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 14px;
+            }
+            #teacherQuizResultsModal .tqr-stat-card {
+                border: 1px solid rgba(13, 110, 253, 0.12);
+                border-radius: 16px;
+                background: #fff;
+                box-shadow: 0 8px 18px rgba(26, 35, 126, 0.06);
+            }
+            #teacherQuizResultsModal .tqr-stat-value { font-size: 2rem; line-height: 1; }
+            #teacherQuizResultsModal .tqr-table-wrap {
+                background: #fff;
+                border-radius: 16px;
+                border: 1px solid rgba(15, 23, 42, 0.08);
+                overflow: hidden;
+            }
+            #teacherQuizResultsModal .tqr-table thead th {
+                background: #f8fafc;
+                font-weight: 700;
+                color: #334155;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            #teacherQuizResultsModal .tqr-table tbody tr:hover { background: #f8fbff; }
+            #teacherQuizResultsModal .tqr-score-pill {
+                min-width: 64px;
+                border-radius: 999px;
+                padding: 0.4rem 0.75rem;
+                font-weight: 700;
+                display: inline-block;
+                text-align: center;
+            }
+            #teacherQuizResultsModal .tqr-feedback {
+                max-width: 360px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            @media (max-width: 768px) {
+                #teacherQuizResultsModal .tqr-dialog {
+                    width: calc(100% - 1rem);
+                    margin: 0.5rem auto;
+                }
+                #teacherQuizResultsModal .tqr-stats-grid { grid-template-columns: 1fr; }
+                #teacherQuizResultsModal .tqr-stat-value { font-size: 1.5rem; }
+                #teacherQuizResultsModal .tqr-feedback { max-width: 180px; }
+            }
+        </style>
+        <div class="modal-dialog modal-dialog-scrollable tqr-dialog">
+            <div class="modal-content border-0 shadow-lg rounded-4 tqr-shell">
+                <div class="modal-header tqr-header border-bottom">
+                    <h5 class="modal-title fw-bold text-dark">
+                        <span class="material-icons align-middle me-2">analytics</span>
+                        Quiz Results: <span id="tqr-title"></span>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body p-4">
+                <div class="modal-body p-4 tqr-body">
                     <div id="tqr-content">Loading...</div>
                 </div>
                 <div class="modal-footer border-top-0">
-                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>`;
         document.body.appendChild(modalEl);
     }
 
-    const bsModal = new bootstrap.Modal(modalEl);
     document.getElementById('tqr-title').textContent = title || 'Untitled Quiz';
     const contentDiv = document.getElementById('tqr-content');
-    contentDiv.innerHTML = '<div class="text-center p-3"><div class="spinner-border text-primary"></div><p>Fetching Grades...</p></div>';
-
-    bsModal.show();
+    contentDiv.innerHTML = `
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+            <p class="text-muted mt-3 mb-0">Fetching grades...</p>
+        </div>
+    `;
+    openView(modalEl.id);
 
     fetchAPI(`/quizzes/${quizId}/results`)
         .then(res => res.json())
@@ -7720,68 +8010,90 @@ function viewQuizResults(quizId, title) {
                 return;
             }
 
+            const safe = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[ch]));
+
+            const normalizedRows = data.map(row => ({
+                student_name: row.student_name || 'Unknown Student',
+                student_id: row.student_id || '-',
+                score: Number(row.score) || 0,
+                submitted_at: row.submitted_at,
+                ai_feedback: row.ai_feedback || ''
+            }));
+            normalizedRows.sort((a, b) => b.score - a.score);
+
             // Calculate Stats
-            const scores = data.map(d => d.score);
+            const scores = normalizedRows.map(d => d.score);
             const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1);
             const max = Math.max(...scores);
-            const min = Math.min(...scores);
+            const passed = normalizedRows.filter(r => r.score >= 50).length;
 
             let html = `
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <div class="card bg-primary text-white p-3 text-center">
-                            <h3>${avg}%</h3>
-                            <small>Average Score</small>
-                        </div>
+                <div class="tqr-stats-grid mb-4">
+                    <div class="tqr-stat-card p-3 text-center h-100">
+                        <div class="text-muted small text-uppercase fw-semibold">Average Score</div>
+                        <div class="tqr-stat-value fw-bold text-primary mt-2">${avg}%</div>
                     </div>
-                    <div class="col-md-4">
-                         <div class="card bg-success text-white p-3 text-center">
-                            <h3>${max}%</h3>
-                            <small>Highest Score</small>
-                        </div>
+                    <div class="tqr-stat-card p-3 text-center h-100">
+                        <div class="text-muted small text-uppercase fw-semibold">Highest Score</div>
+                        <div class="tqr-stat-value fw-bold text-success mt-2">${max}%</div>
                     </div>
-                     <div class="col-md-4">
-                         <div class="card bg-secondary text-white p-3 text-center">
-                            <h3>${data.length}</h3>
-                            <small>Total Attempts</small>
-                        </div>
+                    <div class="tqr-stat-card p-3 text-center h-100">
+                        <div class="text-muted small text-uppercase fw-semibold">Pass Rate</div>
+                        <div class="tqr-stat-value fw-bold text-dark mt-2">${Math.round((passed / normalizedRows.length) * 100)}%</div>
+                        <div class="small text-muted mt-1">${normalizedRows.length} attempts</div>
                     </div>
                 </div>
-                
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead class="table-light">
+
+                <div class="tqr-table-wrap">
+                    <div class="table-responsive">
+                        <table class="table tqr-table align-middle mb-0">
+                            <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Student</th>
                                 <th>Score</th>
                                 <th>Submitted At</th>
                                 <th>Feedback</th>
                             </tr>
-                        </thead>
+                            </thead>
                         <tbody>
             `;
 
-            data.forEach(row => {
-                let badgeClass = 'bg-danger';
-                if (row.score >= 80) badgeClass = 'bg-success';
-                else if (row.score >= 50) badgeClass = 'bg-warning text-dark';
+            normalizedRows.forEach((row, idx) => {
+                let scoreClass = 'bg-danger-subtle text-danger';
+                if (row.score >= 80) scoreClass = 'bg-success-subtle text-success';
+                else if (row.score >= 50) scoreClass = 'bg-warning-subtle text-warning-emphasis';
 
                 html += `
                     <tr>
-                        <td class="fw-bold">${row.student_name} <br><small class="text-muted fw-normal">${row.student_id}</small></td>
-                        <td><span class="badge ${badgeClass} fs-6">${row.score}%</span></td>
-                        <td>${new Date(row.submitted_at).toLocaleString()}</td>
-                        <td><small class="text-muted text-clamp-3" title="${row.ai_feedback || ''}">${row.ai_feedback || 'No feedback'}</small></td>
+                        <td class="text-muted fw-semibold">${idx + 1}</td>
+                        <td>
+                            <div class="fw-semibold text-dark">${safe(row.student_name)}</div>
+                            <small class="text-muted">${safe(row.student_id)}</small>
+                        </td>
+                        <td><span class="tqr-score-pill ${scoreClass}">${row.score}%</span></td>
+                        <td class="text-nowrap">${row.submitted_at ? new Date(row.submitted_at).toLocaleString() : '-'}</td>
+                        <td>
+                            <small class="text-muted tqr-feedback d-inline-block" title="${safe(row.ai_feedback || 'No feedback')}">
+                                ${safe(row.ai_feedback || 'No feedback')}
+                            </small>
+                        </td>
                     </tr>
                 `;
             });
 
-            html += `</tbody></table></div>`;
+            html += `</tbody></table></div></div>`;
             contentDiv.innerHTML = html;
         })
         .catch(err => {
             console.error(err);
-            contentDiv.innerHTML = '<p class="text-danger">Failed to load results.</p>';
+            contentDiv.innerHTML = '<div class="alert alert-danger mb-0">Failed to load results.</div>';
         });
 }
 // 4. MEMBERS
@@ -8172,11 +8484,13 @@ function openCreateAssignmentModal() {
     }
     if (submitBtn)
         submitBtn.removeAttribute('disabled');
-    if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
-        new bootstrap.Modal(modalEl).show();
-    }
-    else if (modalEl) {
-        openView(modalEl.id);
+    if (modalEl) {
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal && modalEl.classList.contains('modal')) {
+            new bootstrap.Modal(modalEl).show();
+        }
+        else {
+            openView(modalEl.id);
+        }
     }
     else {
         alert('Create Assignment form is not available on this page.');
@@ -8286,7 +8600,14 @@ function handleCreateAssignment() {
             });
             if (res.ok) {
                 loadAssignments();
-                bootstrap.Modal.getInstance(document.getElementById('createAssignmentModal')).hide();
+                const modalEl = document.getElementById('createAssignmentModal');
+                if (modalEl && typeof bootstrap !== 'undefined' && bootstrap.Modal && modalEl.classList.contains('modal')) {
+                    const instance = bootstrap.Modal.getOrCreateInstance(modalEl);
+                    instance.hide();
+                }
+                else {
+                    closeView();
+                }
             }
             else {
                 let msg = t('msg_create_assignment_failed');
@@ -8326,7 +8647,7 @@ function openSubmitModal(id, title) {
     document.getElementById('submit-asg-id').value = id;
     document.getElementById('submit-asg-title').textContent = title;
     document.getElementById('submit-content').value = '';
-    new bootstrap.Modal(document.getElementById('submitAssignmentModal')).show();
+    openView('submitAssignmentModal');
 }
 // 5. Student: Submit
 function handleSubmitAssignment() {
@@ -8344,7 +8665,7 @@ function handleSubmitAssignment() {
             });
             if (res.ok) {
                 alert(t('msg_assignment_submit_success'));
-                bootstrap.Modal.getInstance(document.getElementById('submitAssignmentModal')).hide();
+                closeView();
             }
             else {
                 alert(t('msg_assignment_submit_failed'));
@@ -8358,10 +8679,9 @@ function handleSubmitAssignment() {
 // 6. Teacher: View Submissions
 function viewSubmissions(id) {
     return __awaiter(this, void 0, void 0, function* () {
-        const modal = new bootstrap.Modal(document.getElementById('viewSubmissionsModal'));
+        openView('viewSubmissionsModal');
         const list = document.getElementById('submissions-list');
         list.innerHTML = `<div class="text-center p-3">${t('msg_loading_submissions')}</div>`;
-        modal.show();
         try {
             const res = yield fetchAPI(`/assignments/${id}/submissions`);
             if (res.ok) {
@@ -8476,9 +8796,7 @@ function handleCreateSchoolManagement(e) {
                 document.getElementById('create-school-form').reset();
                 // Close Modal
                 const modalEl = document.getElementById('createSchoolModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal)
-                    modal.hide();
+                closeView();
                 // Refresh
                 setTimeout(() => window.location.reload(), 1000);
             }
@@ -8530,9 +8848,7 @@ function handleCreateSchoolModal(e) {
                 document.getElementById('create-school-form-modal').reset();
                 // Close Modal
                 const modalEl = document.getElementById('createSchoolModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal)
-                    modal.hide();
+                closeView();
                 // Refresh
                 setTimeout(() => window.location.reload(), 1000);
             }
@@ -8565,8 +8881,7 @@ function openEditSchoolModal(id, name, address, email) {
     msgEl.classList.add('d-none');
     msgEl.textContent = '';
     // Show Modal
-    const modal = new bootstrap.Modal(document.getElementById('editSchoolModal'));
-    modal.show();
+    openView('editSchoolModal');
 }
 function handleUpdateSchool(e) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -9195,6 +9510,103 @@ function handleGradeChat(e) {
         container.scrollTop = container.scrollHeight;
     });
 }
+// --- ENGAGEMENT HELPER AI CHAT LOGIC (Teachers Only) ---
+function handleEngagementChat(e) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (e)
+            e.preventDefault();
+        const input = document.getElementById('engagement-helper-input');
+        const fileInput = document.getElementById('engagement-helper-file');
+        const container = document.getElementById('engagement-helper-chat-messages');
+        const prompt = input.value.trim();
+        const file = (fileInput && fileInput.files && fileInput.files[0]) ? fileInput.files[0] : null;
+        if (!prompt && !file)
+            return;
+        if (file && !file.name.toLowerCase().endsWith('.pdf')) {
+            alert("Please upload a PDF file.");
+            return;
+        }
+        let userMessage = prompt;
+        if (file && !prompt)
+            userMessage = `Uploaded PDF: ${file.name}`;
+        if (file && prompt)
+            userMessage = `${prompt}\n[PDF attached: ${file.name}]`;
+        const userDiv = document.createElement('div');
+        userDiv.className = 'd-flex align-items-start gap-3 mb-3 flex-row-reverse';
+        userDiv.innerHTML = `
+        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">Me</div>
+        <div class="bg-primary text-white p-3 rounded shadow-sm" style="max-width: 80%;">
+            <p class="mb-0" style="white-space: pre-wrap;">${userMessage}</p>
+        </div>
+    `;
+        container.appendChild(userDiv);
+        input.value = '';
+        if (fileInput)
+            fileInput.value = '';
+        container.scrollTop = container.scrollHeight;
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'eh-loading';
+        loadingDiv.className = 'd-flex align-items-start gap-3 mb-3';
+        loadingDiv.innerHTML = `
+        <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">AI</div>
+        <div class="bg-white p-3 rounded shadow-sm" style="max-width: 80%;">
+            <p class="mb-0 text-muted">Thinking...</p>
+        </div>
+        `;
+        container.appendChild(loadingDiv);
+        container.scrollTop = container.scrollHeight;
+        try {
+            let body;
+            if (file) {
+                const formData = new FormData();
+                if (prompt)
+                    formData.append('prompt', prompt);
+                formData.append('file', file);
+                body = formData;
+            }
+            else {
+                body = JSON.stringify({ prompt: prompt });
+            }
+            const response = yield fetchAPI(`/ai/engagement-helper`, {
+                method: 'POST',
+                body
+            });
+            loadingDiv.remove();
+            if (response.ok) {
+                const data = yield response.json();
+                const reply = data.reply || "No response received.";
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'd-flex align-items-start gap-3 mb-3';
+                aiDiv.innerHTML = `
+                <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">AI</div>
+                <div class="bg-white p-3 rounded shadow-sm" style="max-width: 80%;">
+                    <p class="mb-0 text-dark" style="white-space: pre-wrap;">${reply}</p>
+                </div>
+            `;
+                container.appendChild(aiDiv);
+            }
+            else {
+                const err = yield response.json().catch(() => ({}));
+                throw new Error(err.detail || "API Error");
+            }
+        }
+        catch (err) {
+            if (loadingDiv)
+                loadingDiv.remove();
+            console.error(err);
+            const errDiv = document.createElement('div');
+            errDiv.className = 'd-flex align-items-start gap-3 mb-3';
+            errDiv.innerHTML = `
+            <div class="rounded-circle bg-danger text-white d-flex align-items-center justify-content-center flex-shrink-0" style="width: 36px; height: 36px;">!</div>
+            <div class="bg-white p-3 rounded shadow-sm border border-danger" style="max-width: 80%;">
+                <p class="mb-0 text-danger">Error: ${err.message}</p>
+            </div>
+        `;
+            container.appendChild(errDiv);
+        }
+        container.scrollTop = container.scrollHeight;
+    });
+}
 // --- AUTH RESTORATION & NAVIGATION ---
 document.addEventListener('DOMContentLoaded', () => __awaiter(this, void 0, void 0, function* () {
     updateTranslations();
@@ -9277,9 +9689,9 @@ const elements_comm = {
     announcementsList: () => document.getElementById('announcements-list'),
     messagesList: () => document.getElementById('messages-list'),
     calendarTableBody: () => document.getElementById('calendar-table-body'),
-    createAnnouncementModal: () => new bootstrap.Modal(document.getElementById('createAnnouncementModal')),
-    composeMessageModal: () => new bootstrap.Modal(document.getElementById('composeMessageModal')),
-    addEventModal: () => new bootstrap.Modal(document.getElementById('addEventModal'))
+    createAnnouncementModal: () => createViewModal('createAnnouncementModal'),
+    composeMessageModal: () => createViewModal('composeMessageModal'),
+    addEventModal: () => createViewModal('addEventModal')
 };
 function renderCommunicationDashboard() {
     // Default to Announcements tabs
@@ -9361,7 +9773,7 @@ function loadCommAnnouncements() {
 // Modal handling for Announcements
 function showCreateAnnouncementModal() {
     const modalHtml = `
-      <div class="modal fade" id="createAnnouncementModal" tabindex="-1">
+      <div class="view full-page-view" id="createAnnouncementModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content border-0 shadow">
             <div class="modal-header bg-primary-custom text-white">
@@ -9409,9 +9821,7 @@ function showCreateAnnouncementModal() {
                 body: JSON.stringify({ title, content, target_role: target })
             });
             if (res.ok) {
-                const modalEl = document.getElementById('createAnnouncementModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                modal.hide();
+                closeView();
                 alert("Announcement Posted!");
                 loadCommAnnouncements();
             }
@@ -9424,7 +9834,7 @@ function showCreateAnnouncementModal() {
             alert("Error posting announcement.");
         }
     }));
-    new bootstrap.Modal(document.getElementById('createAnnouncementModal')).show();
+    openView('createAnnouncementModal');
 }
 function loadCommMessaging() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -9569,7 +9979,7 @@ function loadCommCalendar() {
 }
 function showAddEventModal() {
     const modalHtml = `
-      <div class="modal fade" id="addEventModal" tabindex="-1">
+      <div class="view full-page-view" id="addEventModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content border-0 shadow">
             <div class="modal-header bg-primary text-white">
@@ -9617,9 +10027,7 @@ function showAddEventModal() {
                 body: JSON.stringify({ title, date, type })
             });
             if (res.ok) {
-                const modalEl = document.getElementById('addEventModal');
-                const modal = bootstrap.Modal.getInstance(modalEl);
-                modal.hide();
+                closeView();
                 alert("Event Added!");
                 loadCommCalendar();
             }
@@ -9632,7 +10040,7 @@ function showAddEventModal() {
             alert("Error.");
         }
     }));
-    new bootstrap.Modal(document.getElementById('addEventModal')).show();
+    openView('addEventModal');
 }
 function loadCommEmergency() {
     const container = document.getElementById('comm-content-area');
@@ -9948,42 +10356,503 @@ function loadAssignmentsView() {
 }
 function loadExamsView() {
     const container = document.getElementById('academic-content-area');
+    const isAdmin = ['Principal', 'Admin', 'Tenant_Admin', 'Root_Super_Admin', 'Super Admin'].includes(appState.role || '');
     container.innerHTML = `
         <div class="p-4 h-100">
-            <h4 class="fw-bold text-primary mb-4 border-bottom pb-3">Exams & Grading</h4>
-            
-            <div class="alert alert-warning">
-                <span class="material-icons align-middle me-2">construction</span>
-                Exam scheduling and automated grading features are currently being upgraded.
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                <h4 class="fw-bold text-primary m-0">Exam Schedule</h4>
+                <button class="btn btn-outline-secondary btn-sm" onclick="loadExamSchedulesViewRefresh()">
+                    <span class="material-icons align-middle fs-6 me-1">refresh</span> Refresh
+                </button>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card mb-3 h-100">
-                        <div class="card-header fw-bold bg-white">Mid-Term Exams</div>
-                        <div class="card-body">
-                            <p>Upcoming Schedule:</p>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>Math:</strong> Nov 15</li>
-                                <li class="mb-2"><strong>Science:</strong> Nov 16</li>
-                                <li class="mb-2"><strong>English:</strong> Nov 17</li>
-                            </ul>
-                            <button class="btn btn-outline-dark btn-sm w-100">Edit Schedule</button>
-                        </div>
-                    </div>
+
+            ${isAdmin ? `
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white d-flex align-items-center justify-content-between">
+                    <div class="fw-bold">Create Exam Schedule</div>
+                    <span class="badge bg-light text-secondary border">Exam Planning</span>
                 </div>
-                 <div class="col-md-6">
-                    <div class="card mb-3 h-100">
-                        <div class="card-header fw-bold bg-white">Gradebook</div>
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <span class="material-icons fs-1 text-secondary mb-2">table_view</span>
-                            <button class="btn btn-primary-custom" onclick="alert('Opening Gradebook spreadsheet...')">Open Master Gradebook</button>
+                <div class="card-body">
+                    <form onsubmit="event.preventDefault(); createExamSchedule();">
+                        <div class="row g-3">
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Title</label>
+                                <input id="exam-title" class="form-control" placeholder="Midterm, Final, Unit Test" required>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Subject</label>
+                                <input id="exam-subject" class="form-control" placeholder="Mathematics" required>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">School</label>
+                                <select id="exam-school-id" class="form-select" onchange="applyExamScheduleSchoolScope()"></select>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Grade</label>
+                                <select id="exam-grade-level" class="form-select" required></select>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Section</label>
+                                <select id="exam-section-id" class="form-select"></select>
+                                <div class="form-text">Leave as All Sections if not specific.</div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Date</label>
+                                <input id="exam-date" type="date" class="form-control" required>
+                            </div>
+                            <div class="col-lg-2 col-md-3">
+                                <label class="form-label">Start Time</label>
+                                <input id="exam-start-time" type="time" class="form-control">
+                            </div>
+                            <div class="col-lg-2 col-md-3">
+                                <label class="form-label">End Time</label>
+                                <input id="exam-end-time" type="time" class="form-control">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Venue</label>
+                                <input id="exam-venue" class="form-control" placeholder="Main Hall">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Items Required</label>
+                                <input id="exam-instructions" class="form-control" placeholder="Calculator, geometry box">
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <label class="form-label">Teacher</label>
+                                <select id="exam-teacher-id" class="form-select"></select>
+                                <div class="form-text">Optional: assign a lead teacher.</div>
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <label class="form-label">Notification Message</label>
+                                <input id="exam-notification-message" class="form-control" placeholder="Arrive 15 minutes early.">
+                                <div class="form-text">Sent along with the schedule if Notify is enabled.</div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 d-flex align-items-end justify-content-between gap-3">
+                                <div class="form-check mt-2">
+                                    <input id="exam-notify" class="form-check-input" type="checkbox" checked>
+                                    <label class="form-check-label" for="exam-notify">Notify Students/Parents/Teachers</label>
+                                </div>
+                                <button class="btn btn-primary-custom ms-auto">Create Schedule</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            ` : ''}
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white fw-bold">Scheduled Exams</div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4">Title</th>
+                                <th>Subject</th>
+                                <th>Grade</th>
+                                <th>Section</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Venue</th>
+                                <th>Items Required</th>
+                                <th>Teacher</th>
+                                ${isAdmin ? '<th class="text-end pe-3">Actions</th>' : ''}
+                            </tr>
+                        </thead>
+                        <tbody id="exam-schedules-table-body">
+                            <tr><td class="ps-4 text-muted" colspan="${isAdmin ? '10' : '9'}">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="view full-page-view" id="examScheduleEditModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Exam Schedule</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="edit-exam-id">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Title</label>
+                                    <input id="edit-exam-title" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Subject</label>
+                                    <input id="edit-exam-subject" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Grade</label>
+                                    <select id="edit-exam-grade-level" class="form-select"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Section</label>
+                                    <select id="edit-exam-section-id" class="form-select"></select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Date</label>
+                                    <input id="edit-exam-date" type="date" class="form-control">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Start Time</label>
+                                    <input id="edit-exam-start-time" type="time" class="form-control">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">End Time</label>
+                                    <input id="edit-exam-end-time" type="time" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Venue</label>
+                                    <input id="edit-exam-venue" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Items Required</label>
+                                    <input id="edit-exam-instructions" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Teacher</label>
+                                    <select id="edit-exam-teacher-id" class="form-select"></select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Notification Message (Optional)</label>
+                                    <input id="edit-exam-notification-message" class="form-control" placeholder="Optional message to send with update">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <input id="edit-exam-notify" class="form-check-input" type="checkbox">
+                                        <label class="form-check-label" for="edit-exam-notify">Notify Students/Parents/Teachers</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary-custom" onclick="saveExamScheduleEdit()">Save Changes</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     `;
+
+    if (isAdmin) {
+        populateExamScheduleFormOptions();
+        loadExamSchedulesAdmin();
+    } else {
+        loadExamSchedulesMy();
+    }
+}
+
+let examSchedulesCache = [];
+let examScheduleOptionsCache = { sections: [], teachers: [], schools: [] };
+
+function loadExamSchedulesViewRefresh() {
+    const isAdmin = ['Principal', 'Admin', 'Tenant_Admin', 'Root_Super_Admin', 'Super Admin'].includes(appState.role || '');
+    if (isAdmin) loadExamSchedulesAdmin();
+    else loadExamSchedulesMy();
+}
+
+function applyExamScheduleSchoolScope() {
+    const schoolSelect = document.getElementById('exam-school-id');
+    const selectedSchoolId = schoolSelect && schoolSelect.value ? Number(schoolSelect.value) : null;
+
+    const sectionSelect = document.getElementById('exam-section-id');
+    if (sectionSelect) {
+        const scopedSections = (examScheduleOptionsCache.sections || []).filter(s => !selectedSchoolId || !s.school_id || Number(s.school_id) === selectedSchoolId);
+        sectionSelect.innerHTML = '<option value="">All Sections</option>' +
+            scopedSections.map(s => `<option value="${s.id}">${s.name} (Grade ${s.grade_level})</option>`).join('');
+    }
+
+    const teacherSelect = document.getElementById('exam-teacher-id');
+    if (teacherSelect) {
+        const scopedTeachers = (examScheduleOptionsCache.teachers || []).filter(t => !selectedSchoolId || !t.school_id || Number(t.school_id) === selectedSchoolId);
+        teacherSelect.innerHTML = '<option value="">Unassigned</option>' +
+            scopedTeachers.map(t => `<option value="${t.id}">${t.name || t.id}</option>`).join('');
+    }
+
+    loadExamSchedulesViewRefresh();
+}
+
+function formatExamDate(dateStr) {
+    if (!dateStr) return '-';
+    try {
+        return new Date(dateStr).toLocaleDateString();
+    } catch {
+        return dateStr;
+    }
+}
+
+function formatExamTime(start, end) {
+    if (!start && !end) return '-';
+    if (start && end) return `${start} - ${end}`;
+    return start || end || '-';
+}
+
+async function populateExamScheduleFormOptions() {
+    const gradeSelect = document.getElementById('exam-grade-level');
+    const editGradeSelect = document.getElementById('edit-exam-grade-level');
+    if (gradeSelect && !gradeSelect.dataset.populated) {
+        gradeSelect.innerHTML = '<option value="">Select Grade</option>' + Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Grade ${i + 1}</option>`).join('');
+        gradeSelect.dataset.populated = '1';
+    }
+    if (editGradeSelect && !editGradeSelect.dataset.populated) {
+        editGradeSelect.innerHTML = '<option value="">Select Grade</option>' + Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">Grade ${i + 1}</option>`).join('');
+        editGradeSelect.dataset.populated = '1';
+    }
+
+    try {
+        const sectionsRes = await fetchAPI('/sections');
+        if (sectionsRes.ok) {
+            examScheduleOptionsCache.sections = await sectionsRes.json();
+        }
+    } catch (e) {
+        console.warn('Failed to load sections', e);
+    }
+    try {
+        const teachersRes = await fetchAPI('/students/all');
+        if (teachersRes.ok) {
+            const users = await teachersRes.json();
+            examScheduleOptionsCache.teachers = (users || []).filter(u => u.role === 'Teacher');
+        }
+    } catch (e) {
+        console.warn('Failed to load teachers', e);
+    }
+    try {
+        const schoolsRes = await fetchAPI('/admin/schools');
+        if (schoolsRes.ok) {
+            examScheduleOptionsCache.schools = await schoolsRes.json();
+        }
+    } catch (e) {
+        console.warn('Failed to load schools', e);
+    }
+
+    const schoolSelect = document.getElementById('exam-school-id');
+    if (schoolSelect) {
+        const currentSchoolId = Number(appState.activeSchoolId || appState.schoolId || 1);
+        const canSelectAnySchool = !!appState.isSuperAdmin || ['Root_Super_Admin', 'Super Admin'].includes(appState.role || '');
+        if (canSelectAnySchool && examScheduleOptionsCache.schools.length > 0) {
+            schoolSelect.innerHTML = examScheduleOptionsCache.schools.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+        } else {
+            const ownSchoolName = appState.schoolName || `School ${currentSchoolId}`;
+            schoolSelect.innerHTML = `<option value="${currentSchoolId}">${ownSchoolName}</option>`;
+        }
+        schoolSelect.value = String(currentSchoolId);
+    }
+
+    const sectionSelect = document.getElementById('exam-section-id');
+    const editSectionSelect = document.getElementById('edit-exam-section-id');
+    if (sectionSelect) {
+        sectionSelect.innerHTML = '<option value="">All Sections</option>' +
+            examScheduleOptionsCache.sections.map(s => `<option value="${s.id}">${s.name} (Grade ${s.grade_level})</option>`).join('');
+    }
+    if (editSectionSelect) {
+        editSectionSelect.innerHTML = '<option value="">All Sections</option>' +
+            examScheduleOptionsCache.sections.map(s => `<option value="${s.id}">${s.name} (Grade ${s.grade_level})</option>`).join('');
+    }
+
+    const teacherSelect = document.getElementById('exam-teacher-id');
+    const editTeacherSelect = document.getElementById('edit-exam-teacher-id');
+    if (teacherSelect) {
+        teacherSelect.innerHTML = '<option value="">Unassigned</option>' +
+            examScheduleOptionsCache.teachers.map(t => `<option value="${t.id}">${t.name || t.id}</option>`).join('');
+    }
+    if (editTeacherSelect) {
+        editTeacherSelect.innerHTML = '<option value="">Unassigned</option>' +
+            examScheduleOptionsCache.teachers.map(t => `<option value="${t.id}">${t.name || t.id}</option>`).join('');
+    }
+    applyExamScheduleSchoolScope();
+}
+
+async function createExamSchedule() {
+    const schoolSelect = document.getElementById('exam-school-id');
+    const payload = {
+        title: document.getElementById('exam-title').value.trim(),
+        subject: document.getElementById('exam-subject').value.trim(),
+        school_id: schoolSelect && schoolSelect.value ? parseInt(schoolSelect.value, 10) : null,
+        grade_level: parseInt(document.getElementById('exam-grade-level').value, 10),
+        section_id: document.getElementById('exam-section-id').value || null,
+        date: document.getElementById('exam-date').value,
+        start_time: document.getElementById('exam-start-time').value || null,
+        end_time: document.getElementById('exam-end-time').value || null,
+        venue: document.getElementById('exam-venue').value || null,
+        instructions: document.getElementById('exam-instructions').value || null,
+        teacher_id: document.getElementById('exam-teacher-id').value || null,
+        notify: document.getElementById('exam-notify').checked,
+        notification_message: document.getElementById('exam-notification-message').value || null
+    };
+    if (!payload.title || !payload.subject || !payload.grade_level || !payload.date) {
+        alert('Please fill in Title, Subject, Grade, and Date.');
+        return;
+    }
+    try {
+        const res = await fetchAPI('/exam-schedules', {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+            alert('Exam schedule created.');
+            loadExamSchedulesAdmin();
+        } else {
+            const err = await res.json();
+            alert(`Failed to create schedule: ${err.detail || 'Unknown error'}`);
+        }
+    } catch (e) {
+        console.error(e);
+        alert('Network error.');
+    }
+}
+
+async function loadExamSchedulesAdmin() {
+    const tbody = document.getElementById('exam-schedules-table-body');
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="10">Loading...</td></tr>';
+    try {
+        const schoolSelect = document.getElementById('exam-school-id');
+        let url = '/exam-schedules/all';
+        if (schoolSelect && schoolSelect.value) {
+            url += `?school_id=${encodeURIComponent(schoolSelect.value)}`;
+        }
+        const res = await fetchAPI(url);
+        if (res.ok) {
+            const rows = await res.json();
+            examSchedulesCache = rows || [];
+            tbody.innerHTML = renderExamScheduleRows(examSchedulesCache, true);
+            if (!examSchedulesCache.length) {
+                tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="10">No schedules yet.</td></tr>';
+            }
+        } else {
+            tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="10">Failed to load schedules.</td></tr>';
+        }
+    } catch (e) {
+        console.error(e);
+        tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="10">Network error.</td></tr>';
+    }
+}
+
+async function loadExamSchedulesMy() {
+    const tbody = document.getElementById('exam-schedules-table-body');
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="9">Loading...</td></tr>';
+    try {
+        const res = await fetchAPI('/exam-schedules/my');
+        if (res.ok) {
+            const rows = await res.json();
+            examSchedulesCache = rows || [];
+            tbody.innerHTML = renderExamScheduleRows(examSchedulesCache, false);
+            if (!examSchedulesCache.length) {
+                tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="9">No schedules yet.</td></tr>';
+            }
+        } else {
+            tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="9">Failed to load schedules.</td></tr>';
+        }
+    } catch (e) {
+        console.error(e);
+        tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="9">Network error.</td></tr>';
+    }
+}
+
+function renderExamScheduleRows(rows, showActions) {
+    return rows.map(r => {
+        const sectionName = r.section_name || '-';
+        const teacherName = r.teacher_name || r.teacher_id || '-';
+        const actions = showActions
+            ? `<td class="text-end pe-3">
+                   <button class="btn btn-sm btn-outline-primary me-2" onclick="openExamScheduleEditModal(${r.id})">Edit</button>
+                   <button class="btn btn-sm btn-outline-secondary" onclick="notifyExamSchedule(${r.id})">Notify</button>
+               </td>`
+            : '';
+        return `
+            <tr>
+                <td class="ps-4 fw-bold">${r.title || '-'}</td>
+                <td>${r.subject || '-'}</td>
+                <td>${r.grade_level || '-'}</td>
+                <td>${sectionName}</td>
+                <td>${formatExamDate(r.exam_date)}</td>
+                <td>${formatExamTime(r.start_time, r.end_time)}</td>
+                <td>${r.venue || '-'}</td>
+                <td>${r.instructions || '-'}</td>
+                <td>${teacherName}</td>
+                ${actions}
+            </tr>
+        `;
+    }).join('');
+}
+
+async function openExamScheduleEditModal(id) {
+    const schedule = examSchedulesCache.find(s => s.id === id);
+    if (!schedule) return;
+    await populateExamScheduleFormOptions();
+
+    document.getElementById('edit-exam-id').value = schedule.id;
+    document.getElementById('edit-exam-title').value = schedule.title || '';
+    document.getElementById('edit-exam-subject').value = schedule.subject || '';
+    document.getElementById('edit-exam-grade-level').value = schedule.grade_level || '';
+    document.getElementById('edit-exam-section-id').value = schedule.section_id || '';
+    document.getElementById('edit-exam-date').value = schedule.exam_date || '';
+    document.getElementById('edit-exam-start-time').value = schedule.start_time || '';
+    document.getElementById('edit-exam-end-time').value = schedule.end_time || '';
+    document.getElementById('edit-exam-venue').value = schedule.venue || '';
+    document.getElementById('edit-exam-instructions').value = schedule.instructions || '';
+    document.getElementById('edit-exam-teacher-id').value = schedule.teacher_id || '';
+    document.getElementById('edit-exam-notification-message').value = '';
+    document.getElementById('edit-exam-notify').checked = false;
+
+    openView('examScheduleEditModal');
+}
+
+async function saveExamScheduleEdit() {
+    const id = document.getElementById('edit-exam-id').value;
+    const payload = {
+        title: document.getElementById('edit-exam-title').value || null,
+        subject: document.getElementById('edit-exam-subject').value || null,
+        grade_level: document.getElementById('edit-exam-grade-level').value ? parseInt(document.getElementById('edit-exam-grade-level').value, 10) : null,
+        section_id: document.getElementById('edit-exam-section-id').value || null,
+        date: document.getElementById('edit-exam-date').value || null,
+        start_time: document.getElementById('edit-exam-start-time').value || null,
+        end_time: document.getElementById('edit-exam-end-time').value || null,
+        venue: document.getElementById('edit-exam-venue').value || null,
+        instructions: document.getElementById('edit-exam-instructions').value || null,
+        teacher_id: document.getElementById('edit-exam-teacher-id').value || null,
+        notify: document.getElementById('edit-exam-notify').checked,
+        notification_message: document.getElementById('edit-exam-notification-message').value || null
+    };
+    try {
+        const res = await fetchAPI(`/exam-schedules/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+            closeView();
+            loadExamSchedulesAdmin();
+        } else {
+            const err = await res.json();
+            alert(`Failed to update: ${err.detail || 'Unknown error'}`);
+        }
+    } catch (e) {
+        console.error(e);
+        alert('Network error.');
+    }
+}
+
+async function notifyExamSchedule(id) {
+    const message = prompt('Optional message to include with the notification:') || '';
+    const items = prompt('Items required to bring (optional):') || '';
+    try {
+        const res = await fetchAPI(`/exam-schedules/${id}/notify`, {
+            method: 'POST',
+            body: JSON.stringify({ message: message || null, items_required: items || null, include_teachers: true })
+        });
+        if (res.ok) {
+            alert('Notification sent.');
+        } else {
+            const err = await res.json();
+            alert(`Failed to notify: ${err.detail || 'Unknown error'}`);
+        }
+    } catch (e) {
+        console.error(e);
+        alert('Network error.');
+    }
 }
 function loadReportCardsView() {
     const container = document.getElementById('academic-content-area');
@@ -10036,136 +10905,7 @@ function loadReportCardsView() {
     `;
 }
 function showLessonPlanner() {
-    // 1. Create Modal HTML dynamically
-    const modalId = 'lessonPlannerModal';
-    let modalEl = document.getElementById(modalId);
-    if (modalEl) {
-        modalEl.remove(); // Clean up existing
-    }
-    const modalHTML = `
-    <div class="modal fade" id="${modalId}" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title fw-bold">
-                        <span class="material-icons align-middle me-2">psychology</span> AI Lesson Planner
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <form id="lesson-plan-form">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Subject</label>
-                                <select class="form-select" name="subject" required>
-                                    <option value="Mathematics">Mathematics</option>
-                                    <option value="Science">Science</option>
-                                    <option value="History">History</option>
-                                    <option value="English Literature">English Literature</option>
-                                    <option value="Computer Science">Computer Science</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label fw-bold">Grade Level</label>
-                                <select class="form-select" name="grade_level" required>
-                                    <option value="Grade 1">Grade 1</option>
-                                    <option value="Grade 2">Grade 2</option>
-                                    <option value="Grade 3">Grade 3</option>
-                                    <option value="Grade 4">Grade 4</option>
-                                    <option value="Grade 5">Grade 5</option>
-                                    <option value="Grade 6">Grade 6</option>
-                                    <option value="Grade 7">Grade 7</option>
-                                    <option value="Grade 8">Grade 8</option>
-                                    <option value="Grade 9">Grade 9</option>
-                                    <option value="Grade 10">Grade 10</option>
-                                    <option value="Grade 11">Grade 11</option>
-                                    <option value="Grade 12">Grade 12</option>
-                                </select>
-                            </div>
-                            <div class="col-md-8">
-                                <label class="form-label fw-bold">Topic</label>
-                                <input type="text" class="form-control" name="topic" placeholder="e.g., Photosynthesis, Quadratic Equations, The Civil War" required>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label fw-bold">Duration</label>
-                                <select class="form-select" name="duration">
-                                    <option value="30 minutes">30 Minutes</option>
-                                    <option value="45 minutes" selected>45 Minutes</option>
-                                    <option value="60 minutes">60 Minutes</option>
-                                    <option value="90 minutes">90 Minutes</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="d-grid mt-4">
-                            <button type="submit" class="btn btn-primary-custom py-2 fw-bold">
-                                <span class="material-icons align-middle me-2">auto_awesome</span> Generate Lesson Plan
-                            </button>
-                        </div>
-                    </form>
-
-                    <div id="lesson-plan-result" class="mt-4 d-none">
-                        <hr>
-                        <h5 class="fw-bold mb-3 text-success">Generated Plan</h5>
-                        <div class="p-4 bg-light rounded-3 border" style="max-height: 400px; overflow-y: auto; white-space: pre-wrap;" id="lesson-plan-content"></div>
-                        <button class="btn btn-outline-dark w-100 mt-3" onclick="alert('PDF Export coming soon!')">
-                            <span class="material-icons align-middle me-2">download</span> Save as PDF
-                        </button>
-                    </div>
-
-                     <div id="lesson-plan-loading" class="text-center mt-5 d-none">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <p class="mt-2 text-muted">Consulting with AI Curriculum Expert...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    const modal = new bootstrap.Modal(document.getElementById(modalId));
-    modal.show();
-    // Handle Form Submit
-    document.getElementById('lesson-plan-form').addEventListener('submit', (e) => __awaiter(this, void 0, void 0, function* () {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        // UI updates
-        document.getElementById('lesson-plan-form').classList.add('d-none');
-        document.getElementById('lesson-plan-loading').classList.remove('d-none');
-        document.getElementById('lesson-plan-result').classList.add('d-none');
-        try {
-            const data = Object.fromEntries(formData.entries());
-            const response = yield fetchAPI('/ai/generate-lesson-plan', {
-                method: 'POST',
-                body: JSON.stringify(data)
-            });
-            if (response.ok) {
-                const result = yield response.json();
-                const contentDiv = document.getElementById('lesson-plan-content');
-                // Basic markdown cleanup for display
-                let formatted = result.plan_markdown
-                    .replace(/^# (.*$)/gim, '<h2 class="h4 border-bottom pb-2">$1</h2>')
-                    .replace(/^## (.*$)/gim, '<h3 class="h5 mt-3 fw-bold">$1</h3>')
-                    .replace(/^\- (.*$)/gim, '• $1');
-                contentDiv.innerHTML = formatted;
-                document.getElementById('lesson-plan-result').classList.remove('d-none');
-            }
-            else {
-                alert("Failed to generate plan. Please try again.");
-                document.getElementById('lesson-plan-form').classList.remove('d-none');
-            }
-        }
-        catch (error) {
-            console.error(error);
-            alert("Error connecting to AI service.");
-            document.getElementById('lesson-plan-form').classList.remove('d-none');
-        }
-        finally {
-            document.getElementById('lesson-plan-loading').classList.add('d-none');
-        }
-    }));
+    switchView('lesson-planner-view');
 }
 function showSyllabusDetail(subject) {
     const detailView = document.getElementById('syllabus-detail-view');
@@ -10874,6 +11614,9 @@ function showFinanceMenu() {
 function financeError(container, message) {
     container.innerHTML = `<div class="alert alert-danger">${message}</div>`;
 }
+function financeLoading(container) {
+    container.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-primary"></div></div>';
+}
 function asCurrency(v) {
     const n = Number(v || 0);
     return isNaN(n) ? '$0.00' : `$${n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -11300,7 +12043,7 @@ function loadStaffDepartments() {
 }
 function openCreateDeptModal() {
     const modalHtml = `
-      <div class="modal fade" id="createDeptModal" tabindex="-1">
+      <div class="view full-page-view" id="createDeptModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content border-0 shadow">
             <div class="modal-header border-bottom-0 pb-0">
@@ -11329,9 +12072,7 @@ function openCreateDeptModal() {
     if (old)
         old.remove();
     document.body.insertAdjacentHTML('beforeend', modalHtml);
-    const modalEl = document.getElementById('createDeptModal');
-    const modal = new bootstrap.Modal(modalEl);
-    modal.show();
+    openView('createDeptModal');
     document.getElementById('dept-form').onsubmit = (e) => __awaiter(this, void 0, void 0, function* () {
         e.preventDefault();
         try {
@@ -11343,7 +12084,7 @@ function openCreateDeptModal() {
                 })
             });
             if (res.ok) {
-                modal.hide();
+                closeView();
                 loadStaffDepartments(); // Refresh
             }
             else {
@@ -11418,7 +12159,7 @@ function loadStaffProfiles() {
 }
 function openStaffReviewModal(userId, userName) {
     const modalHtml = `
-      <div class="modal fade" id="staffReviewModal" tabindex="-1">
+      <div class="view full-page-view" id="staffReviewModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content border-0 shadow">
             <div class="modal-header bg-warning-subtle text-dark">
@@ -11467,8 +12208,7 @@ function openStaffReviewModal(userId, userName) {
     if (old)
         old.remove();
     document.body.insertAdjacentHTML('beforeend', modalHtml);
-    const modal = new bootstrap.Modal(document.getElementById('staffReviewModal'));
-    modal.show();
+    openView('staffReviewModal');
     // Fetch History
     fetchAPI(`/staff/performance/${userId}`)
         .then(res => res.json())
@@ -11506,7 +12246,7 @@ function openStaffReviewModal(userId, userName) {
             });
             if (res.ok) {
                 alert("Review submitted!");
-                modal.hide();
+                closeView();
             }
             else {
                 alert("Failed to submit review.");
@@ -11527,7 +12267,7 @@ function openStaffEditModal(userId) {
         }
         catch (e) { }
         const modalHtml = `
-      <div class="modal fade" id="editStaffModal" tabindex="-1">
+      <div class="view full-page-view" id="editStaffModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content border-0 shadow">
             <div class="modal-header">
@@ -11570,8 +12310,7 @@ function openStaffEditModal(userId) {
         if (old)
             old.remove();
         document.body.insertAdjacentHTML('beforeend', modalHtml);
-        const modal = new bootstrap.Modal(document.getElementById('editStaffModal'));
-        modal.show();
+        openView('editStaffModal');
         // Fetch existing details if possible, for now just open structure
         // Ideally we fetch GET /staff/profiles again or filter from list.
         document.getElementById('staff-edit-form').onsubmit = (e) => __awaiter(this, void 0, void 0, function* () {
@@ -11590,7 +12329,7 @@ function openStaffEditModal(userId) {
                     body: JSON.stringify(payload)
                 });
                 if (res.ok) {
-                    modal.hide();
+                    closeView();
                     loadStaffProfiles();
                 }
                 else {
@@ -12176,16 +12915,17 @@ function deleteDocument(docId) {
 function loadResources() {
     return __awaiter(this, arguments, void 0, function* (category = 'All') {
         const container = document.getElementById('resources-list-container');
+        if (!container)
+            return;
         container.innerHTML = '<div class="col-12 text-center py-5"><div class="spinner-border text-primary"></div></div>';
         try {
+            const effectiveSchoolId = appState.schoolId || appState.activeSchoolId || 1;
             const normalizedCategory = normalizeResourceCategory(category);
             let url = `/resources`;
             if (normalizedCategory && normalizedCategory !== 'All') {
                 url += `?category=${encodeURIComponent(normalizedCategory)}`;
             }
-            if (appState.schoolId) {
-                url += (url.includes('?') ? '&' : '?') + `school_id=${appState.schoolId}`;
-            }
+            url += (url.includes('?') ? '&' : '?') + `school_id=${effectiveSchoolId}`;
             const response = yield fetchAPI(url);
             if (!response.ok)
                 throw new Error("Failed to fetch resources");
@@ -12203,6 +12943,11 @@ function loadResources() {
         }
     });
 }
+function canManageResources() {
+    const adminRoles = ['Admin', 'Principal', 'Tenant_Admin', 'Root_Super_Admin', 'Super Admin'];
+    return !!appState.isSuperAdmin || adminRoles.includes(appState.role || '');
+}
+let resourceFormTemplatesCache = [];
 function normalizeResourceCategory(rawCategory) {
     const value = String(rawCategory || 'All').trim();
     const normalized = value.toLowerCase();
@@ -12214,26 +12959,114 @@ function normalizeResourceCategory(rawCategory) {
         return 'Schedule';
     if (normalized === 'forms' || normalized === 'form')
         return 'Form';
-    if (normalized === 'other' || normalized === 'others')
+    if (normalized === 'other')
         return 'Other';
     return value;
 }
 function getActiveResourceCategory() {
-    var _a;
-    const activeBtn = document.querySelector('#resources-view .btn.active');
+    const activeBtn = document.querySelector('#resources-view [data-resource-category].active');
     if (!activeBtn)
         return 'All';
-    return normalizeResourceCategory(((_a = activeBtn.getAttribute('data-resource-category')) !== null && _a !== void 0 ? _a : activeBtn.innerText) || 'All');
+    return normalizeResourceCategory(activeBtn.getAttribute('data-resource-category') || activeBtn.innerText || 'All');
 }
-function getResourceAbsoluteUrl(filePath) {
-    const raw = (filePath || '').trim();
-    if (!raw)
-        return '';
-    if (raw.startsWith('http://') || raw.startsWith('https://'))
-        return raw;
-    const backendRoot = API_BASE_URL.replace('/api', '');
-    const normalizedPath = raw.startsWith('/') ? raw : `/${raw}`;
-    return `${backendRoot}${normalizedPath}`;
+function initResourcesView() {
+    const uploadBtn = document.getElementById('btn-upload-resource');
+    if (uploadBtn) {
+        uploadBtn.classList.toggle('d-none', !canManageResources());
+    }
+    loadResources(getActiveResourceCategory());
+}
+function handleResourceCategoryChange() {
+    const categoryEl = document.getElementById('res-category-view');
+    const templateWrap = document.getElementById('resource-template-wrap');
+    const templateSelect = document.getElementById('res-template-view');
+    const fileInput = document.getElementById('res-file-view');
+    const isFormCategory = !!categoryEl && categoryEl.value === 'Form';
+    if (templateWrap) {
+        templateWrap.classList.toggle('d-none', !isFormCategory);
+    }
+    if (fileInput) {
+        const usingTemplate = isFormCategory && !!templateSelect && !!templateSelect.value;
+        fileInput.required = !usingTemplate;
+    }
+}
+function handleResourceTemplateChange() {
+    const templateSelect = document.getElementById('res-template-view');
+    const titleEl = document.getElementById('res-title-view');
+    const descEl = document.getElementById('res-desc-view');
+    if (templateSelect && templateSelect.value) {
+        const match = resourceFormTemplatesCache.find((t) => t.key === templateSelect.value);
+        if (match) {
+            if (titleEl && !titleEl.value.trim())
+                titleEl.value = match.title || '';
+            if (descEl && !descEl.value.trim())
+                descEl.value = match.description || '';
+        }
+    }
+    handleResourceCategoryChange();
+}
+function loadResourceFormTemplates() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const select = document.getElementById('res-template-view');
+        if (!select)
+            return;
+        if (resourceFormTemplatesCache.length > 0) {
+            select.innerHTML = '<option value="">Custom Form (Upload your own file)</option>' +
+                resourceFormTemplatesCache.map((t) => `<option value="${t.key}">${t.title}</option>`).join('');
+            return;
+        }
+        try {
+            const res = yield fetchAPI('/resources/form-templates');
+            if (!res.ok)
+                return;
+            const data = yield res.json();
+            if (!Array.isArray(data))
+                return;
+            resourceFormTemplatesCache = data;
+            select.innerHTML = '<option value="">Custom Form (Upload your own file)</option>' +
+                data.map((t) => `<option value="${t.key}">${t.title}</option>`).join('');
+        }
+        catch (e) {
+            console.warn('Failed to load form templates', e);
+        }
+    });
+}
+function populateResourceUploadSchoolOptions() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const wrap = document.getElementById('resource-school-wrap');
+        const select = document.getElementById('res-school-view');
+        if (!wrap || !select)
+            return;
+        const ownSchoolId = Number(appState.activeSchoolId || appState.schoolId || 1);
+        const ownSchoolName = appState.schoolName || `School ${ownSchoolId}`;
+        const canSelectAnySchool = !!appState.isSuperAdmin || ['Root_Super_Admin', 'Super Admin'].includes(appState.role || '');
+        wrap.classList.toggle('d-none', !canManageResources());
+        if (!canManageResources()) {
+            select.innerHTML = '';
+            return;
+        }
+        if (!canSelectAnySchool) {
+            select.innerHTML = `<option value="${ownSchoolId}">${ownSchoolName}</option>`;
+            select.value = String(ownSchoolId);
+            select.disabled = true;
+            return;
+        }
+        select.disabled = false;
+        select.innerHTML = `<option value="${ownSchoolId}">${ownSchoolName}</option>`;
+        try {
+            const response = yield fetchAPI('/admin/schools');
+            if (response.ok) {
+                const schools = yield response.json();
+                if (Array.isArray(schools) && schools.length > 0) {
+                    select.innerHTML = schools.map((s) => `<option value="${s.id}">${s.name}</option>`).join('');
+                }
+            }
+        }
+        catch (e) {
+            console.warn('Failed to load schools for resource upload', e);
+        }
+        select.value = String(ownSchoolId);
+    });
 }
 function renderResources(resources) {
     const container = document.getElementById('resources-list-container');
@@ -12284,7 +13117,8 @@ function renderResources(resources) {
         // Mock download/view action
         // Construct Full URL
         // API_BASE_URL usually ends with /api. We need the root for static files.
-        const fullUrl = getResourceAbsoluteUrl(res.file_path);
+        const backendRoot = API_BASE_URL.replace('/api', '');
+        const fullUrl = res.file_path.startsWith('http') ? res.file_path : `${backendRoot}${res.file_path}`;
         // View Action (Modal or New Tab)
         const viewAction = `onclick="viewResource('${fullUrl}', '${res.title}', '${fileExt}')"`;
         // Buttons
@@ -12365,7 +13199,7 @@ function viewResource(url, title, ext) {
             let modalEl = document.getElementById('resourcePreviewModal');
             if (!modalEl) {
                 document.body.insertAdjacentHTML('beforeend', `
-                <div class="modal fade" id="resourcePreviewModal" tabindex="-1" aria-hidden="true" style="z-index: 1060;">
+                <div class="view full-page-view" id="resourcePreviewModal" tabindex="-1" aria-hidden="true" style="z-index: 1060;">
                     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content border-0 shadow-lg" style="height: 90vh;">
                             <div class="modal-header border-bottom-0">
@@ -12390,7 +13224,7 @@ function viewResource(url, title, ext) {
             document.getElementById('previewBody').innerHTML = modalHtml;
             document.getElementById('previewDownloadBtn').href = url;
             document.getElementById('previewDownloadBtn').href = url;
-            new bootstrap.Modal(modalEl).show();
+            openView(modalEl.id);
         }
         else {
             // Fallback for docs/others
@@ -12412,6 +13246,9 @@ function openUploadResourceModal() {
     switchView('upload-resource-view');
     document.getElementById('upload-resource-form-view').reset();
     document.getElementById('file-name-display').classList.add('d-none');
+    populateResourceUploadSchoolOptions();
+    loadResourceFormTemplates();
+    handleResourceCategoryChange();
 }
 // Handle Form Submit from VIEW
 function handleUploadResourceView(e) {
@@ -12420,38 +13257,62 @@ function handleUploadResourceView(e) {
         e.preventDefault();
         const title = document.getElementById('res-title-view').value;
         const category = document.getElementById('res-category-view').value;
+        const templateKeyEl = document.getElementById('res-template-view');
+        const selectedTemplate = templateKeyEl ? templateKeyEl.value : '';
         const desc = getVal('res-desc-view');
         const fileInput = getEl('res-file-view');
-        if (!title || !fileInput.files || !fileInput.files[0]) {
-            alert("Title and File are required.");
+        const useTemplatePublish = category === 'Form' && !!selectedTemplate;
+        if (!title) {
+            alert("Title is required.");
             return;
         }
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("category", category);
-        formData.append("description", desc);
-        formData.append("file", fileInput.files[0]);
-        formData.append("school_id", String(appState.schoolId || '1'));
+        if (!useTemplatePublish && (!fileInput.files || !fileInput.files[0])) {
+            alert("File is required for custom upload.");
+            return;
+        }
+        const selectedSchoolEl = document.getElementById('res-school-view');
+        const schoolId = (selectedSchoolEl === null || selectedSchoolEl === void 0 ? void 0 : selectedSchoolEl.value) || String(appState.schoolId || appState.activeSchoolId || '1');
         const btn = e.submitter;
         const originalText = btn.innerHTML;
         try {
             // Show loading state
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Uploading...';
-            const response = yield fetch(`${API_BASE_URL}/resources`, {
-                method: 'POST',
-                headers: {
-                    'X-User-Id': appState.userId || '',
-                },
-                body: formData
-            });
+            let response;
+            if (useTemplatePublish) {
+                response = yield fetchAPI('/resources/form-templates', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        template_key: selectedTemplate,
+                        school_id: Number(schoolId),
+                        title: title || null,
+                        description: desc || null
+                    })
+                });
+            }
+            else {
+                const formData = new FormData();
+                formData.append("title", title);
+                formData.append("category", category);
+                formData.append("description", desc);
+                formData.append("file", fileInput.files[0]);
+                formData.append("school_id", schoolId);
+                response = yield fetch(`${API_BASE_URL}/resources`, {
+                    method: 'POST',
+                    headers: {
+                        'X-User-Id': appState.userId || '',
+                    },
+                    body: formData
+                });
+            }
             if (!response.ok)
                 throw yield response.text();
             // Success
             switchView('resources-view');
             loadResources(getActiveResourceCategory());
-            if (typeof showToast === 'function')
-                showToast("Resource uploaded successfully!", "success");
+            if (typeof showToast === 'function') {
+                showToast(useTemplatePublish ? "Template form published successfully!" : "Resource uploaded successfully!", "success");
+            }
         }
         catch (error) {
             console.error("Upload Error:", error);
@@ -12482,7 +13343,9 @@ function handleUploadResource() {
         formData.append("category", category);
         formData.append("description", desc);
         formData.append("file", fileInput.files[0]);
-        formData.append("school_id", String(appState.schoolId || 1));
+        const selectedSchoolEl = document.getElementById('res-school-view');
+        const schoolId = (selectedSchoolEl === null || selectedSchoolEl === void 0 ? void 0 : selectedSchoolEl.value) || String(appState.schoolId || appState.activeSchoolId || 1);
+        formData.append("school_id", schoolId);
         try {
             // Upload via standard fetch since fetchAPI sets Content-Type to JSON
             const response = yield fetch(`${API_BASE_URL}/resources`, {
@@ -12496,9 +13359,7 @@ function handleUploadResource() {
             if (!response.ok)
                 throw yield response.text();
             const modalEl = document.getElementById('uploadResourceModal');
-            const modal = bootstrap.Modal.getInstance(modalEl);
-            if (modal)
-                modal.hide();
+            closeView();
             loadResources(getActiveResourceCategory());
             // Simple toast mock if not exists
             if (typeof showToast === 'function')
@@ -12776,7 +13637,7 @@ function submitLMSCourse() {
                 body: JSON.stringify({ title, description: desc, category: cat, thumbnail_url: thumb })
             });
             if (res.ok) {
-                bootstrap.Modal.getInstance(document.getElementById('lmsCreateCourseModal')).hide();
+                closeView();
                 document.getElementById('lms-create-course-form').reset();
                 loadLMSCatalog();
             }
@@ -12828,7 +13689,7 @@ function renderLMSPlayerNav(course) {
         addSecBtn.innerHTML = '<i class="material-icons align-middle fs-6">add</i> Add Section';
         addSecBtn.onclick = () => {
             document.getElementById('lms-target-course-id').value = course.id;
-            new bootstrap.Modal(document.getElementById('lmsAddSectionModal')).show();
+            openView('lmsAddSectionModal');
         };
         nav.appendChild(addSecBtn);
     }
@@ -12850,7 +13711,7 @@ function renderLMSPlayerNav(course) {
             addModBtn.onclick = (e) => {
                 e.stopPropagation();
                 document.getElementById('lms-target-section-id').value = section.id;
-                new bootstrap.Modal(document.getElementById('lmsAddModuleModal')).show();
+                openView('lmsAddModuleModal');
             };
             header.appendChild(addModBtn);
         }
@@ -12891,7 +13752,7 @@ function submitLMSSection() {
                 method: 'POST',
                 body: JSON.stringify({ title, order_index: 99 })
             });
-            bootstrap.Modal.getInstance(document.getElementById('lmsAddSectionModal')).hide();
+            closeView();
             document.getElementById('lms-section-title').value = '';
             launchLMSPlayer(courseId); // Reload
         }
@@ -13022,7 +13883,7 @@ function submitLMSModule() {
                 method: 'POST',
                 body: JSON.stringify({ title, type, content_url: url, content_text: text, order_index: 99 })
             });
-            bootstrap.Modal.getInstance(document.getElementById('lmsAddModuleModal')).hide();
+            closeView();
             // Clear fields
             document.getElementById('lms-module-title').value = '';
             document.getElementById('lms-module-url').value = '';
@@ -13256,8 +14117,7 @@ function openAttendanceModal() {
     document.getElementById('att-date').valueAsDate = new Date();
     // Default grade 1?
     document.getElementById('att-target-grade').value = "1";
-    const modal = new bootstrap.Modal(document.getElementById('takeAttendanceModal'));
-    modal.show();
+    openView('takeAttendanceModal');
     loadAttendanceList();
 }
 function getAttendanceLocalKey(date, grade) {
@@ -13430,40 +14290,101 @@ function bulkSetAttendance(status) {
     radios.forEach(r => r.click()); // Simulate click to update UI if needed, or check
     radios.forEach(r => r.checked = true);
 }
+function getAttendanceSaveError(response) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let detail = '';
+        try {
+            const raw = yield response.text();
+            if (raw) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    detail = parsed.detail || parsed.message || raw;
+                }
+                catch (_a) {
+                    detail = raw;
+                }
+            }
+        }
+        catch (_b) { }
+        return `HTTP ${response.status}${detail ? `: ${detail}` : ''}`;
+    });
+}
 function saveAttendanceRecord() {
     return __awaiter(this, void 0, void 0, function* () {
         const date = document.getElementById('att-date').value;
         const grade = document.getElementById('att-target-grade').value;
         const records = [];
+        if (!date) {
+            alert("Please select a valid attendance date before saving.");
+            return;
+        }
         // Collect data
         const rows = document.getElementById('attendance-list-body').querySelectorAll('tr');
         rows.forEach(tr => {
             const idDiv = tr.querySelector('.small.text-muted');
             if (!idDiv)
                 return;
-            const sid = idDiv.textContent.split(': ')[1];
-            const status = tr.querySelector(`input[name="att_status_${sid}"]:checked`).value;
-            const remarks = tr.querySelector(`#att_rem_${sid}`).value;
+            const sid = (idDiv.textContent.split(': ')[1] || '').trim();
+            if (!sid)
+                return;
+            const statusInput = tr.querySelector('input[type="radio"]:checked');
+            if (!statusInput)
+                return;
+            const status = statusInput.value;
+            const remarksInput = tr.querySelector('input[type="text"]');
+            const remarks = remarksInput ? remarksInput.value : '';
             records.push({ student_id: sid, status, remarks });
         });
+        if (records.length === 0) {
+            alert("No attendance rows found to save.");
+            return;
+        }
+        const btn = document.querySelector('button[onclick="saveAttendanceRecord()"]');
+        const original = btn ? btn.innerHTML : 'Save Record';
         try {
-            yield fetchAPI('/attendance/bulk', {
+            if (btn) {
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
+            }
+            const res = yield fetchAPI('/attendance/bulk', {
                 method: 'POST',
                 body: JSON.stringify({ date, records })
             });
-            // Show success toast or alert
-            const btn = document.querySelector('button[onclick="saveAttendanceRecord()"]');
-            const original = btn.innerHTML;
-            btn.innerHTML = 'Saved!';
-            btn.classList.replace('btn-primary-custom', 'btn-success');
-            setTimeout(() => {
-                btn.innerHTML = original;
-                btn.classList.replace('btn-success', 'btn-primary-custom');
-            }, 2000);
+            if (!res.ok) {
+                throw new Error(yield getAttendanceSaveError(res));
+            }
+            const data = yield res.json().catch(() => ({}));
+            const saved = Number(data.saved || 0);
+            const skipped = Number(data.skipped || 0);
+            const studentNotified = Number(data.student_notified || 0);
+            const parentNotified = Number(data.parent_notified || 0);
+            if (btn) {
+                btn.innerHTML = `Saved (${saved})`;
+                btn.classList.replace('btn-primary-custom', 'btn-success');
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.classList.replace('btn-success', 'btn-primary-custom');
+                }, 2200);
+            }
+            alert(`Attendance saved: ${saved} record(s). Skipped: ${skipped}. Notifications sent -> Students: ${studentNotified}, Parents: ${parentNotified}.`);
         }
         catch (e) {
+            const msg = (e && e.message) ? e.message : 'Unknown error';
+            if (msg.startsWith('HTTP')) {
+                if (btn) {
+                    btn.innerHTML = original;
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-primary-custom');
+                }
+                alert(`Attendance save failed: ${msg}`);
+                return;
+            }
             saveAttendanceFallback(date, grade, records);
-            alert("Server unavailable. Attendance saved locally on this browser.");
+            if (btn) {
+                btn.innerHTML = original;
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-primary-custom');
+            }
+            alert("Server unreachable. Attendance is saved only in this browser cache, so student/parent notifications were not sent.");
         }
     });
 }
@@ -13587,37 +14508,76 @@ function bulkSetAttendanceView(status) {
 function saveAttendanceViewRecord() {
     return __awaiter(this, void 0, void 0, function* () {
         const date = document.getElementById('att-view-date').value;
+        const grade = document.getElementById('att-view-grade').value;
         const records = [];
+        if (!date) {
+            alert("Please select a valid attendance date before saving.");
+            return;
+        }
 
         const rows = document.getElementById('attendance-view-list-body').querySelectorAll('.bg-white[data-student-id]');
         rows.forEach(row => {
-            const sid = row.getAttribute('data-student-id');
-            const status = row.querySelector(`input[name="att_view_${sid}"]:checked`).value;
-            const remarks = row.querySelector(`#att_view_rem_${sid}`).value;
+            const sid = (row.getAttribute('data-student-id') || '').trim();
+            if (!sid)
+                return;
+            const statusInput = row.querySelector('input[type="radio"]:checked');
+            if (!statusInput)
+                return;
+            const status = statusInput.value;
+            const remarksInput = row.querySelector('input[type="text"]');
+            const remarks = remarksInput ? remarksInput.value : '';
             records.push({ student_id: sid, status, remarks });
         });
+        if (records.length === 0) {
+            alert("No attendance rows found to save.");
+            return;
+        }
 
         try {
             const btn = document.querySelector('button[onclick="saveAttendanceViewRecord()"]');
             if (btn) btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
 
-            yield fetchAPI('/attendance/bulk', {
+            const res = yield fetchAPI('/attendance/bulk', {
                 method: 'POST',
                 body: JSON.stringify({ date, records })
             });
+            if (!res.ok) {
+                throw new Error(yield getAttendanceSaveError(res));
+            }
+            const data = yield res.json().catch(() => ({}));
+            const saved = Number(data.saved || 0);
+            const skipped = Number(data.skipped || 0);
+            const studentNotified = Number(data.student_notified || 0);
+            const parentNotified = Number(data.parent_notified || 0);
 
             if (btn) {
-                btn.innerHTML = 'Saved!';
+                btn.innerHTML = `Saved (${saved})`;
                 btn.classList.replace('btn-primary-custom', 'btn-success');
                 setTimeout(() => {
                     btn.innerHTML = 'Save Record';
                     btn.classList.replace('btn-success', 'btn-primary-custom');
-                }, 2000);
+                }, 2200);
             }
+            alert(`Attendance saved: ${saved} record(s). Skipped: ${skipped}. Notifications sent -> Students: ${studentNotified}, Parents: ${parentNotified}.`);
         } catch (e) {
-            const grade = document.getElementById('att-view-grade').value;
+            const msg = (e && e.message) ? e.message : 'Unknown error';
+            const btn = document.querySelector('button[onclick="saveAttendanceViewRecord()"]');
+            if (msg.startsWith('HTTP')) {
+                if (btn) {
+                    btn.innerHTML = 'Save Record';
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-primary-custom');
+                }
+                alert(`Attendance save failed: ${msg}`);
+                return;
+            }
             saveAttendanceFallback(date, grade, records);
-            alert("Server unavailable. Attendance saved locally on this browser.");
+            if (btn) {
+                btn.innerHTML = 'Save Record';
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-primary-custom');
+            }
+            alert("Server unreachable. Attendance is saved only in this browser cache, so student/parent notifications were not sent.");
         }
     });
 }
@@ -13769,14 +14729,12 @@ function loadStudentAttendanceView() {
             const records = Array.isArray(data.records) ? data.records : [];
             const monthly = Array.isArray(data.monthly_summary) ? data.monthly_summary : [];
             const dailyTrend = data.trend && Array.isArray(data.trend.daily) ? data.trend.daily : [];
-
             const monthOptions = [
                 { v: 1, label: 'January' }, { v: 2, label: 'February' }, { v: 3, label: 'March' },
                 { v: 4, label: 'April' }, { v: 5, label: 'May' }, { v: 6, label: 'June' },
                 { v: 7, label: 'July' }, { v: 8, label: 'August' }, { v: 9, label: 'September' },
                 { v: 10, label: 'October' }, { v: 11, label: 'November' }, { v: 12, label: 'December' }
             ];
-
             view.innerHTML = `
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
                     <h3 class="fw-bold mb-0 text-dark">My Attendance</h3>
@@ -13849,7 +14807,6 @@ function loadStudentAttendanceView() {
                     </div>
                 </div>
             `;
-
             const applyBtn = document.getElementById('student-att-apply');
             const monthEl = document.getElementById('student-att-month');
             const yearEl = document.getElementById('student-att-year');
@@ -13862,34 +14819,14 @@ function loadStudentAttendanceView() {
                     loadStudentAttendanceView();
                 };
             }
-
             const trendChart = document.getElementById('student-attendance-trend-chart');
             if (trendChart && typeof Plotly !== 'undefined' && dailyTrend.length) {
                 const x = dailyTrend.map(d => d.date || '');
                 const presentY = dailyTrend.map(d => Number(d.present || 0));
                 const absentY = dailyTrend.map(d => Number(d.absent || 0));
-                const tracePresent = {
-                    x: x,
-                    y: presentY,
-                    mode: 'lines+markers',
-                    type: 'scatter',
-                    name: 'Present',
-                    line: { color: '#198754', width: 2 }
-                };
-                const traceAbsent = {
-                    x: x,
-                    y: absentY,
-                    mode: 'lines+markers',
-                    type: 'scatter',
-                    name: 'Absent',
-                    line: { color: '#dc3545', width: 2 }
-                };
-                const layout = {
-                    margin: { t: 20, r: 20, b: 50, l: 40 },
-                    xaxis: { title: 'Date' },
-                    yaxis: { title: 'Flag', range: [-0.1, 1.1], dtick: 1 },
-                    legend: { orientation: 'h' }
-                };
+                const tracePresent = { x, y: presentY, mode: 'lines+markers', type: 'scatter', name: 'Present', line: { color: '#198754', width: 2 } };
+                const traceAbsent = { x, y: absentY, mode: 'lines+markers', type: 'scatter', name: 'Absent', line: { color: '#dc3545', width: 2 } };
+                const layout = { margin: { t: 20, r: 20, b: 50, l: 40 }, xaxis: { title: 'Date' }, yaxis: { title: 'Flag', range: [-0.1, 1.1], dtick: 1 }, legend: { orientation: 'h' } };
                 Plotly.newPlot(trendChart, [tracePresent, traceAbsent], layout, { displayModeBar: false, responsive: true });
             }
         }
@@ -13957,8 +14894,7 @@ function handleLeaveAction(id, action) {
 // Hooking into switchView is complex without editing it, but we can call it manually for now via the Refresh button I added.
 // --- TEACHER AI CO-PILOT ---
 function openTeacherAICoPilot() {
-    const modal = new bootstrap.Modal(document.getElementById('teacherAICoPilotModal'));
-    modal.show();
+    openView('teacherAICoPilotModal');
 }
 function sendTeacherAIMessage() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -14107,8 +15043,7 @@ async function takeQuiz(quizId) {
         if (typeof translatePage === 'function') translatePage();
     }
 
-    const modal = new bootstrap.Modal(modalEl);
-    modal.show();
+    openView(modalEl.id);
 }
 
 async function submitQuizAnswers() {
@@ -14603,7 +15538,12 @@ async function loadTeacherLeaveApprovals() {
                                 </h6>
                                 <div class="text-muted small"><i
                                         class="material-icons align-middle fs-6 me-1 text-secondary">event</i> 
-                                    ${req.start_date} - ${req.end_date} (${diffDays} Days) • <span class="fw-medium text-dark">${req.type}</span></div>
+                                    ${req.start_date} - ${req.end_date} (${diffDays} Days) • <span class="fw-medium text-dark">${req.type}</span>
+                                    <div class="mt-1">
+                                        ${req.admin_approval === 'Approved' ? '<span class="badge bg-success bg-opacity-10 text-success border me-1" style="font-size:0.7rem;">Admin: Approved</span>' : '<span class="badge bg-secondary bg-opacity-10 text-secondary border me-1" style="font-size:0.7rem;">Admin: Pending</span>'}
+                                        ${req.principal_approval === 'Approved' ? '<span class="badge bg-success bg-opacity-10 text-success border" style="font-size:0.7rem;">Principal: Approved</span>' : '<span class="badge bg-secondary bg-opacity-10 text-secondary border" style="font-size:0.7rem;">Principal: Pending</span>'}
+                                    </div>
+                                    </div>
                                 <p class="mb-0 mt-2 text-muted small fst-italic">"${req.reason}"</p>
                             </div>
                         </div>
@@ -15078,6 +16018,71 @@ async function loadParentEmailSent() {
     }
 }
 
+function notificationStatusBadge(subject = '', content = '') {
+    const text = `${subject} ${content}`.toLowerCase();
+    if (text.includes('absent'))
+        return '<span class="badge bg-danger-subtle text-danger border border-danger-subtle">Absent</span>';
+    if (text.includes('late'))
+        return '<span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">Late</span>';
+    if (text.includes('present'))
+        return '<span class="badge bg-success-subtle text-success border border-success-subtle">Present</span>';
+    return '<span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Info</span>';
+}
+
+function renderNotificationListItem(n) {
+    const time = n.timestamp ? new Date(n.timestamp).toLocaleString() : '';
+    const unreadClass = n.is_read ? '' : 'bg-light';
+    const badge = notificationStatusBadge(n.subject || '', n.content || '');
+    return `
+        <div class="list-group-item list-group-item-action p-3 ${unreadClass}" data-notif-id="${n.id}">
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <h6 class="mb-1 fw-bold">${n.subject || 'Notification'}</h6>
+                <small class="text-muted">${time}</small>
+            </div>
+            <p class="mb-2 small text-dark">${n.content || ''}</p>
+            <div>${badge}</div>
+        </div>
+    `;
+}
+
+async function loadNotificationsInto(listId) {
+    const list = document.getElementById(listId);
+    if (!list)
+        return;
+    list.innerHTML = '<div class="p-4 text-center text-muted">Loading...</div>';
+    try {
+        const res = await fetchAPI('/notifications/inbox');
+        if (!res.ok)
+            throw new Error('Failed to load notifications.');
+        const data = await res.json();
+        if (!Array.isArray(data) || data.length === 0) {
+            list.innerHTML = '<div class="p-4 text-center text-muted">No notifications.</div>';
+            return;
+        }
+        list.innerHTML = data.map(renderNotificationListItem).join('');
+        list.querySelectorAll('[data-notif-id]').forEach((el) => {
+            el.addEventListener('click', async () => {
+                const id = el.getAttribute('data-notif-id');
+                if (!id)
+                    return;
+                await fetchAPI(`/notifications/${id}/read`, { method: 'PUT' });
+                el.classList.remove('bg-light');
+            });
+        });
+    }
+    catch (e) {
+        list.innerHTML = `<div class="p-4 text-center text-danger">${e.message}</div>`;
+    }
+}
+
+async function loadStudentNotifications() {
+    await loadNotificationsInto('student-notifications-list');
+}
+
+async function loadParentNotifications() {
+    await loadNotificationsInto('parent-notifications-list');
+}
+
 function initParentEmailCompose() {
     const form = document.getElementById('parent-email-compose-form');
     if (!form || form.dataset.bound) return;
@@ -15217,16 +16222,74 @@ async function loadStudentExams() {
     container.innerHTML = '<div class="col-12 text-center py-5"><div class="spinner-border text-primary"></div><p class="text-muted mt-2">Loading Exams...</p></div>';
 
     try {
-        const res = await fetchAPI('/exams/student/list');
-        if (res.ok) {
-            const exams = await res.json();
-            container.innerHTML = '';
+        const [scheduleRes, pdfRes] = await Promise.all([
+            fetchAPI('/exam-schedules/my'),
+            fetchAPI('/exams/student/list')
+        ]);
 
-            if (exams.length === 0) {
-                container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">No exams scheduled at this moment.</p></div>';
-                return;
-            }
+        let schedules = [];
+        let exams = [];
 
+        if (scheduleRes.ok) {
+            schedules = await scheduleRes.json();
+        }
+        if (pdfRes.ok) {
+            exams = await pdfRes.json();
+        }
+
+        container.innerHTML = '';
+
+        if (!schedules.length && !exams.length) {
+            container.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">No exams scheduled at this moment.</p></div>';
+            return;
+        }
+
+        if (schedules.length) {
+            container.innerHTML += `
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3">Exam Schedule</h4>
+                </div>
+            `;
+            schedules.forEach(s => {
+                const html = `
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100 rounded-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div class="icon-circle bg-light text-primary">
+                                        <span class="material-icons">event</span>
+                                    </div>
+                                    <span class="badge bg-info text-dark">Scheduled</span>
+                                </div>
+                                <h5 class="fw-bold mb-1">${s.title || 'Exam'}</h5>
+                                <p class="text-muted small mb-2">${s.subject || ''}</p>
+                                <div class="small text-muted mb-1">
+                                    <span class="material-icons fs-6 me-1">calendar_today</span>
+                                    ${formatExamDate(s.exam_date)}
+                                </div>
+                                <div class="small text-muted mb-1">
+                                    <span class="material-icons fs-6 me-1">schedule</span>
+                                    ${formatExamTime(s.start_time, s.end_time)}
+                                </div>
+                                <div class="small text-muted mb-1">
+                                    <span class="material-icons fs-6 me-1">location_on</span>
+                                    ${s.venue || 'TBD'}
+                                </div>
+                                ${s.instructions ? `<div class="small text-muted"><span class="material-icons fs-6 me-1">checklist</span>${s.instructions}</div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        if (exams.length) {
+            container.innerHTML += `
+                <div class="col-12 mt-4">
+                    <h4 class="fw-bold mb-3">Online PDF Exams</h4>
+                </div>
+            `;
             exams.forEach(exam => {
                 const isSubmitted = exam.submitted === 1;
                 const statusBadge = isSubmitted
@@ -15262,8 +16325,6 @@ async function loadStudentExams() {
                 `;
                 container.innerHTML += html;
             });
-        } else {
-            container.innerHTML = '<p class="text-danger text-center">Failed to load exams.</p>';
         }
     } catch (e) {
         console.error(e);
@@ -15275,102 +16336,48 @@ async function loadStudentAssignmentsExamSchedules() {
     const container = document.getElementById('student-assignment-exam-schedules');
     if (!container)
         return;
+
     container.innerHTML = '<div class="alert alert-light border text-muted mb-0">Loading exam schedules...</div>';
 
     try {
-        let resourcesUrl = '/resources?category=Schedule';
-        if (appState.schoolId) {
-            resourcesUrl += `&school_id=${encodeURIComponent(String(appState.schoolId))}`;
+        const res = await fetchAPI('/exam-schedules/my');
+        if (!res.ok) {
+            container.innerHTML = '<div class="alert alert-danger mb-0">Failed to load exam schedules.</div>';
+            return;
         }
 
-        const [scheduleRes, resourceRes] = await Promise.all([
-            fetchAPI('/exam-schedules/my'),
-            fetchAPI(resourcesUrl)
-        ]);
-
-        const schedules = scheduleRes.ok ? await scheduleRes.json() : [];
-        const scheduleFiles = resourceRes.ok ? await resourceRes.json() : [];
-
-        if ((!Array.isArray(schedules) || schedules.length === 0) && (!Array.isArray(scheduleFiles) || scheduleFiles.length === 0)) {
+        const rows = await res.json();
+        if (!Array.isArray(rows) || rows.length === 0) {
             container.innerHTML = '<div class="alert alert-info mb-0">No exam schedules published yet.</div>';
             return;
         }
 
-        const blocks = [];
+        const sorted = [...rows].sort((a, b) => {
+            const ad = `${a.exam_date || ''}T${a.start_time || '00:00'}`;
+            const bd = `${b.exam_date || ''}T${b.start_time || '00:00'}`;
+            return new Date(ad).getTime() - new Date(bd).getTime();
+        });
 
-        if (Array.isArray(schedules) && schedules.length > 0) {
-            const sorted = [...schedules].sort((a, b) => {
-                const ad = `${a.exam_date || ''}T${a.start_time || '00:00'}`;
-                const bd = `${b.exam_date || ''}T${b.start_time || '00:00'}`;
-                return new Date(ad).getTime() - new Date(bd).getTime();
-            });
-
-            blocks.push(`
-                <div class="card border-0 shadow-sm mb-3">
-                    <div class="card-header bg-white fw-bold">Exam Schedule</div>
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th class="ps-3">Title</th>
-                                        <th>Subject</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Venue</th>
-                                        <th class="pe-3">Instructions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${sorted.map(s => `
-                                        <tr>
-                                            <td class="ps-3 fw-semibold">${s.title || 'Exam'}</td>
-                                            <td>${s.subject || '-'}</td>
-                                            <td>${formatExamDate(s.exam_date)}</td>
-                                            <td>${formatExamTime(s.start_time, s.end_time)}</td>
-                                            <td>${s.venue || 'TBD'}</td>
-                                            <td class="pe-3">${s.instructions || '-'}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
+        container.innerHTML = sorted.map(s => `
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                        <h5 class="fw-bold mb-0">
+                            <span class="material-icons align-middle text-primary me-1">event</span>
+                            ${s.title || 'Exam'}
+                        </h5>
+                        <span class="badge bg-primary-subtle text-primary border">Grade ${s.grade_level || '-'}</span>
                     </div>
-                </div>
-            `);
-        }
-
-        if (Array.isArray(scheduleFiles) && scheduleFiles.length > 0) {
-            blocks.push(`
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white fw-bold">Exam Schedule PDFs</div>
-                    <div class="card-body p-3">
-                        <div class="list-group list-group-flush">
-                            ${scheduleFiles.map(r => {
-                                const fileExt = (r.file_path || '').split('.').pop().toLowerCase();
-                                const fullUrl = getResourceAbsoluteUrl(r.file_path || '');
-                                return `
-                                    <div class="list-group-item d-flex justify-content-between align-items-center flex-wrap gap-2">
-                                        <div>
-                                            <div class="fw-semibold">${r.title || 'Exam Schedule PDF'}</div>
-                                            <small class="text-muted">${r.description || ''}</small>
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            <button class="btn btn-sm btn-outline-primary" onclick="viewResource('${fullUrl}', '${(r.title || 'Exam Schedule PDF').replace(/'/g, "\\'")}', '${fileExt}')">
-                                                View PDF
-                                            </button>
-                                            <a class="btn btn-sm btn-primary-custom" href="${fullUrl}" target="_blank" rel="noopener noreferrer">Open</a>
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('')}
-                        </div>
+                    <p class="text-muted mb-3">${s.subject || 'General'}</p>
+                    <div class="row g-2 small">
+                        <div class="col-md-4"><span class="text-muted">Date:</span> <span class="fw-semibold">${formatExamDate(s.exam_date)}</span></div>
+                        <div class="col-md-4"><span class="text-muted">Time:</span> <span class="fw-semibold">${formatExamTime(s.start_time, s.end_time)}</span></div>
+                        <div class="col-md-4"><span class="text-muted">Venue:</span> <span class="fw-semibold">${s.venue || 'TBD'}</span></div>
                     </div>
+                    ${s.instructions ? `<div class="mt-3 small"><span class="text-muted">Instructions:</span> ${s.instructions}</div>` : ''}
                 </div>
-            `);
-        }
-
-        container.innerHTML = blocks.join('');
+            </div>
+        `).join('');
     }
     catch (e) {
         console.error(e);
@@ -15468,6 +16475,37 @@ async function loadStudentAssignmentsAndResults() {
         if (resultsTab) {
             resultsTab.innerHTML = `<div class="alert alert-danger mb-0">Unable to load results: ${e.message}</div>`;
         }
+    }
+}
+
+async function loadParentExamScheduleView() {
+    const tbody = document.getElementById('parent-exam-schedule-body');
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="6">Loading exam schedules...</td></tr>';
+    try {
+        const res = await fetchAPI('/exam-schedules/my');
+        if (res.ok) {
+            const rows = await res.json();
+            if (!rows.length) {
+                tbody.innerHTML = '<tr><td class="ps-4 text-muted" colspan="6">No exam schedules available.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = rows.map(r => `
+                <tr>
+                    <td class="ps-4">${r.student_name || '-'}</td>
+                    <td class="ps-4 fw-bold">${r.subject || ''} (${r.title || 'Exam'})</td>
+                    <td>${formatExamDate(r.exam_date)}</td>
+                    <td>${formatExamTime(r.start_time, r.end_time)}</td>
+                    <td>${r.venue || '-'}</td>
+                    <td>${r.instructions || '-'}</td>
+                </tr>
+            `).join('');
+        } else {
+            tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="6">Failed to load schedules.</td></tr>';
+        }
+    } catch (e) {
+        console.error(e);
+        tbody.innerHTML = '<tr><td class="ps-4 text-danger" colspan="6">Network error.</td></tr>';
     }
 }
 
