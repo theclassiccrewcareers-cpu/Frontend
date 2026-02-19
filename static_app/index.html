@@ -7,7 +7,7 @@
     <!-- FIX: Ensure Referrer matches Origin for Google OAuth -->
     <meta name="referrer" content="no-referrer-when-downgrade">
     <title>ClassBridge</title>
-    <link rel="icon" type="image/x-icon" href="/static/noble_logo.png">
+    <link rel="icon" type="image/x-icon" href="./static/noble_logo.png">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Icons -->
@@ -15,6 +15,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         :root {
@@ -25,8 +30,8 @@
             --accent-blue: #304FFE;
 
             --bg-body: #F3F4FF;
-            --bg-sidebar: #28245D;
-            /* Dark Sidebar */
+            --bg-sidebar: #4D44B5;
+            /* Updated to a "simpler", lighter indigo */
 
             --text-main: #303972;
             --text-secondary: #A098AE;
@@ -604,6 +609,31 @@
             display: block;
             animation: fadeInView 0.4s ease;
             /* Renamed and simplified */
+        }
+
+        /* Full-page replacements for former modals */
+        .full-page-view {
+            margin-left: var(--sidebar-width);
+            padding: 2rem 3rem;
+        }
+
+        .full-page-view .modal-dialog {
+            margin: 0 auto;
+            max-width: 960px;
+            pointer-events: auto;
+        }
+
+        .full-page-view .modal-content {
+            border-radius: 16px;
+            box-shadow: 0 18px 60px rgba(15, 23, 42, 0.18);
+        }
+
+        @media (max-width: 991px) {
+            .full-page-view {
+                margin-left: 0;
+                padding: 1.5rem;
+                padding-top: 5rem;
+            }
         }
 
         /* Removed transform to prevent 'position: fixed' containing block issues */
@@ -1428,6 +1458,72 @@
             font-weight: 600;
             text-align: left;
         }
+
+        /* --- GLOBAL RESPONSIVE FIXES (Step 11) --- */
+        img,
+        video,
+        canvas,
+        iframe,
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        iframe {
+            height: 100%;
+            /* Iframes usually need height */
+        }
+
+        /* Ensure tables don't break layout */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        /* Ensure Views don't overflow */
+        .view {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll on view level */
+        }
+
+        /* Fix for specific dashboard cards overflow */
+        .dashboard-card,
+        .card {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Mobile improvements */
+        @media (max-width: 768px) {
+
+            /* Adjust font sizes for better readability on small screens */
+            html {
+                font-size: 14px;
+            }
+
+            .btn {
+                padding: 0.375rem 0.75rem;
+                /* Standard bootstrap padding */
+                font-size: 0.9rem;
+            }
+
+            /* Ensure containers have padding */
+            .container,
+            .container-fluid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            /* Ensure modals fit screen */
+            .modal-dialog {
+                margin: 0.5rem;
+                max-width: 100%;
+            }
+        }
     </style>
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -1443,6 +1539,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="login-mode">
@@ -1452,7 +1552,7 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <a href="#" class="brand d-flex align-items-center gap-2 text-decoration-none">
-            <img src="/static/noble_logo.png" alt="Logo"
+            <img src="./static/noble_logo.png" alt="Logo"
                 style="width: 45px; height: 45px; border-radius: 12px; object-fit: cover;">
             <div class="d-flex flex-column">
                 <span class="fw-bold fs-5 text-white" style="line-height: 1.2;">Class Bridge</span>
@@ -1631,7 +1731,7 @@
                 <span class="material-icons" style="font-size: 28px;">menu</span>
             </button>
             <div class="d-flex align-items-center">
-                <img src="/static/noble_logo.png" alt="Logo"
+                <img src="./static/noble_logo.png" alt="Logo"
                     style="height: 40px; width: auto; margin-right: 10px; border-radius: 8px;">
                 <div class="d-flex flex-column">
                     <h5 class="m-0 fw-bold text-primary-custom" style="line-height: 1.2;">Class Bridge</h5>
@@ -1655,7 +1755,7 @@
                 <div class="container d-flex align-items-center justify-content-between">
                     <!-- Brand -->
                     <a class="navbar-brand d-flex align-items-center gap-3 text-white" href="#">
-                        <img src="/static/noble_logo.png" alt="Logo"
+                        <img src="./static/noble_logo.png" alt="Logo"
                             style="width: 45px; height: 45px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2);">
                         <div class="d-flex flex-column">
                             <span class="fw-bold fs-4"
@@ -1707,9 +1807,7 @@
                     </h1>
 
                     <p class="fs-5 mb-5 text-light fw-medium">
-                        Loved by millions of students and parents. <span
-                            style="text-decoration: underline; text-decoration-color: #4D44B5; text-decoration-thickness: 3px;">Free
-                            for teachers, forever.</span>
+                        Empowering educational institutions through innovative solutions
                     </p>
 
                     <!-- Role Selection Container -->
@@ -1727,7 +1825,7 @@
                                     <div class="d-flex flex-column align-items-center gap-3">
                                         <div class="icon-circle d-flex align-items-center justify-content-center rounded-circle mb-2"
                                             style="width: 80px; height: 80px;">
-                                            <span class="material-icons" style="font-size: 40px;">favorite</span>
+                                            <span class="material-icons" style="font-size: 40px;">school</span>
                                         </div>
                                         <h5 class="fw-bold m-0 text-center">Teacher</h5>
                                         <span class="material-icons opacity-50">arrow_forward</span>
@@ -1947,17 +2045,9 @@
                                 More</button>
                         </div>
                         <div class="col-lg-6">
-                            <div
-                                class="p-5 rounded-4 bg-light text-center border dashed-border position-relative overflow-hidden">
-                                <div class="position-absolute top-0 start-0 w-100 h-100"
-                                    style="background: radial-gradient(circle, rgba(77, 68, 181, 0.05) 0%, rgba(0,0,0,0) 70%);">
-                                </div>
-                                <span class="material-icons text-primary mb-3"
-                                    style="font-size: 6rem; opacity: 0.8">school</span>
-                                <h4 class="mt-3 text-dark fw-bold">Comprehensive Ecosystem</h4>
-                                <p class="text-muted small px-4">Integrating School Management, LMS, and Communication
-                                    in one platform.</p>
-                            </div>
+                            <img src="./static/admin_dashboard_preview.png" alt="Admin Dashboard Preview"
+                                class="img-fluid rounded-4 shadow-lg border"
+                                style="width: 100%; height: auto; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -1991,7 +2081,7 @@
                         <!-- Left Column: Brand & Downloads -->
                         <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
                             <div class="d-flex align-items-center gap-3 mb-3">
-                                <img src="/static/noble_logo.png" alt="Logo"
+                                <img src="./static/noble_logo.png" alt="Logo"
                                     style="width: 50px; height: 50px; border-radius: 12px; object-fit: cover;">
                                 <div class="d-flex flex-column">
                                     <span class="fw-bold fs-4 text-white" style="line-height: 1.2;">Class Bridge</span>
@@ -2023,7 +2113,7 @@
                             <h6 class="fw-bold mb-3 text-white" data-i18n="footer_company">Company</h6>
                             <ul class="list-unstyled d-flex flex-column gap-2 small">
                                 <li><a href="#" class="text-white text-decoration-none hover-opacity"
-                                        onclick="new bootstrap.Modal(document.getElementById('aboutCompModal')).show(); return false;"
+                                        onclick="openView('aboutCompModal'); return false;"
                                         data-i18n="footer_about">About
                                         us</a></li>
                                 <li><a href="#" class="text-white text-decoration-none hover-opacity"
@@ -2090,7 +2180,7 @@
                                 <div class="mt-4 pt-3 border-top border-secondary border-opacity-25">
                                     <div class="d-flex align-items-start gap-3">
                                         <div class="bg-white p-1 rounded-3 d-inline-block">
-                                            <img src="/static/noble_nexus_qr.png" alt="Scan"
+                                            <img src="./static/noble_nexus_qr.png" alt="Scan"
                                                 style="width: 60px; height: 60px;"
                                                 onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://noblenexus.com'">
                                         </div>
@@ -2098,7 +2188,7 @@
                                             <small class="text-uppercase text-white opacity-50 fw-bold d-block mb-1"
                                                 style="font-size: 10px; letter-spacing: 0.5px;">A Product By</small>
                                             <div class="d-flex align-items-center gap-2">
-                                                <img src="/static/noble_nexus_logo.png" width="20" height="20"
+                                                <img src="./static/noble_nexus_logo.png" width="20" height="20"
                                                     class="rounded-circle" onerror="this.style.display='none'">
                                                 <span class="fw-bold text-white small">Noble Nexus</span>
                                             </div>
@@ -2139,18 +2229,16 @@
                 <div class="container d-flex align-items-center justify-content-between">
                     <a class="navbar-brand d-flex align-items-center gap-3 text-primary-custom"
                         href="javascript:void(0)" onclick="switchView('landing-view')">
-                        <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                        <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                             alt="Logo"
                             style="width: 45px; height: 45px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);">
                         <div class="d-flex flex-column lh-1">
                             <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class Bridge</span>
-                            <span class="text-muted text-uppercase fw-medium"
-                                style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
                         </div>
                     </a>
 
                     <div class="d-flex gap-2">
-                        <button class="btn btn-outline-primary rounded-pill px-4 fw-bold"
+                        <button class="btn btn-outline-primary rounded-pill px-4 fw-bold d-none d-md-block"
                             onclick="switchView('landing-view')">
                             Back to Home
                         </button>
@@ -2187,14 +2275,14 @@
                                         </span>
                                     </h1>
                                     <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 700px;">
-                                        Noble Nexus isn't just a dashboard. It's a co-pilot that grades
+                                        Class Bridge isn't just a dashboard. It's a co-pilot that grades
                                         papers, plans lessons, and identifies struggling students before
                                         they fall behind.
                                     </p>
 
-                                    <div class="d-flex gap-3 justify-content-center">
+                                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                                         <button
-                                            class="btn btn-primary-custom btn-lg rounded-pill px-5 py-3 fw-bold d-flex align-items-center gap-2 transform-hover"
+                                            class="btn btn-primary-custom btn-lg rounded-pill px-5 py-3 fw-bold d-flex align-items-center gap-2 transform-hover justify-content-center"
                                             onclick="document.getElementById('ai-demo-section').scrollIntoView({behavior: 'smooth'})">
                                             <span class="material-icons">play_circle</span> Watch AI Demo
                                         </button>
@@ -2226,7 +2314,7 @@
                                                     <div class="rounded-circle bg-success"
                                                         style="width:10px;height:10px"></div>
                                                 </div>
-                                                <div class="small fw-bold text-muted">Noble Nexus AI
+                                                <div class="small fw-bold text-muted">Class Bridge AI
                                                     Architect</div>
                                             </div>
                                             <!-- Canvas -->
@@ -2341,7 +2429,7 @@
                             </h2>
                             <button class="btn btn-primary-custom btn-lg rounded-pill px-5 shadow-lg"
                                 onclick="selectLoginRole('Teacher'); showLogin()" data-i18n="btn_join_free">
-                                Join Noble Nexus for Free
+                                Join Class Bridge for Free
                             </button>
                         </div>
                     </section>
@@ -2564,12 +2652,26 @@
                         </div>
                         <div class="mb-4">
                             <label class="form-label small fw-bold text-muted text-uppercase">Category</label>
-                            <select class="form-select bg-light border-0 p-3" id="res-category-view">
+                            <select class="form-select bg-light border-0 p-3" id="res-category-view"
+                                onchange="handleResourceCategoryChange()">
                                 <option value="Policy">School Policy</option>
                                 <option value="Schedule">Exam Schedule</option>
                                 <option value="Form">Leave/Admin Form</option>
                                 <option value="Other">Other</option>
                             </select>
+                        </div>
+                        <div class="mb-4 d-none" id="resource-template-wrap">
+                            <label class="form-label small fw-bold text-muted text-uppercase">Form Template</label>
+                            <select class="form-select bg-light border-0 p-3" id="res-template-view"
+                                onchange="handleResourceTemplateChange()">
+                                <option value="">Custom Form (Upload your own file)</option>
+                            </select>
+                            <div class="form-text text-muted small">Choose a template to auto-publish a standard school form.</div>
+                        </div>
+                        <div class="mb-4 d-none" id="resource-school-wrap">
+                            <label class="form-label small fw-bold text-muted text-uppercase">School</label>
+                            <select class="form-select bg-light border-0 p-3" id="res-school-view"></select>
+                            <div class="form-text text-muted small">Admin can choose target school for this resource.</div>
                         </div>
                         <div class="mb-4">
                             <label class="form-label small fw-bold text-muted text-uppercase">Description</label>
@@ -2753,68 +2855,70 @@
 
         <!-- Student Take PDF Exam View -->
         <div id="student-take-pdf-exam-view" class="view container-fluid h-100 p-0" style="background: #f8f9fa;">
-            <!-- Sticky Header -->
-            <div class="bg-white shadow-sm p-3 d-flex justify-content-between align-items-center sticky-top"
-                style="z-index: 1020;">
-                <div>
-                    <h5 class="fw-bold mb-0 text-primary" id="take-exam-title">Mathematics Mid-Term</h5>
-                    <small class="text-muted">Read questions carefully and upload your answer sheet.</small>
-                </div>
-                <div class="d-flex align-items-center gap-4">
-                    <div class="text-center px-3 py-1 bg-light rounded-3 border">
-                        <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Time
-                            Remaining</small>
-                        <div id="exam-timer-display" class="fw-bold fs-4 text-danger font-monospace">00:00:00</div>
+            <div class="d-flex flex-column h-100">
+                <!-- Sticky Header -->
+                <div class="bg-white shadow-sm p-3 d-flex flex-wrap justify-content-between align-items-center sticky-top flex-shrink-0"
+                    style="z-index: 1020;">
+                    <div class="mb-2 mb-md-0">
+                        <h5 class="fw-bold mb-0 text-primary" id="take-exam-title">Mathematics Mid-Term</h5>
+                        <small class="text-muted">Read questions carefully and upload your answer sheet.</small>
                     </div>
-                    <button class="btn btn-danger fw-bold px-4" onclick="finishExamEarly()">Finish Exam</button>
-                </div>
-            </div>
-
-            <!-- Content Split -->
-            <div class="row g-0 h-100" style="height: calc(100vh - 80px);">
-                <!-- Left: Question Paper -->
-                <div class="col-lg-8 border-end h-100">
-                    <iframe id="exam-pdf-viewer" src="" width="100%" height="100%"
-                        style="border:none; height: 85vh;"></iframe>
+                    <div class="d-flex align-items-center gap-4">
+                        <div class="text-center px-3 py-1 bg-light rounded-3 border">
+                            <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Time
+                                Remaining</small>
+                            <div id="exam-timer-display" class="fw-bold fs-4 text-danger font-monospace">00:00:00</div>
+                        </div>
+                        <button class="btn btn-danger fw-bold px-4" onclick="finishExamEarly()">Finish Exam</button>
+                    </div>
                 </div>
 
-                <!-- Right: Answer Upload -->
-                <div class="col-lg-4 bg-white h-100 overflow-auto p-4">
-                    <h5 class="fw-bold mb-3">Submit Answers</h5>
-                    <div class="alert alert-info small">
-                        <i class="material-icons align-middle fs-6 me-1">info</i>
-                        Write your answers on paper, scan them as a single PDF, and upload below.
+                <!-- Content Split -->
+                <div class="row g-0 flex-grow-1 overflow-hidden">
+                    <!-- Left: Question Paper -->
+                    <div class="col-lg-8 border-end h-100">
+                        <iframe id="exam-pdf-viewer" src="" width="100%" height="100%"
+                            style="border:none; height: 85vh;"></iframe>
                     </div>
 
-                    <form id="exam-submission-form" onsubmit="event.preventDefault(); submitAnswerSheet();">
-                        <input type="hidden" id="current-exam-id">
-
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Upload Answer Sheet (PDF)</label>
-                            <input type="file" id="answer-sheet-file" class="form-control" accept="application/pdf"
-                                required>
+                    <!-- Right: Answer Upload -->
+                    <div class="col-lg-4 bg-white h-100 overflow-auto p-4">
+                        <h5 class="fw-bold mb-3">Submit Answers</h5>
+                        <div class="alert alert-info small">
+                            <i class="material-icons align-middle fs-6 me-1">info</i>
+                            Write your answers on paper, scan them as a single PDF, and upload below.
                         </div>
 
-                        <div class="d-grid">
-                            <button type="submit"
-                                class="btn btn-success py-3 fw-bold rounded-pill text-uppercase shadow-sm">
-                                <span class="material-icons align-middle me-2">upload</span> Submit Answer Sheet
-                            </button>
+                        <form id="exam-submission-form" onsubmit="event.preventDefault(); submitAnswerSheet();">
+                            <input type="hidden" id="current-exam-id">
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Upload Answer Sheet (PDF)</label>
+                                <input type="file" id="answer-sheet-file" class="form-control" accept="application/pdf"
+                                    required>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit"
+                                    class="btn btn-success py-3 fw-bold rounded-pill text-uppercase shadow-sm">
+                                    <span class="material-icons align-middle me-2">upload</span> Submit Answer Sheet
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr class="my-5">
+
+                        <div class="text-center text-muted">
+                            <small>Need Help?</small><br>
+                            <small>Contact your proctor or teacher immediately if you face technical issues.</small>
                         </div>
-                    </form>
-
-                    <hr class="my-5">
-
-                    <div class="text-center text-muted">
-                        <small>Need Help?</small><br>
-                        <small>Contact your proctor or teacher immediately if you face technical issues.</small>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Upload Resource Modal (Legacy) -->
-        <div class="modal fade" id="uploadResourceModal" tabindex="-1" aria-hidden="true">
+        <div class="view full-page-view" id="uploadResourceModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow">
                     <div class="modal-header border-bottom-0 pb-0">
@@ -2864,7 +2968,7 @@
         </div>
 
         <!-- Permission Edit Modal -->
-        <div class="modal fade" id="permEditModal" tabindex="-1" aria-hidden="true">
+        <div class="view full-page-view" id="permEditModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow">
                     <div class="modal-header border-bottom-0 pb-0">
@@ -2918,11 +3022,12 @@
                 <div class="container d-flex align-items-center justify-content-between">
                     <a class="navbar-brand d-flex align-items-center gap-3 text-primary-custom"
                         href="javascript:void(0)" onclick="switchView('landing-view')">
-                        <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                        <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                             alt="Logo"
                             style="width: 45px; height: 45px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);">
                         <div class="d-flex flex-column lh-1">
-                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class Bridge</span>
+                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class
+                                Bridge</span>
                             <span class="text-muted text-uppercase fw-medium"
                                 style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
                         </div>
@@ -3040,7 +3145,8 @@
                                                 <span class="material-icons fs-1 anim-icon anim-icon-1">chat</span>
                                             </div>
                                             <h4 class="fw-bold">24/7 AI Help</h4>
-                                            <p class="text-muted">Never get stuck again. Ask questions and get instant,
+                                            <p class="text-muted">Never get stuck again. Ask questions and get
+                                                instant,
                                                 step-by-step explanations.</p>
                                         </div>
                                     </div>
@@ -3055,7 +3161,8 @@
                                                     class="material-icons fs-1 anim-icon anim-icon-2">emoji_events</span>
                                             </div>
                                             <h4 class="fw-bold">Gamified Growth</h4>
-                                            <p class="text-muted">Earn XP, unlock badges, and climb the leaderboard as
+                                            <p class="text-muted">Earn XP, unlock badges, and climb the leaderboard
+                                                as
                                                 you
                                                 complete assignments.</p>
                                         </div>
@@ -3095,11 +3202,12 @@
                 <div class="container d-flex align-items-center justify-content-between">
                     <a class="navbar-brand d-flex align-items-center gap-3 text-primary-custom"
                         href="javascript:void(0)" onclick="switchView('landing-view')">
-                        <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                        <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                             alt="Logo"
                             style="width: 45px; height: 45px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);">
                         <div class="d-flex flex-column lh-1">
-                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class Bridge</span>
+                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class
+                                Bridge</span>
                             <span class="text-muted text-uppercase fw-medium"
                                 style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
                         </div>
@@ -3196,7 +3304,8 @@
                                                 <span class="material-icons fs-1">dashboard</span>
                                             </div>
                                             <h4 class="fw-bold">Unified Dashboard</h4>
-                                            <p class="text-muted">Monitor attendance, grades, and behavior across all
+                                            <p class="text-muted">Monitor attendance, grades, and behavior across
+                                                all
                                                 classrooms in real-time.</p>
                                         </div>
                                     </div>
@@ -3210,7 +3319,8 @@
                                                 <span class="material-icons fs-1">analytics</span>
                                             </div>
                                             <h4 class="fw-bold">Smart Analytics</h4>
-                                            <p class="text-muted">Data-driven insights to identify at-risk students and
+                                            <p class="text-muted">Data-driven insights to identify at-risk students
+                                                and
                                                 improve curriculum effectiveness.</p>
                                         </div>
                                     </div>
@@ -3224,7 +3334,8 @@
                                                 <span class="material-icons fs-1">security</span>
                                             </div>
                                             <h4 class="fw-bold">Secure & Scalable</h4>
-                                            <p class="text-muted">Bank-level encryption and privacy complaince derived
+                                            <p class="text-muted">Bank-level encryption and privacy complaince
+                                                derived
                                                 from the ground up.</p>
                                         </div>
                                     </div>
@@ -3247,11 +3358,12 @@
                 <div class="container d-flex align-items-center justify-content-between">
                     <a class="navbar-brand d-flex align-items-center gap-3 text-primary-custom"
                         href="javascript:void(0)" onclick="switchView('landing-view')">
-                        <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                        <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                             alt="Logo"
                             style="width: 45px; height: 45px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1);">
                         <div class="d-flex flex-column lh-1">
-                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class Bridge</span>
+                            <span class="fw-bold fs-4" style="font-family: 'Poppins', sans-serif;">Class
+                                Bridge</span>
                             <span class="text-muted text-uppercase fw-medium"
                                 style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
                         </div>
@@ -3359,7 +3471,8 @@
                                                 <span class="material-icons fs-1">menu_book</span>
                                             </div>
                                             <h4 class="fw-bold">Lesson Plans</h4>
-                                            <p class="text-muted">Standard-aligned curriculums ready to drop into your
+                                            <p class="text-muted">Standard-aligned curriculums ready to drop into
+                                                your
                                                 schedule today.</p>
                                         </div>
                                     </div>
@@ -3373,7 +3486,8 @@
                                                 <span class="material-icons fs-1">smart_display</span>
                                             </div>
                                             <h4 class="fw-bold">Multimedia</h4>
-                                            <p class="text-muted">High-quality videos and interactive simulations that
+                                            <p class="text-muted">High-quality videos and interactive simulations
+                                                that
                                                 make concepts stick.</p>
                                         </div>
                                     </div>
@@ -3415,13 +3529,14 @@
                     <div class="position-absolute top-0 start-0 p-5" style="z-index: 2;">
                         <a href="#" class="d-flex align-items-center gap-3 text-white text-decoration-none"
                             onclick="switchView('landing-view')">
-                            <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                            <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                                 alt="Logo"
                                 style="width: 40px; height: 40px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.2);">
-                            <div class="d-flex flex-column lh-1">
+                            <div class="d-flex flex-column lh-1 gap-2">
                                 <span class="fw-bold fs-5">Class Bridge</span>
                                 <span class="opacity-75 text-uppercase"
-                                    style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
+                                    style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble
+                                    Nexus</span>
                             </div>
                         </a>
                     </div>
@@ -3431,7 +3546,8 @@
                             class="bg-white text-primary px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3 d-inline-block shadow-sm animate-fade-slide-in-1">
                             Student Portal
                         </span>
-                        <h1 class="display-4 fw-bold mb-3 animate-fade-slide-in-2" data-i18n="login_journey_title">Your
+                        <h1 class="display-4 fw-bold mb-3 animate-fade-slide-in-2" data-i18n="login_journey_title">
+                            Your
                             Learning Journey Continues</h1>
                         <p class="lead opacity-90 animate-fade-slide-in-3" data-i18n="login_journey_desc">Log in to
                             access your courses, live classes,
@@ -3458,7 +3574,7 @@
                 </div>
 
                 <!-- Right Side: Login Form -->
-                <div class="col-lg-6 d-flex flex-column bg-white position-relative">
+                <div class="col-12 col-lg-6 d-flex flex-column bg-white position-relative">
                     <!-- Mobile Nav -->
                     <div class="d-flex justify-content-between p-4 align-items-center mb-auto">
                         <a href="#"
@@ -3471,11 +3587,12 @@
                     <div class="px-4 py-3 mx-auto w-100" style="max-width: 480px; margin-bottom: auto;">
                         <div class="text-center mb-4">
                             <div class="d-lg-none d-flex flex-column align-items-center mb-4">
-                                <img src="/static/class_bridge_logo.jpg"
+                                <img src="./static/class_bridge_logo.jpg"
                                     onerror="this.src='./static/noble_nexus_logo.png'" alt="Logo"
                                     style="width: 60px; height: 60px; border-radius: 12px; margin-bottom: 0.5rem;">
-                                <h5 class="fw-bold m-0 text-dark">Class Bridge</h5>
-                                <small class="text-muted text-uppercase" style="font-size: 0.6rem;">a product by Noble
+                                <h5 class="fw-bold mb-2 text-dark">Class Bridge</h5>
+                                <small class="text-muted text-uppercase" style="font-size: 0.6rem;">a product by
+                                    Noble
                                     Nexus</small>
                             </div>
                             <!-- Role Switcher -->
@@ -3651,13 +3768,14 @@
                     <div class="position-absolute top-0 start-0 p-5">
                         <a href="#" class="d-flex align-items-center gap-3 text-white text-decoration-none"
                             onclick="switchView('landing-view')">
-                            <img src="/static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
+                            <img src="./static/class_bridge_logo.jpg" onerror="this.src='./static/noble_nexus_logo.png'"
                                 alt="Logo"
                                 style="width: 40px; height: 40px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.2);">
                             <div class="d-flex flex-column lh-1">
                                 <span class="fw-bold fs-5">Class Bridge</span>
                                 <span class="opacity-75 text-uppercase"
-                                    style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble Nexus</span>
+                                    style="font-size: 0.55rem; letter-spacing: 0.5px;">a product by Noble
+                                    Nexus</span>
                             </div>
                         </a>
                     </div>
@@ -3668,7 +3786,8 @@
                             Join Noble Nexus
                         </span>
                         <h1 class="display-4 fw-bold mb-3">Begin Your Excellence Journey</h1>
-                        <p class="lead opacity-90 mb-5">Create an account to unlock advanced AI learning tools, track
+                        <p class="lead opacity-90 mb-5">Create an account to unlock advanced AI learning tools,
+                            track
                             your progress, and join live classrooms.</p>
 
                         <div class="d-flex gap-4">
@@ -3856,11 +3975,11 @@
                         Class</span>
                 </button>
                 <button class="btn btn-warning shadow-sm d-flex align-items-center gap-2 text-dark fw-bold"
-                    data-bs-toggle="modal" data-bs-target="#generateQuizModal">
+                    onclick="switchView('ai-quiz-view')">
                     <span class="material-icons">psychology</span> <span data-i18n="btn_ai_quiz">AI Quiz</span>
                 </button>
                 <button class="btn btn-info shadow-sm d-flex align-items-center gap-2 text-white fw-bold"
-                    data-bs-toggle="modal" data-bs-target="#lessonPlanModal">
+                    onclick="switchView('lesson-planner-view')">
                     <span class="material-icons">sticky_note_2</span> <span data-i18n="btn_plan_lesson">Plan
                         Lesson</span>
                 </button>
@@ -3871,6 +3990,11 @@
                 <button class="btn btn-success shadow-sm d-flex align-items-center gap-2 text-white fw-bold"
                     onclick="exportTeacherData()">
                     <span class="material-icons">download</span> <span data-i18n="btn_export">Export</span>
+                </button>
+                <button class="btn btn-primary shadow-sm d-flex align-items-center gap-2 text-white fw-bold"
+                    onclick="handleTeacherViewToggle('engagement-helper-view')">
+                    <span class="material-icons">psychology</span> <span data-i18n="btn_engagement_helper">Engagement
+                        Helper</span>
                 </button>
             </div>
 
@@ -3897,7 +4021,8 @@
 
                     <!-- Performance Chart -->
                     <div class="dashboard-card">
-                        <h3 class="h5 fw-bold mb-3" data-i18n="dashboard_performance_dist">Performance Distribution</h3>
+                        <h3 class="h5 fw-bold mb-3" data-i18n="dashboard_performance_dist">Performance Distribution
+                        </h3>
                         <div id="class-performance-chart" style="height: 350px;"></div>
                     </div>
                 </div>
@@ -3966,7 +4091,8 @@
                         <div class="list-group list-group-flush">
                             <button class="list-group-item list-group-item-action active">Grade 9 - Math (Sec
                                 A)</button>
-                            <button class="list-group-item list-group-item-action">Grade 10 - Physics (Sec B)</button>
+                            <button class="list-group-item list-group-item-action">Grade 10 - Physics (Sec
+                                B)</button>
                             <button class="list-group-item list-group-item-action">Grade 8 - Math (Sec C)</button>
                         </div>
                     </div>
@@ -4201,7 +4327,8 @@
                     <div class="dashboard-card h-100-card">
                         <h3 class="h5 fw-bold mb-3">Financial Summaries</h3>
                         <div id="finance-details-content">
-                            <div class="d-flex justify-content-center align-items-center h-100 text-muted">Loading...
+                            <div class="d-flex justify-content-center align-items-center h-100 text-muted">
+                                Loading...
                             </div>
                         </div>
                     </div>
@@ -4210,7 +4337,8 @@
                     <div class="dashboard-card h-100-card">
                         <h3 class="h5 fw-bold mb-3">Staff Utilization</h3>
                         <div id="staff-details-content">
-                            <div class="d-flex justify-content-center align-items-center h-100 text-muted">Loading...
+                            <div class="d-flex justify-content-center align-items-center h-100 text-muted">
+                                Loading...
                             </div>
                         </div>
                     </div>
@@ -4490,6 +4618,63 @@
                                 <button type="submit" class="btn btn-primary-custom px-4">
                                     <span class="material-icons">send</span>
                                 </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENGAGEMENT HELPER VIEW (Teachers Only) -->
+        <div id="engagement-helper-view" class="view">
+            <h2 class="mb-4 fw-bold text-primary-custom">Engagement Helper</h2>
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="dashboard-card h-100 d-flex flex-column" style="min-height: 600px;">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 48px; height: 48px;">
+                                    <span class="material-icons">psychology</span>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Class Engagement Coach</h5>
+                                    <small class="text-muted">Ideas to energize lessons and increase
+                                        participation</small>
+                                </div>
+                            </div>
+                            <span
+                                class="badge bg-success-subtle text-success border border-success px-3 py-2 rounded-pill">Online</span>
+                        </div>
+
+                        <!-- Chat Area -->
+                        <div id="engagement-helper-chat-messages"
+                            class="flex-grow-1 overflow-auto p-3 mb-3 bg-light rounded" style="max-height: 450px;">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center flex-shrink-0"
+                                    style="width: 36px; height: 36px;">AI</div>
+                                <div class="bg-white p-3 rounded shadow-sm" style="max-width: 80%;">
+                                    <p class="mb-0 text-dark">Hi! Tell me your class level, topic, and time available,
+                                        and
+                                        I’ll suggest quick engagement strategies and activities.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input Area -->
+                        <form id="engagement-helper-form" onsubmit="handleEngagementChat(event)">
+                            <div class="input-group">
+                                <input type="text" id="engagement-helper-input"
+                                    class="form-control form-control-lg border-0 bg-light"
+                                    placeholder="Example: Grade 7 science, 10 minutes, low energy...">
+                                <input type="file" id="engagement-helper-file"
+                                    class="form-control form-control-lg border-0 bg-light" accept=".pdf"
+                                    style="max-width: 220px;">
+                                <button type="submit" class="btn btn-primary-custom px-4">
+                                    <span class="material-icons">send</span>
+                                </button>
+                            </div>
+                            <div class="small text-muted mt-2">Optional: upload a PDF to tailor engagement strategies.
                             </div>
                         </form>
                     </div>
@@ -4931,78 +5116,8 @@
             </div>
         </div>
         -->
-
-
-
-        <!-- Lesson Plan Modal -->
-        <div class="modal fade" id="lessonPlanModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content border-0 shadow-lg">
-                    <div class="modal-header bg-info text-white">
-                        <h5 class="modal-title fw-bold" data-i18n="modal_lesson_planner">📝 AI Lesson Planner</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body p-4">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label" data-i18n="label_topic">Topic</label>
-                                <input type="text" id="lp-topic" class="form-control" data-i18n-placeholder="ph_topic"
-                                    placeholder="e.g. Photosynthesis">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label" data-i18n="label_grade">Grade</label>
-                                <input type="number" id="lp-grade" class="form-control" value="9">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label" data-i18n="label_subject">Subject</label>
-                                <select id="lp-subject" class="form-select">
-                                    <option>Science</option>
-                                    <option>Maths</option>
-                                    <option>English</option>
-                                    <option>Social</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label" data-i18n="label_duration">Duration (Minutes)</label>
-                                <input type="range" class="form-range" id="lp-duration" min="15" max="120" step="5"
-                                    value="30"
-                                    oninput="document.getElementById('duration-val').innerText = this.value + ' mins'">
-                                <div class="text-center fw-bold text-primary-custom" id="duration-val">30 mins</div>
-                            </div>
-                            <!-- Added Description Field -->
-                            <div class="col-12">
-                                <label class="form-label" data-i18n="label_instructions">Additional Instructions /
-                                    Context</label>
-                                <textarea id="lp-description" class="form-control" rows="3"
-                                    data-i18n-placeholder="ph_instructions"
-                                    placeholder="e.g. Focus on vocabulary, include a group activity..."></textarea>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label" data-i18n="label_upload_pdf">Upload PDF Context
-                                    (Optional)</label>
-                                <input type="file" class="form-control" id="lp-pdf" accept=".pdf">
-                            </div>
-                        </div>
-
-                        <div id="lp-loading" class="text-center mt-4 d-none">
-                            <div class="spinner-border text-primary" role="status"></div>
-                            <p class="mt-2 text-muted">Thinking...</p>
-                        </div>
-                        <div id="lp-result" class="mt-4 p-3 bg-light rounded border d-none"
-                            style="white-space: pre-wrap; font-family: sans-serif;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary-custom fw-bold" onclick="generateLessonPlan()">
-                            <span class="material-icons align-middle fs-6 me-1">auto_awesome</span> Generate Plan
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Take Quiz Modal -->
-        <div class="modal fade" id="takeQuizModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="view full-page-view" id="takeQuizModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-primary-custom text-white">
@@ -5729,6 +5844,18 @@
             </div>
         </div>
 
+        <div id="student-notifications-view" class="view container-fluid p-4">
+            <h3 class="fw-bold mb-4 text-dark">Notifications</h3>
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white border-bottom p-3">
+                    <h5 class="mb-0 fw-bold">Attendance & Updates</h5>
+                </div>
+                <div class="list-group list-group-flush" id="student-notifications-list">
+                    <div class="p-4 text-center text-muted">Loading...</div>
+                </div>
+            </div>
+        </div>
+
         <!-- ========================================== -->
         <!-- NEW TEACHER MODULE VIEWS (FR-6)            -->
         <!-- ========================================== -->
@@ -5974,12 +6101,14 @@
                 <div class="card-header bg-white py-3 border-bottom border-light">
                     <ul class="nav nav-pills card-header-pills">
                         <li class="nav-item">
-                            <a id="leave-approval-pending-tab" class="nav-link active bg-primary text-white shadow-sm rounded-pill px-4"
-                                href="#" role="button">Pending
+                            <a id="leave-approval-pending-tab"
+                                class="nav-link active bg-primary text-white shadow-sm rounded-pill px-4" href="#"
+                                role="button">Pending
                                 (2)</a>
                         </li>
                         <li class="nav-item">
-                            <a id="leave-approval-history-tab" class="nav-link text-muted px-4" href="#" role="button">History</a>
+                            <a id="leave-approval-history-tab" class="nav-link text-muted px-4" href="#"
+                                role="button">History</a>
                         </li>
                     </ul>
                 </div>
@@ -6172,6 +6301,29 @@
                         </div>
                     </div>
 
+                    <!-- Analytics Charts Section -->
+                    <div class="charts-container"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; margin-bottom: 30px;">
+                        <div class="chart-card"
+                            style="background: white; padding: 20px; border-radius: 15px; border: 1px solid #E0E0E0;">
+                            <h3 style="color: #303972; margin-bottom: 15px; font-size: 1.2rem;">Student Progress</h3>
+                            <canvas id="studentProgressChart"></canvas>
+                        </div>
+                        <div class="chart-card"
+                            style="background: white; padding: 20px; border-radius: 15px; border: 1px solid #E0E0E0;">
+                            <h3 style="color: #303972; margin-bottom: 15px; font-size: 1.2rem;">Attendance Overview</h3>
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Demo Buttons for SweetAlert -->
+                    <div style="margin-bottom: 30px; display: flex; gap: 10px;">
+                        <button onclick="showSuccessToast()" class="btn btn-success" style="color: white;">Test Success
+                            Toast</button>
+                        <button onclick="showErrorToast()" class="btn btn-danger" style="color: white;">Test Error
+                            Toast</button>
+                    </div>
+
                     <div class="card border-0 shadow-sm rounded-4 p-4">
                         <h6 class="fw-bold mb-3 text-secondary">Recent History</h6>
                         <ul class="list-unstyled mb-0">
@@ -6202,18 +6354,20 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h3 class="fw-bold mb-1 text-dark" data-i18n="asg_active_title">Active Assignments</h3>
-                    <div class="text-muted small" data-i18n="asg_active_subtitle">Create, review submissions, and track progress by class.</div>
+                    <div class="text-muted small" data-i18n="asg_active_subtitle">Create, review submissions, and track
+                        progress by class.</div>
                 </div>
                 <button id="create-assignment-btn" class="btn btn-primary-custom d-none"
                     onclick="openCreateAssignmentModal()">
-                    <span class="material-icons align-middle fs-5 me-1">add_circle</span> <span data-i18n="btn_create_assignment">Create Assignment</span>
+                    <span class="material-icons align-middle fs-5 me-1">add_circle</span> <span
+                        data-i18n="btn_create_assignment">Create Assignment</span>
                 </button>
             </div>
             <div id="academics-assignments-list" class="mt-2"></div>
         </div>
 
-        <!-- 2. Attendance -->
-        <div id="attendance-take-view" class="view container-fluid p-4">
+        <!-- Legacy Attendance Overview (kept for backward compatibility) -->
+        <div id="attendance-management-view" class="view container-fluid p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-bold m-0 text-primary-custom">Attendance Management</h3>
                 <button class="btn btn-primary-custom shadow-sm px-4 rounded-pill" onclick="openAttendanceModal()">
@@ -6288,11 +6442,13 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-bold mb-0" data-i18n="asg_review_title">Review Queue</h3>
                 <button class="btn btn-outline-primary rounded-pill small" onclick="loadAssignmentReviewQueue()">
-                    <span class="material-icons align-middle fs-6">refresh</span> <span data-i18n="btn_refresh">Refresh</span>
+                    <span class="material-icons align-middle fs-6">refresh</span> <span
+                        data-i18n="btn_refresh">Refresh</span>
                 </button>
             </div>
             <div id="assignment-review-list" class="list-group shadow-sm rounded-4 overflow-hidden">
-                <div class="list-group-item p-4 text-center text-muted" data-i18n="msg_loading_submissions">Loading submissions...</div>
+                <div class="list-group-item p-4 text-center text-muted" data-i18n="msg_loading_submissions">Loading
+                    submissions...</div>
             </div>
         </div>
         <div id="assignment-marks-view" class="view container-fluid p-4">
@@ -6300,20 +6456,23 @@
             <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
                 <div class="row g-3 align-items-end">
                     <div class="col-md-8">
-                        <label class="form-label fw-medium" data-i18n="marks_select_assignment">Select Assignment</label>
+                        <label class="form-label fw-medium" data-i18n="marks_select_assignment">Select
+                            Assignment</label>
                         <select id="marks-assignment-select" class="form-select">
                             <option value="" data-i18n="msg_loading_assignments">Loading assignments...</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button id="marks-load-btn" class="btn btn-primary-custom w-100" onclick="loadMarksForSelectedAssignment()">
+                        <button id="marks-load-btn" class="btn btn-primary-custom w-100"
+                            onclick="loadMarksForSelectedAssignment()">
                             <span data-i18n="marks_load_submissions">Load Submissions</span>
                         </button>
                     </div>
                 </div>
             </div>
             <div id="assignment-marks-list" class="list-group shadow-sm rounded-4 overflow-hidden">
-                <div class="list-group-item p-4 text-center text-muted" data-i18n="marks_select_prompt">Select an assignment to view submissions.</div>
+                <div class="list-group-item p-4 text-center text-muted" data-i18n="marks_select_prompt">Select an
+                    assignment to view submissions.</div>
             </div>
         </div>
 
@@ -6500,7 +6659,8 @@
             <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="fw-bold mb-0" data-i18n="payslip_recent">Recent Payslips</h5>
-                    <button class="btn btn-sm btn-outline-primary rounded-pill" data-i18n="payslip_download_all">Download All</button>
+                    <button class="btn btn-sm btn-outline-primary rounded-pill"
+                        data-i18n="payslip_download_all">Download All</button>
                 </div>
 
                 <div class="list-group list-group-flush">
@@ -6508,13 +6668,15 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="fw-bold">September 2024</div>
-                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Oct 01, 2024 • Status: Paid</div>
+                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Oct 01, 2024
+                                    • Status: Paid</div>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">$4,120</div>
                                 <div class="small text-muted" data-i18n="payslip_net_pay_label">Net Pay</div>
                             </div>
-                            <button class="btn btn-sm btn-outline-dark rounded-pill" data-i18n="payslip_view_details">View Details</button>
+                            <button class="btn btn-sm btn-outline-dark rounded-pill"
+                                data-i18n="payslip_view_details">View Details</button>
                         </div>
                         <div class="row mt-3 g-3 small text-muted">
                             <div class="col-md-4" data-i18n="payslip_gross">Gross: $5,000</div>
@@ -6526,13 +6688,15 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="fw-bold">August 2024</div>
-                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Sep 01, 2024 • Status: Paid</div>
+                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Sep 01, 2024
+                                    • Status: Paid</div>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">$4,050</div>
                                 <div class="small text-muted" data-i18n="payslip_net_pay_label">Net Pay</div>
                             </div>
-                            <button class="btn btn-sm btn-outline-dark rounded-pill" data-i18n="payslip_view_details">View Details</button>
+                            <button class="btn btn-sm btn-outline-dark rounded-pill"
+                                data-i18n="payslip_view_details">View Details</button>
                         </div>
                         <div class="row mt-3 g-3 small text-muted">
                             <div class="col-md-4" data-i18n="payslip_gross">Gross: $5,000</div>
@@ -6544,13 +6708,15 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <div class="fw-bold">July 2024</div>
-                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Aug 01, 2024 • Status: Paid</div>
+                                <div class="small text-muted" data-i18n="payslip_processed_paid">Processed: Aug 01, 2024
+                                    • Status: Paid</div>
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">$4,090</div>
                                 <div class="small text-muted" data-i18n="payslip_net_pay_label">Net Pay</div>
                             </div>
-                            <button class="btn btn-sm btn-outline-dark rounded-pill" data-i18n="payslip_view_details">View Details</button>
+                            <button class="btn btn-sm btn-outline-dark rounded-pill"
+                                data-i18n="payslip_view_details">View Details</button>
                         </div>
                         <div class="row mt-3 g-3 small text-muted">
                             <div class="col-md-4" data-i18n="payslip_gross">Gross: $5,000</div>
@@ -6599,19 +6765,24 @@
                             </div>
                             <div class="text-end">
                                 <div class="fw-bold">September 2024</div>
-                                <div class="small text-muted" data-i18n="payslip_processed_date">Processed: Oct 01, 2024</div>
+                                <div class="small text-muted" data-i18n="payslip_processed_date">Processed: Oct 01, 2024
+                                </div>
                             </div>
                         </div>
                         <div class="row g-3 small">
                             <div class="col-md-6">
                                 <div class="fw-bold mb-2" data-i18n="payslip_earnings">Earnings</div>
-                                <div class="d-flex justify-content-between"><span data-i18n="payslip_base_salary">Base Salary</span><span>$4,500</span></div>
-                                <div class="d-flex justify-content-between"><span data-i18n="payslip_allowance">Allowance</span><span>$500</span></div>
+                                <div class="d-flex justify-content-between"><span data-i18n="payslip_base_salary">Base
+                                        Salary</span><span>$4,500</span></div>
+                                <div class="d-flex justify-content-between"><span
+                                        data-i18n="payslip_allowance">Allowance</span><span>$500</span></div>
                             </div>
                             <div class="col-md-6">
                                 <div class="fw-bold mb-2" data-i18n="payslip_deduction_label">Deductions</div>
-                                <div class="d-flex justify-content-between"><span data-i18n="payslip_tax">Tax</span><span>$620</span></div>
-                                <div class="d-flex justify-content-between"><span data-i18n="payslip_insurance">Insurance</span><span>$260</span></div>
+                                <div class="d-flex justify-content-between"><span
+                                        data-i18n="payslip_tax">Tax</span><span>$620</span></div>
+                                <div class="d-flex justify-content-between"><span
+                                        data-i18n="payslip_insurance">Insurance</span><span>$260</span></div>
                             </div>
                         </div>
                         <hr>
@@ -6645,7 +6816,8 @@
                                     <option data-i18n="pay_advance_two_periods">Two Pay Periods</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary-custom w-100 rounded-pill" data-i18n="pay_advance_submit">Submit Request</button>
+                            <button class="btn btn-primary-custom w-100 rounded-pill"
+                                data-i18n="pay_advance_submit">Submit Request</button>
                         </form>
                     </div>
                 </div>
@@ -6656,16 +6828,20 @@
                             <div class="list-group-item d-flex justify-content-between align-items-center py-3">
                                 <div>
                                     <div class="fw-bold">$800 <span data-i18n="pay_advance_label">Advance</span></div>
-                                    <div class="small text-muted" data-i18n="pay_advance_submitted">Submitted: Aug 12, 2024</div>
+                                    <div class="small text-muted" data-i18n="pay_advance_submitted">Submitted: Aug 12,
+                                        2024</div>
                                 </div>
-                                <span class="badge bg-warning text-dark rounded-pill" data-i18n="pay_advance_pending">Pending</span>
+                                <span class="badge bg-warning text-dark rounded-pill"
+                                    data-i18n="pay_advance_pending">Pending</span>
                             </div>
                             <div class="list-group-item d-flex justify-content-between align-items-center py-3">
                                 <div>
                                     <div class="fw-bold">$500 <span data-i18n="pay_advance_label">Advance</span></div>
-                                    <div class="small text-muted" data-i18n="pay_advance_submitted">Submitted: Jun 10, 2024</div>
+                                    <div class="small text-muted" data-i18n="pay_advance_submitted">Submitted: Jun 10,
+                                        2024</div>
                                 </div>
-                                <span class="badge bg-success rounded-pill" data-i18n="pay_advance_approved">Approved</span>
+                                <span class="badge bg-success rounded-pill"
+                                    data-i18n="pay_advance_approved">Approved</span>
                             </div>
                         </div>
                     </div>
@@ -6682,7 +6858,8 @@
                     <div class="list-group shadow-sm rounded-4 overflow-hidden">
                         <a href="#" class="list-group-item list-group-item-action active fw-bold"
                             onclick="switchView('email-inbox-view'); return false;">Inbox <span
-                                class="badge bg-white text-primary float-end rounded-pill" id="email-inbox-count">0</span></a>
+                                class="badge bg-white text-primary float-end rounded-pill"
+                                id="email-inbox-count">0</span></a>
                         <a href="#" class="list-group-item list-group-item-action"
                             onclick="switchView('email-sent-view'); return false;">Sent</a>
                         <a href="#" class="list-group-item list-group-item-action"
@@ -6709,11 +6886,14 @@
             <div class="card border-0 shadow-sm rounded-4 p-4">
                 <h4 class="fw-bold mb-4">New Message</h4>
                 <form id="email-compose-form">
-                    <div class="mb-3"><input type="text" class="form-control" id="email-to" placeholder="To: (user id, email, grade:10, section:3, role:Teacher, all)"></div>
-                    <div class="mb-3"><input type="text" class="form-control" id="email-subject" placeholder="Subject:"></div>
+                    <div class="mb-3"><input type="text" class="form-control" id="email-to"
+                            placeholder="To: (user id, email, grade:10, section:3, role:Teacher, all)"></div>
+                    <div class="mb-3"><input type="text" class="form-control" id="email-subject" placeholder="Subject:">
+                    </div>
                     <div class="mb-3"><textarea class="form-control" rows="10" id="email-body"
                             placeholder="Type your message..."></textarea></div>
-                    <button class="btn btn-primary-custom px-5 rounded-pill fw-bold" id="email-send-btn" type="submit">Send</button>
+                    <button class="btn btn-primary-custom px-5 rounded-pill fw-bold" id="email-send-btn"
+                        type="submit">Send</button>
                 </form>
             </div>
         </div>
@@ -6839,22 +7019,21 @@
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- Modals -->
-
-    <!-- Generate Quiz Modal -->
-    <div class="modal fade" id="generateQuizModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content border-0 shadow-lg rounded-4">
-                <div class="modal-header border-bottom-0 bg-warning bg-opacity-10">
-                    <h5 class="modal-title fw-bold text-dark d-flex align-items-center">
-                        <span class="material-icons me-2 text-warning">psychology</span> <span
-                            data-i18n="modal_ai_quiz">AI Quiz Generator</span>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
+        <!-- AI Quiz Generator View -->
+        <div id="ai-quiz-view" class="view">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                <h2 class="fw-bold m-0 d-flex align-items-center gap-2">
+                    <span class="material-icons text-warning fs-2">psychology</span>
+                    <span data-i18n="modal_ai_quiz">AI Quiz Generator</span>
+                </h2>
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-2 fw-bold"
+                    onclick="switchView('teacher-view')">
+                    <span class="material-icons">arrow_back</span> Back to Dashboard
+                </button>
+            </div>
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
                     <div id="generate-quiz-form-container">
                         <div class="row g-3">
                             <div class="col-md-5">
@@ -6882,7 +7061,6 @@
                                     <option value="Short Answer">Short Answer</option>
                                 </select>
                             </div>
-                            <!-- Added Description Field -->
                             <div class="col-12">
                                 <label class="form-label fw-bold">Additional Context / Description</label>
                                 <textarea id="quiz-description" class="form-control" rows="2"
@@ -6894,14 +7072,13 @@
                             </div>
                             <div class="col-12 mt-4">
                                 <button type="button" class="btn btn-warning w-100 fw-bold shadow-sm"
-                                    style="z-index: 1050;" onclick="handleGenerateQuiz(event)">
+                                    onclick="handleGenerateQuiz(event)">
                                     ✨ Generate Quiz
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Results Area -->
                     <div id="quiz-result-container" class="mt-4 d-none">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <h6 class="fw-bold text-muted text-uppercase small mb-0">Preview</h6>
@@ -6912,14 +7089,10 @@
                             </div>
                         </div>
 
-                        <!-- Rich Preview Area -->
                         <div id="quiz-preview-content" class="bg-light p-3 rounded border mb-3"
                             style="max-height: 300px; overflow-y: auto;">
-                            <!-- Questions injected here -->
                         </div>
 
-                        <!-- Save Controls -->
-                        <!-- Allocation Controls -->
                         <div id="quiz-save-area" class="border-top pt-3">
                             <div class="row g-3">
                                 <div class="col-md-3">
@@ -6940,7 +7113,6 @@
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold">Select Target</label>
                                     <select id="save-quiz-target-select" class="form-select">
-                                        <!-- Populated dynamically -->
                                     </select>
                                 </div>
                                 <div class="col-12 mt-2">
@@ -6966,10 +7138,83 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- AI Lesson Planner View -->
+        <div id="lesson-planner-view" class="view">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+                <h2 class="fw-bold m-0 d-flex align-items-center gap-2">
+                    <span class="material-icons text-info fs-2">sticky_note_2</span>
+                    <span data-i18n="modal_lesson_planner">📝 AI Lesson Planner</span>
+                </h2>
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-2 fw-bold"
+                    onclick="switchView('teacher-view')">
+                    <span class="material-icons">arrow_back</span> Back to Dashboard
+                </button>
+            </div>
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" data-i18n="label_topic">Topic</label>
+                            <input type="text" id="lp-topic" class="form-control" data-i18n-placeholder="ph_topic"
+                                placeholder="e.g. Photosynthesis">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" data-i18n="label_grade">Grade</label>
+                            <input type="number" id="lp-grade" class="form-control" value="9">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" data-i18n="label_subject">Subject</label>
+                            <select id="lp-subject" class="form-select">
+                                <option>Science</option>
+                                <option>Maths</option>
+                                <option>English</option>
+                                <option>Social</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" data-i18n="label_duration">Duration (Minutes)</label>
+                            <input type="range" class="form-range" id="lp-duration" min="15" max="120" step="5"
+                                value="30"
+                                oninput="document.getElementById('duration-val').innerText = this.value + ' mins'">
+                            <div class="text-center fw-bold text-primary-custom" id="duration-val">30 mins</div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" data-i18n="label_instructions">Additional Instructions /
+                                Context</label>
+                            <textarea id="lp-description" class="form-control" rows="3"
+                                data-i18n-placeholder="ph_instructions"
+                                placeholder="e.g. Focus on vocabulary, include a group activity..."></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" data-i18n="label_upload_pdf">Upload PDF Context
+                                (Optional)</label>
+                            <input type="file" class="form-control" id="lp-pdf" accept=".pdf">
+                        </div>
+                    </div>
+
+                    <div id="lp-loading" class="text-center mt-4 d-none">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2 text-muted">Thinking...</p>
+                    </div>
+                    <div id="lp-result" class="mt-4 p-3 bg-light rounded border d-none"
+                        style="white-space: pre-wrap; font-family: sans-serif;"></div>
+
+                    <div class="d-grid mt-4">
+                        <button type="button" class="btn btn-primary-custom fw-bold" onclick="generateLessonPlan()">
+                            <span class="material-icons align-middle fs-6 me-1">auto_awesome</span> Generate Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
 
     <!-- Add Student Modal -->
-    <div class="modal fade" id="addStudentModal" tabindex="-1">
+    <div class="view full-page-view" id="addStudentModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-bottom-0">
@@ -7201,7 +7446,7 @@
     </div>
 
     <!-- Access Card Modal (For Printing) -->
-    <div class="modal fade" id="accessCardModal" tabindex="-1">
+    <div class="view full-page-view" id="accessCardModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header bg-dark text-white border-bottom-0">
@@ -7249,7 +7494,7 @@
 
 
     <!-- LMS Create Course Modal -->
-    <div class="modal fade" id="lmsCreateCourseModal" tabindex="-1">
+    <div class="view full-page-view" id="lmsCreateCourseModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-bottom-0">
@@ -7290,7 +7535,7 @@
     </div>
 
     <!-- LMS Add Section Modal -->
-    <div class="modal fade" id="lmsAddSectionModal" tabindex="-1">
+    <div class="view full-page-view" id="lmsAddSectionModal" tabindex="-1">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-bottom-0">
@@ -7308,7 +7553,7 @@
     </div>
 
     <!-- LMS Add Module Modal -->
-    <div class="modal fade" id="lmsAddModuleModal" tabindex="-1">
+    <div class="view full-page-view" id="lmsAddModuleModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-bottom-0">
@@ -7362,7 +7607,7 @@
     </div>
     </div>
     <!-- Access Card Modal (For Printing) -->
-    <div class="modal fade" id="accessCardModal" tabindex="-1">
+    <div class="view full-page-view" id="accessCardModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header bg-dark text-white border-bottom-0">
@@ -7414,7 +7659,7 @@
 
 
     <!-- Edit Student Modal (Revamped) -->
-    <div class="modal fade" id="editStudentModal" tabindex="-1">
+    <div class="view full-page-view" id="editStudentModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
                 <div class="modal-header bg-gradient-primary-to-secondary text-white border-bottom-0 p-4"
@@ -7590,7 +7835,7 @@
     </div>
 
     <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1">
+    <div class="view full-page-view" id="deleteConfirmationModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-danger text-white">
@@ -7611,7 +7856,7 @@
         </div>
 
         <!-- Take Attendance Modal -->
-        <div class="modal fade" id="takeAttendanceModal" tabindex="-1">
+        <div class="view full-page-view" id="takeAttendanceModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7676,7 +7921,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="createGroupModal" tabindex="-1">
+        <div class="view full-page-view" id="createGroupModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7719,7 +7964,7 @@
         </div>
 
         <!-- Manage Group Modal (Members & Materials) -->
-        <div class="modal fade" id="manageMembersModal" tabindex="-1">
+        <div class="view full-page-view" id="manageMembersModal" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7810,7 +8055,7 @@
             </div>
         </div>
         <!-- Add Activity Modal -->
-        <div class="modal fade" id="addActivityModal" tabindex="-1">
+        <div class="view full-page-view" id="addActivityModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7862,7 +8107,7 @@
         </div>
 
         <!-- Schedule Class Modal -->
-        <div class="modal fade" id="scheduleClassModal" tabindex="-1">
+        <div class="view full-page-view" id="scheduleClassModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7931,7 +8176,7 @@
         </div>
 
         <!-- Student Group Content Modal -->
-        <div class="modal fade" id="studentGroupModal" tabindex="-1">
+        <div class="view full-page-view" id="studentGroupModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -7952,7 +8197,7 @@
         </div>
 
         <!-- About Portal Modal (Revamped) -->
-        <div class="modal fade" id="aboutPortalModal" tabindex="-1">
+        <div class="view full-page-view" id="aboutPortalModal" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
                     <!-- Header with Gradient -->
@@ -7962,7 +8207,7 @@
                             <h2 class="fw-bold mb-2 d-flex align-items-center gap-3">
                                 <span class="bg-white text-primary rounded-circle p-2 d-flex"><span
                                         class="material-icons">school</span></span>
-                                Noble Nexus Portal
+                                Class Bridge
                             </h2>
                             <p class="lead mb-0 opacity-75">Empowering the next generation of learners with AI.</p>
                         </div>
@@ -8029,7 +8274,7 @@
         </div>
 
         <!-- Forgot Password Modal -->
-        <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+        <div class="view full-page-view" id="forgotPasswordModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0">
@@ -8054,7 +8299,7 @@
         </div>
 
         <!-- Reset Password Modal (New Password Entry) -->
-        <div class="modal fade" id="resetPasswordModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="view full-page-view" id="resetPasswordModal" tabindex="-1" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header border-bottom-0 bg-primary-custom text-white">
@@ -8079,7 +8324,7 @@
             </div>
         </div>
         <!-- Audit Log Modal -->
-        <div class="modal fade" id="auditLogModal" tabindex="-1">
+        <div class="view full-page-view" id="auditLogModal" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content border-0 shadow-lg rounded-4">
                     <div class="modal-header bg-dark text-white">
@@ -8107,7 +8352,7 @@
         </div>
 
         <!-- Whiteboard Modal -->
-        <div class="modal fade" id="whiteboardModal" tabindex="-1">
+        <div class="view full-page-view" id="whiteboardModal" tabindex="-1">
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content">
                     <div class="modal-header bg-dark text-white p-2">
@@ -8144,11 +8389,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-        <script src="/static/grid_plasma.js"></script>
-        <script src="/static/shader_background_webgl.js"></script>
-        <script src="/static/glowing_cards.js"></script>
-        <script src="/static/testimonial_cards.js"></script>
-        <script src="/script.js?v=2.3"></script>
+        <script src="./static/grid_plasma.js"></script>
+        <script src="./static/shader_background_webgl.js"></script>
+        <script src="./static/glowing_cards.js"></script>
+        <script src="./static/testimonial_cards.js"></script>
+        <script src="./script.js?v=2.6"></script>
         <!-- Create Assignment Modal -->
         <div class="modal fade" id="createAssignmentModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -8182,7 +8427,8 @@
                             <div class="mb-3">
                                 <label class="form-label fw-bold" data-i18n="label_section">Section</label>
                                 <select id="asg-section" class="form-select">
-                                    <option value="" data-i18n="label_select_section_optional">Select Section (optional)</option>
+                                    <option value="" data-i18n="label_select_section_optional">Select Section (optional)
+                                    </option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -8193,14 +8439,15 @@
                         <div id="asg-error" class="text-danger small d-none"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="create-assignment-submit-btn" class="btn btn-primary-custom fw-bold w-100"
-                            onclick="handleCreateAssignment()" data-i18n="btn_create">Create</button>
+                        <button type="button" id="create-assignment-submit-btn"
+                            class="btn btn-primary-custom fw-bold w-100" onclick="handleCreateAssignment()"
+                            data-i18n="btn_create">Create</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Submit Assignment Modal -->
-        <div class="modal fade" id="submitAssignmentModal" tabindex="-1">
+        <div class="view full-page-view" id="submitAssignmentModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-success text-white">
@@ -8225,7 +8472,7 @@
         </div>
 
         <!-- View Submissions Modal (Teacher) -->
-        <div class="modal fade" id="viewSubmissionsModal" tabindex="-1">
+        <div class="view full-page-view" id="viewSubmissionsModal" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-dark text-white">
@@ -8386,7 +8633,7 @@
 
 
         <!-- Add Video Modal -->
-        <div class="modal fade" id="addVideoModal" tabindex="-1">
+        <div class="view full-page-view" id="addVideoModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-danger text-white">
@@ -8412,7 +8659,7 @@
         </div>
 
         <!-- Create Announcement Modal -->
-        <div class="modal fade" id="createAnnouncementModal" tabindex="-1">
+        <div class="view full-page-view" id="createAnnouncementModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-primary text-white">
@@ -8446,7 +8693,7 @@
         </div>
 
         <!-- Compose Message Modal -->
-        <div class="modal fade" id="composeMessageModal" tabindex="-1">
+        <div class="view full-page-view" id="composeMessageModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-success text-white">
@@ -8477,7 +8724,7 @@
         </div>
 
         <!-- Add Event Modal -->
-        <div class="modal fade" id="addEventModal" tabindex="-1">
+        <div class="view full-page-view" id="addEventModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow-lg">
                     <div class="modal-header bg-info text-white">
@@ -8611,7 +8858,7 @@
         </div>
         <!-- Engagement Helper Modal removed -->
         <!-- Teacher AI Co-Pilot Modal -->
-        <div class="modal fade" id="teacherAICoPilotModal" tabindex="-1" aria-hidden="true"
+        <div class="view full-page-view" id="teacherAICoPilotModal" tabindex="-1" aria-hidden="true"
             style="backdrop-filter: blur(8px);">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content border-0 shadow-lg overflow-hidden"
@@ -8679,7 +8926,7 @@
             </div>
         </div>
 
-        
+
         <!-- ========================================== -->
         <!-- PARENT MODULE VIEWS (FR-7)                 -->
         <!-- ========================================== -->
@@ -8918,34 +9165,36 @@
 
         <div id="parent-assignment-scores-view" class="view container-fluid p-4">
             <h3 class="fw-bold mb-4 text-dark">Assignment Scores</h3>
-            <div class="card border-0 shadow-sm rounded-4">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="bg-light">
-                        <tr>
-                            <th class="ps-4 py-3">Assignment</th>
-                            <th>Subject</th>
-                            <th>Submitted On</th>
-                            <th>Score</th>
-                            <th>Feedback</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ps-4 fw-bold">History Essay</td>
-                            <td>History</td>
-                            <td>Oct 10, 2024</td>
-                            <td><span class="badge bg-success rounded-pill">18/20</span></td>
-                            <td class="small text-muted">Good analysis of the topic.</td>
-                        </tr>
-                        <tr>
-                            <td class="ps-4 fw-bold">Math Quiz #1</td>
-                            <td>Mathematics</td>
-                            <td>Oct 05, 2024</td>
-                            <td><span class="badge bg-warning text-dark rounded-pill">12/20</span></td>
-                            <td class="small text-muted">Needs improvement in algebra.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 py-3">Assignment</th>
+                                <th>Subject</th>
+                                <th>Submitted On</th>
+                                <th>Score</th>
+                                <th>Feedback</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-4 fw-bold">History Essay</td>
+                                <td>History</td>
+                                <td>Oct 10, 2024</td>
+                                <td><span class="badge bg-success rounded-pill">18/20</span></td>
+                                <td class="small text-muted">Good analysis of the topic.</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4 fw-bold">Math Quiz #1</td>
+                                <td>Mathematics</td>
+                                <td>Oct 05, 2024</td>
+                                <td><span class="badge bg-warning text-dark rounded-pill">12/20</span></td>
+                                <td class="small text-muted">Needs improvement in algebra.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -9064,34 +9313,26 @@
         <!-- 5. Exam Schedule -->
         <div id="parent-exam-schedule-view" class="view container-fluid p-4">
             <h3 class="fw-bold mb-4 text-dark">Exam Schedule</h3>
-            <div class="card border-0 shadow-sm rounded-4">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="bg-light">
-                        <tr>
-                            <th class="ps-4 py-3">Subject</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Duration</th>
-                            <th>Syllabus</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ps-4 fw-bold">Mathematics (Mid-Term)</td>
-                            <td>Nov 10, 2024</td>
-                            <td>10:00 AM</td>
-                            <td>2 Hrs</td>
-                            <td><button class="btn btn-sm btn-outline-primary rounded-pill">View</button></td>
-                        </tr>
-                        <tr>
-                            <td class="ps-4 fw-bold">Science (Mid-Term)</td>
-                            <td>Nov 12, 2024</td>
-                            <td>10:00 AM</td>
-                            <td>2 Hrs</td>
-                            <td><button class="btn btn-sm btn-outline-primary rounded-pill">View</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 py-3">Student</th>
+                                <th class="ps-4 py-3">Subject</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Venue</th>
+                                <th>Items Required</th>
+                            </tr>
+                        </thead>
+                        <tbody id="parent-exam-schedule-body">
+                            <tr>
+                                <td class="ps-4 text-muted" colspan="6">Loading exam schedules...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -9167,7 +9408,8 @@
         <div id="parent-feedback-view" class="view container-fluid p-4">
             <h3 class="fw-bold mb-4 text-dark">Feedback</h3>
             <div class="card border-0 shadow rounded-4 p-4" style="max-width: 600px;">
-                <p class="text-muted small mb-4">Submit feedback about a teacher or staff member. You can choose to keep
+                <p class="text-muted small mb-4">Submit feedback about a teacher or staff member. You can choose
+                    to keep
                     this confidential.</p>
                 <form>
                     <div class="mb-3">
@@ -9214,10 +9456,14 @@
             <button class="btn btn-light mb-3" onclick="switchView('parent-email-inbox-view')">Back</button>
             <div class="card border-0 shadow-sm rounded-4 p-4">
                 <form id="parent-email-compose-form">
-                    <div class="mb-3"><input type="text" class="form-control" id="parent-email-to" placeholder="To: (e.g., Teacher)"></div>
-                    <div class="mb-3"><input type="text" class="form-control" id="parent-email-subject" placeholder="Subject:"></div>
-                    <div class="mb-3"><textarea class="form-control" rows="5" id="parent-email-body"></textarea></div>
-                    <button class="btn btn-primary-custom rounded-pill fw-bold" id="parent-email-send-btn" type="submit">Send</button>
+                    <div class="mb-3"><input type="text" class="form-control" id="parent-email-to"
+                            placeholder="To: (e.g., Teacher)"></div>
+                    <div class="mb-3"><input type="text" class="form-control" id="parent-email-subject"
+                            placeholder="Subject:"></div>
+                    <div class="mb-3"><textarea class="form-control" rows="5" id="parent-email-body"></textarea>
+                    </div>
+                    <button class="btn btn-primary-custom rounded-pill fw-bold" id="parent-email-send-btn"
+                        type="submit">Send</button>
                 </form>
             </div>
         </div>
@@ -9228,6 +9474,18 @@
                     <h5 class="mb-0 fw-bold">Sent</h5>
                 </div>
                 <div class="list-group list-group-flush" id="parent-email-sent-list">
+                    <div class="p-4 text-center text-muted">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="parent-notifications-view" class="view container-fluid p-4">
+            <h3 class="fw-bold mb-4 text-dark">Notifications</h3>
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white border-bottom p-3">
+                    <h5 class="mb-0 fw-bold">Child Attendance & Updates</h5>
+                </div>
+                <div class="list-group list-group-flush" id="parent-notifications-list">
                     <div class="p-4 text-center text-muted">Loading...</div>
                 </div>
             </div>
@@ -9246,7 +9504,7 @@
                     <!-- Column 1: Brand & Language -->
                     <div class="col-lg-3 col-md-12">
                         <div class="d-flex align-items-center gap-3 mb-4">
-                            <img src="/static/noble_nexus_logo.png" alt="Noble Nexus"
+                            <img src="./static/noble_nexus_logo.png" alt="Noble Nexus"
                                 style="width: 48px; border-radius: 12px; background: white; padding: 2px;">
                             <div>
                                 <h5 class="fw-bold mb-0">ClassBridge</h5>
@@ -9269,7 +9527,8 @@
                                 style="background: #000;">
                                 <span class="material-icons">apple</span>
                                 <div class="lh-1 text-start">
-                                    <span class="d-block text-muted" style="font-size: 9px;">Download on the</span>
+                                    <span class="d-block text-muted" style="font-size: 9px;">Download on
+                                        the</span>
                                     <span class="fw-bold" style="font-size: 13px;">App Store</span>
                                 </div>
                             </a>
@@ -9328,7 +9587,7 @@
                         <div class="bg-white p-3 rounded-4 shadow-lg d-inline-block position-relative text-center">
                             <h6 class="fw-bold text-dark mb-3 text-center" style="font-size: 0.9rem;">Get the
                                 ClassBridge app</h6>
-                            <img src="/static/noble_nexus_qr.png" alt="QR Code" class="img-fluid"
+                            <img src="./static/noble_nexus_qr.png" alt="QR Code" class="img-fluid"
                                 style="width: 140px; height: 140px;">
                         </div>
                     </div>
@@ -9350,8 +9609,8 @@
         </footer>
 
         <!-- About Company Modal -->
-        <div class="modal fade" id="aboutCompModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered"> 
+        <div class="view full-page-view" id="aboutCompModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-4 border-0 shadow-lg">
                     <div class="modal-header border-bottom-0">
                         <h5 class="modal-title fw-bold text-primary-custom">About ClassBridge</h5>
@@ -9359,18 +9618,21 @@
                     </div>
                     <div class="modal-body p-4">
                         <div class="text-center mb-4">
-                            <img src="/static/noble_logo.png" width="80" class="mb-3 rounded-3 shadow-sm">
-                            <h4 class="fw-bold">ClassBridge</h4>
-                            <p class="text-uppercase small text-muted letter-spacing-1">A Product by Noble Nexus</p>
+                            <img src="./static/noble_logo.png" width="80" class="mb-3 rounded-3 shadow-sm">
+                            <h4 class="fw-bold mb-2">Class Bridge</h4>
+                            <p class="text-uppercase small text-muted letter-spacing-1">A Product by Noble Nexus
+                            </p>
                         </div>
                         <p class="text-muted">
-                            ClassBridge is the leading AI-powered school management platform. We connect schools,
+                            ClassBridge is the leading AI-powered school management platform. We connect
+                            schools,
                             teachers,
                             students, and parents in one seamless digital environment to foster better learning
                             outcomes.
                         </p>
                         <p class="text-muted">
-                            Our mission is to democratize education by providing state-of-the-art tools for every
+                            Our mission is to democratize education by providing state-of-the-art tools for
+                            every
                             institution, big or small.
                         </p>
                     </div>
@@ -9381,6 +9643,160 @@
                 </div>
             </div>
         </div>
+        <!-- NOTIFICATION SYSTEM SCRIPT -->
+        <script>
+            // --- Notification System ---
+            async function fetchNotifications() {
+                // Try to get user ID from localStorage or other sources
+                // Assuming the main script sets 'user_id' or 'currentUser' in localStorage
+                let userId = localStorage.getItem('user_id');
+                const userRole = localStorage.getItem('user_role');
+
+                if (!userId) {
+                    // Fallback attempt: if script.js uses a global 'currentUser' variable
+                    if (typeof currentUser !== 'undefined' && currentUser.id) {
+                        userId = currentUser.id;
+                    } else {
+                        return; // Wait for login
+                    }
+                }
+
+                try {
+                    const res = await fetch('/api/notifications/inbox', {
+                        headers: { 'X-User-Id': userId }
+                    });
+                    if (!res.ok) return;
+                    const data = await res.json();
+
+                    // Sort by ID desc if not already
+                    data.sort((a, b) => b.id - a.id);
+
+                    const unreadCount = data.filter(n => !n.is_read).length;
+
+                    const btn = document.querySelector('.user-menu .notify-btn');
+                    if (btn) {
+                        // Update badge
+                        let badge = btn.querySelector('.badge-notification');
+                        if (!badge) {
+                            badge = document.createElement('span');
+                            badge.className = 'badge-notification position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger';
+                            badge.style.fontSize = '0.6rem';
+                            btn.style.position = 'relative'; // Ensure button is relative
+                            btn.appendChild(badge);
+                        }
+
+                        if (unreadCount > 0) {
+                            badge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+                            badge.style.display = 'inline-block';
+                        } else {
+                            badge.style.display = 'none';
+                        }
+
+                        // Attach click handler (idempotent)
+                        btn.onclick = (e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            showNotificationDropdown(data, btn);
+                        };
+                    }
+                } catch (e) {
+                    console.error('Notification fetch error:', e);
+                }
+            }
+
+            function showNotificationDropdown(notifications, btn) {
+                // Remove existing
+                const existing = document.getElementById('notification-dropdown');
+                if (existing) {
+                    existing.remove();
+                    return; // Toggle off
+                }
+
+                const dropdown = document.createElement('div');
+                dropdown.id = 'notification-dropdown';
+                dropdown.className = 'card border-0 shadow-lg position-absolute animate-fade-in';
+                // Formatting
+                dropdown.style.width = '350px';
+                dropdown.style.right = '20px';
+                dropdown.style.top = '80px';
+                dropdown.style.zIndex = '9999';
+                dropdown.style.maxHeight = '500px';
+                dropdown.style.overflowY = 'auto';
+                dropdown.style.borderRadius = '12px';
+
+                let html = `
+                <div class="card-header bg-white fw-bold border-bottom d-flex justify-content-between align-items-center sticky-top">
+                    <span>Notifications</span>
+                    <small class="text-primary" style="cursor:pointer" onclick="fetchNotifications()">Refresh</small>
+                </div>
+                <div class="list-group list-group-flush">
+            `;
+
+                if (notifications.length === 0) {
+                    html += '<div class="p-4 text-center text-muted small">No notifications</div>';
+                } else {
+                    notifications.forEach(n => {
+                        const bgClass = n.is_read ? 'bg-white' : 'bg-light border-start border-4 border-primary';
+                        const icon = n.subject.includes('Leave') ? 'event_busy' : 'notifications';
+                        const time = new Date(n.timestamp).toLocaleString();
+
+                        html += `
+                        <div class="list-group-item ${bgClass} p-3 list-group-item-action" onclick="markRead(${n.id})" style="cursor:pointer">
+                            <div class="d-flex w-100 justify-content-between align-items-start mb-1">
+                                <h6 class="mb-0 fw-bold text-dark small d-flex align-items-center gap-2">
+                                     <span class="material-icons fs-6 text-secondary">${icon}</span> ${n.subject}
+                                </h6>
+                            </div>
+                            <p class="mb-1 small text-secondary">${n.content}</p>
+                            <small class="text-muted" style="font-size:10px">${time}</small>
+                        </div>
+                    `;
+                    });
+                }
+                html += '</div>';
+                dropdown.innerHTML = html;
+                document.body.appendChild(dropdown);
+
+                // Close on outside click
+                setTimeout(() => {
+                    document.addEventListener('click', function close(e) {
+                        if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+                            dropdown.remove();
+                            document.removeEventListener('click', close);
+                        }
+                    });
+                }, 100);
+            }
+
+            async function markRead(id) {
+                try {
+                    const userId = localStorage.getItem('user_id');
+                    await fetch(`/api/notifications/${id}/read`, {
+                        method: 'PUT',
+                        headers: userId ? { 'X-User-Id': userId } : {}
+                    });
+                    // Re-fetch to update badge and list style
+                    fetchNotifications();
+                    // Don't close dropdown immediately, just update UI styling via re-render or let it be.
+                    // Re-fetching will re-render dropdown if we call showNotificationDropdown again, 
+                    // but better to just let user close it or manually refresh.
+                    // Actually, let's just update the list item visually if possible? 
+                    // Simpler: reload notifications but keep dropdown open? 
+                    // For MVP, just update internal state.
+                    const item = document.querySelector(`[onclick="markRead(${id})"]`);
+                    if (item) {
+                        item.classList.remove('bg-light', 'border-start', 'border-4', 'border-primary');
+                        item.classList.add('bg-white');
+                    }
+                } catch (e) { console.error(e); }
+            }
+
+            // Start Polling
+            setInterval(fetchNotifications, 15000); // Every 15s
+
+            // Initial Fetch with delay to ensure auth
+            setTimeout(fetchNotifications, 2000);
+        </script>
 </body>
 
 
